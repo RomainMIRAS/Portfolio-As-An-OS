@@ -6,6 +6,7 @@ import Wallpaper from './components/OS/Wallpaper';
 import Taskbar from './components/OS/Taskbar';
 import WindowManager from './components/OS/WindowManager';
 import NotificationCenter from './components/OS/NotificationCenter';
+import DesktopIcons from './components/OS/DesktopIcons';
 import useOSState from './hooks/useOSState';
 
 const App: React.FC = () => {
@@ -24,7 +25,8 @@ const App: React.FC = () => {
     addNotification,
     removeNotification,
     initiateShutdown,
-    resetSystem
+    resetSystem,
+    toggleDesktopIcons
   } = useOSState();
 
   return (
@@ -43,6 +45,14 @@ const App: React.FC = () => {
           >
             {/* Wallpaper */}
             <Wallpaper theme={osState.theme} wallpaper={osState.wallpaper} />
+
+            {/* Desktop Icons */}
+            <DesktopIcons
+              availableApps={availableApps}
+              onOpenApp={openApp}
+              visible={osState.desktopIconsVisible}
+              onToggleDesktopIcons={toggleDesktopIcons}
+            />
 
             {/* Window Manager */}
             <WindowManager
