@@ -1,0 +1,77 @@
+import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import BootScreen from './components/OS/BootScreen';
+import Wallpaper from './components/OS/Wallpaper';
+import Taskbar from './components/OS/Taskbar';
+import WindowManager from './components/OS/WindowManager';
+import NotificationCenter from './components/OS/NotificationCenter';
+import useOSState from './hooks/useOSState';
+
+const App: React.FC = () => {
+  const {
+    osState,
+    availableApps,
+    markBootComplete,
+    openApp,
+    closeWindow,
+    focusWindow,
+    toggleMinimize,
+    toggleMaximize,
+    updateWindowPosition,
+    updateWindowSize,
+    toggleTheme,
+    addNotification,
+    removeNotification
+  } = useOSState();
+
+  return (
+    <div className="min-h-screen overflow-hidden">
+      <AnimatePresence mode="wait">
+        {!osState.isBootComplete ? (
+          <BootScreen onBootComplete={markBootComplete} />
+        ) : (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="relative h-screen overflow-hidden"
+          >
+            {/* Wallpaper */}
+            <Wallpaper theme={osState.theme} wallpaper={osState.wallpaper} />
+
+            {/* Window Manager */}
+            <WindowManager
+              windows={osState.windows}
+              onClose={closeWindow}
+              onFocus={focusWindow}
+              onMinimize={toggleMinimize}
+              onMaximize={toggleMaximize}
+              onUpdatePosition={updateWindowPosition}
+              onUpdateSize={updateWindowSize}
+            />
+
+            {/* Taskbar */}
+            <Taskbar
+              availableApps={availableApps}
+              openWindows={osState.windows}
+              currentTime={osState.time}
+              theme={osState.theme}
+              onOpenApp={openApp}
+              onToggleMinimize={toggleMinimize}
+              onToggleTheme={toggleTheme}
+              onAddNotification={addNotification}
+            />
+
+            {/* Notification Center */}
+            <NotificationCenter
+              notifications={osState.notifications}
+              onRemove={removeNotification}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default App;

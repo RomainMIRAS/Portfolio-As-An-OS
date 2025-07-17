@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    @apply bg-os-dark text-os-text font-system antialiased;
+    @apply overflow-hidden;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-os-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-os-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-os-text-subtle;
+  }
+}
+
+@layer components {
+  .window {
+    @apply bg-os-light/80 backdrop-blur-os border border-os-border rounded-lg shadow-2xl;
+    @apply animate-slide-up;
+  }
+
+  .window-header {
+    @apply bg-os-lighter/50 border-b border-os-border px-4 py-3 rounded-t-lg;
+    @apply flex items-center justify-between;
+  }
+
+  .window-content {
+    @apply p-6 overflow-auto max-h-96;
+  }
+
+  .button-primary {
+    @apply bg-os-accent hover:bg-os-accent-hover text-white font-medium px-4 py-2 rounded-md;
+    @apply transition-colors duration-200 border border-transparent;
+    @apply focus:outline-none focus:ring-2 focus:ring-os-accent focus:ring-offset-2 focus:ring-offset-os-dark;
+  }
+
+  .button-secondary {
+    @apply bg-os-light hover:bg-os-lighter text-os-text font-medium px-4 py-2 rounded-md;
+    @apply transition-colors duration-200 border border-os-border;
+    @apply focus:outline-none focus:ring-2 focus:ring-os-accent focus:ring-offset-2 focus:ring-offset-os-dark;
+  }
+
+  .input-field {
+    @apply bg-os-darker border border-os-border rounded-md px-3 py-2 text-os-text;
+    @apply focus:outline-none focus:ring-2 focus:ring-os-accent focus:border-transparent;
+    @apply placeholder-os-text-subtle;
+  }
+
+  .terminal {
+    @apply bg-os-darker border border-os-border rounded-lg font-mono text-sm;
+    @apply shadow-2xl;
+  }
+
+  .terminal-header {
+    @apply bg-os-light border-b border-os-border px-4 py-2 rounded-t-lg;
+    @apply flex items-center space-x-2;
+  }
+
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+
+  .terminal-content {
+    @apply p-4 h-64 overflow-auto;
+  }
+
+  .taskbar {
+    @apply fixed bottom-0 left-0 right-0 bg-os-light/80 backdrop-blur-os border-t border-os-border;
+    @apply flex items-center justify-center px-4 py-2 h-16;
+  }
+
+  .dock-item {
+    @apply relative bg-os-lighter/50 hover:bg-os-lighter border border-os-border rounded-lg;
+    @apply w-12 h-12 flex items-center justify-center cursor-pointer;
+    @apply transition-all duration-200 hover:scale-110 hover:shadow-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-os-accent;
+  }
+
+  .notification {
+    @apply fixed top-4 right-4 bg-os-light border border-os-border rounded-lg shadow-2xl;
+    @apply p-4 max-w-sm animate-slide-down;
+  }
+
+  .glow-effect {
+    @apply animate-glow;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .backdrop-glass {
+    backdrop-filter: blur(12px) saturate(1.8);
+    -webkit-backdrop-filter: blur(12px) saturate(1.8);
+  }
+
+  .gradient-border {
+    background: linear-gradient(45deg, #58a6ff, #79c0ff) padding-box,
+                linear-gradient(45deg, #58a6ff, #79c0ff) border-box;
+    border: 2px solid transparent;
+  }
+
+  .scan-lines {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 2px,
+        rgba(255, 255, 255, 0.03) 4px
+      );
+  }
+
+  .crt-effect {
+    @apply scan-lines;
+    filter: contrast(1.1) brightness(1.1);
+  }
+}
