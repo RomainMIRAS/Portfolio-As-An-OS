@@ -117,7 +117,7 @@ const AboutWindow: React.FC = () => {
           </h3>
           
           <div className="space-y-3">
-            {portfolioData.experience.slice(0, 2).map((exp, index) => (
+            {portfolioData.experience.slice(0, 2).map((exp) => (
               <div key={exp.id} className="flex items-start space-x-3 p-4 bg-os-darker/30 rounded-lg border border-os-border">
                 <div className="flex-shrink-0 mt-1">
                   <Calendar className="w-4 h-4 text-os-accent" />

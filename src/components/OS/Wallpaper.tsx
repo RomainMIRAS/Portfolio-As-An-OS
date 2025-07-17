@@ -6,7 +6,7 @@ interface WallpaperProps {
   wallpaper: string;
 }
 
-const Wallpaper: React.FC<WallpaperProps> = ({ theme, wallpaper }) => {
+const Wallpaper: React.FC<WallpaperProps> = ({ theme }) => {
   const generateParticles = () => {
     return Array.from({ length: 50 }, (_, i) => (
       <motion.div
