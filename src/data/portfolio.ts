@@ -80,11 +80,11 @@ export interface ContactInfo {
 
 export const portfolioData: PortfolioData = {
   personal: {
-    name: "Votre Nom",
-    title: "Développeur Full Stack",
-    bio: "Passionné par la création d'expériences numériques innovantes, je développe des applications web modernes et performantes. Avec une expertise en React, TypeScript et Node.js, j'aime transformer des idées complexes en solutions élégantes et intuitives.",
+    name: "MIRAS Romain",
+    title: "Développeur DevOps / Full Stack",
+    bio: "Étudiant en 5e année à Polytech Grenoble (Informatique), actuellement en stage DevOps/Backend jusqu'à mi-septembre 2025.\n\nMon parcours a commencé par un DUT Informatique à Grenoble, où j'ai acquis des bases solides en développement logiciel et web. Depuis, je me suis spécialisé dans des environnements techniques variés, avec une appétence particulière pour les projets collaboratifs et la résolution de problèmes concrets.\n\nDurant mes expériences, j'ai travaillé sur des projets mêlant développement backend (Node.js, Python…), DevOps (CI/CD, Docker, GitLab), et parfois frontend (React). J'aime explorer tout le cycle de vie d'une application, de la conception à la mise en production.\n\nJe suis ouvert aux opportunités de CDI ou VIE en DevOps, Backend ou FullStack à partir de septembre 2025, en France ou à l'international.",
     avatar: "/avatar.jpg",
-    location: "Paris, France",
+    location: "Grenoble, France",
     availability: "Disponible pour de nouveaux projets"
   },
   projects: [
@@ -133,63 +133,75 @@ export const portfolioData: PortfolioData = {
   ],
   experience: [
     {
-      id: "senior-dev",
-      company: "TechCorp Solutions",
-      position: "Développeur Senior Full Stack",
-      duration: "2 ans",
-      startDate: "2022-03",
-      description: "Développement d'applications web complexes pour des clients enterprise. Lead technique sur plusieurs projets, mentoring des développeurs juniors et optimisation des performances.",
-      technologies: ["React", "Node.js", "PostgreSQL", "AWS", "Docker", "TypeScript"],
-      location: "Paris, France",
-      type: "full-time"
+      id: "viseo-devops",
+      company: "VISEO",
+      position: "Stage d'ingénieur DevOps / Backend",
+      duration: "7 mois",
+      startDate: "2025-03",
+      endDate: "2025-09",
+      description: "Stage de fin d'étude d'ingénieur Informatique chez Viseo Grenoble. Mise en place de processus DevOps pour des projets web sur Cloud Azure/AWS. Maintenance et création de solutions CI/CD sur Azure DevOps et Gitlab CI. Développement et maintenance de solutions backend Dotnet.",
+      technologies: ["DevOps", "Azure", "AWS", "Azure DevOps", "GitLab CI", ".NET"],
+      location: "Grenoble, France",
+      type: "internship"
     },
     {
-      id: "full-stack-dev",
-      company: "StartupXYZ",
-      position: "Développeur Full Stack",
-      duration: "1.5 ans",
-      startDate: "2020-09",
-      endDate: "2022-02",
-      description: "Développement de l'application principale de la startup, de la conception à la mise en production. Travail en équipe agile avec des cycles de développement rapides.",
-      technologies: ["React", "Python", "Django", "PostgreSQL", "Redis"],
-      location: "Lyon, France",
-      type: "full-time"
+      id: "redtaag",
+      company: "Redtaag",
+      position: "Développeur web fullstack",
+      duration: "5 mois",
+      startDate: "2024-04",
+      endDate: "2024-08",
+      description: "Évolution et maintenance de l'applicatif web Redtaag ainsi qu'une application Android.",
+      technologies: ["Web", "Android", "Fullstack"],
+      location: "Valence, Espagne",
+      type: "internship"
     },
     {
-      id: "frontend-dev",
-      company: "WebAgency Pro",
-      position: "Développeur Frontend",
-      duration: "1 an",
-      startDate: "2019-08",
-      endDate: "2020-08",
-      description: "Création d'interfaces utilisateur responsives et interactives pour des sites web et applications mobiles. Collaboration étroite avec les designers UX/UI.",
-      technologies: ["Vue.js", "SASS", "JavaScript", "Figma", "Webpack"],
-      location: "Remote",
-      type: "contract"
+      id: "blue-ortho",
+      company: "BLUE ORTHO",
+      position: "Développeur web",
+      duration: "4 mois",
+      startDate: "2022-04",
+      endDate: "2022-07",
+      description: "Evolution et maintenance de l'applicatif Web.",
+      technologies: ["Web"],
+      location: "Meylan, France",
+      type: "internship"
     }
   ],
   education: [
     {
-      id: "master-cs",
-      institution: "École Supérieure d'Informatique",
-      degree: "Master",
-      field: "Informatique et Systèmes d'Information",
-      duration: "2 ans",
-      startDate: "2017-09",
-      endDate: "2019-06",
-      description: "Spécialisation en développement web et architecture logicielle. Projet de fin d'études sur les Progressive Web Apps.",
-      location: "Paris, France"
-    },
-    {
-      id: "license-info",
-      institution: "Université de Technologie",
-      degree: "Licence",
+      id: "polytech-grenoble",
+      institution: "Polytech Grenoble",
+      degree: "Diplôme d'ingénieur",
       field: "Informatique",
       duration: "3 ans",
-      startDate: "2014-09",
-      endDate: "2017-06",
-      description: "Formation complète en informatique avec focus sur la programmation et les algorithmes.",
-      location: "Lyon, France"
+      startDate: "2022-09",
+      endDate: "2025-08",
+      description: "Formation d'ingénieur en informatique généraliste avec une spécialisation dans le domaine du réseau.",
+      location: "Grenoble, France"
+    },
+    {
+      id: "iut2-grenoble",
+      institution: "IUT2 Grenoble",
+      degree: "Diplôme universitaire de technologie (DUT)",
+      field: "Informatique",
+      duration: "2 ans",
+      startDate: "2020-09",
+      endDate: "2022-06",
+      description: "Formation en informatique généraliste avec une spécialisation en développement web.",
+      location: "Grenoble, France"
+    },
+    {
+      id: "lycee-buisson",
+      institution: "Lycée Polyvalent Ferdinand Buisson",
+      degree: "Baccalauréat général",
+      field: "Ingénierie",
+      duration: "3 ans",
+      startDate: "2017-09",
+      endDate: "2020-06",
+      description: "Baccalauréat général avec une spécialisation en sciences et technologies de l'ingénierie.",
+      location: "Voiron, France"
     }
   ],
   skills: [
@@ -228,12 +240,12 @@ export const portfolioData: PortfolioData = {
     }
   ],
   contact: {
-    email: "contact@votre-nom.com",
-    phone: "+33 6 12 34 56 78",
-    linkedin: "https://linkedin.com/in/votre-profil",
-    github: "https://github.com/votre-username",
-    twitter: "https://twitter.com/votre-username",
-    website: "https://votre-site.com",
-    location: "Paris, France"
+    email: "romain.miras@gmail.com",
+    phone: "+33 6 01 30 67 94",
+    linkedin: "https://linkedin.com/in/romain-miras-427126232",
+    github: "https://github.com/romainmiras",
+    twitter: "https://twitter.com/romainmiras",
+    website: "http://79.92.83.218",
+    location: "Grenoble, France"
   }
 };
