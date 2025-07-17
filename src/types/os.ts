@@ -35,6 +35,7 @@ export interface OSState {
   windows: WindowState[];
   notifications: NotificationState[];
   isBootComplete: boolean;
+  isShuttingDown: boolean;
   theme: 'light' | 'dark';
   wallpaper: string;
   time: Date;

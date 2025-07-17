@@ -70,6 +70,7 @@ const useOSState = () => {
     windows: [],
     notifications: [],
     isBootComplete: false,
+    isShuttingDown: false,
     theme: 'dark',
     wallpaper: 'default',
     time: new Date(),
@@ -237,6 +238,30 @@ const useOSState = () => {
     }));
   }, []);
 
+  // Initier la séquence d'extinction
+  const initiateShutdown = useCallback(() => {
+    // Fermer toutes les fenêtres d'abord
+    setOSState(prev => ({
+      ...prev,
+      windows: [],
+      isShuttingDown: true
+    }));
+  }, []);
+
+  // Réinitialiser le système (pour redémarrer)
+  const resetSystem = useCallback(() => {
+    setOSState({
+      windows: [],
+      notifications: [],
+      isBootComplete: false,
+      isShuttingDown: false,
+      theme: 'dark',
+      wallpaper: 'default',
+      time: new Date(),
+      maxZIndex: 1000
+    });
+  }, []);
+
   return {
     osState,
     availableApps,
@@ -250,7 +275,9 @@ const useOSState = () => {
     updateWindowSize,
     toggleTheme,
     addNotification,
-    removeNotification
+    removeNotification,
+    initiateShutdown,
+    resetSystem
   };
 };
 

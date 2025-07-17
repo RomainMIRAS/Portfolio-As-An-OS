@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BootScreen from './components/OS/BootScreen';
+import ShutdownScreen from './components/OS/ShutdownScreen';
 import Wallpaper from './components/OS/Wallpaper';
 import Taskbar from './components/OS/Taskbar';
 import WindowManager from './components/OS/WindowManager';
@@ -21,7 +22,9 @@ const App: React.FC = () => {
     updateWindowSize,
     toggleTheme,
     addNotification,
-    removeNotification
+    removeNotification,
+    initiateShutdown,
+    resetSystem
   } = useOSState();
 
   return (
@@ -29,6 +32,8 @@ const App: React.FC = () => {
       <AnimatePresence mode="wait">
         {!osState.isBootComplete ? (
           <BootScreen onBootComplete={markBootComplete} />
+        ) : osState.isShuttingDown ? (
+          <ShutdownScreen onComplete={resetSystem} />
         ) : (
           <motion.div
             initial={{ opacity: 0 }}
@@ -60,6 +65,7 @@ const App: React.FC = () => {
               onToggleMinimize={toggleMinimize}
               onToggleTheme={toggleTheme}
               onAddNotification={addNotification}
+              onShutdown={initiateShutdown}
             />
 
             {/* Notification Center */}
