@@ -98,13 +98,20 @@ const Taskbar: React.FC<TaskbarProps> = ({
       <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto">
         {/* Section gauche - Logo et menu */}
         <div className="flex items-center space-x-4">
-          <motion.div
+          <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="dock-item group bg-os-accent/20 border-os-accent/50"
+            onClick={() => onAddNotification({
+              title: 'Menu principal',
+              message: 'Portfolio OS v1.0 - Développé par Romain MIRAS',
+              type: 'info',
+              duration: 4000
+            })}
+            className="dock-item group"
+            title="Menu principal"
           >
             <Terminal className="w-6 h-6 text-os-accent" />
-          </motion.div>
+          </motion.button>
         </div>
 
         {/* Section centrale - Applications */}
