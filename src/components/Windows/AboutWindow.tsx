@@ -17,8 +17,23 @@ const AboutWindow: React.FC = () => {
           className="flex items-start space-x-6 p-6 bg-os-darker/30 rounded-lg border border-os-border"
         >
           <div className="flex-shrink-0">
-            <div className="w-24 h-24 bg-gradient-to-br from-os-accent to-os-accent-hover rounded-full flex items-center justify-center text-3xl font-bold text-white">
-              {personal.name.split(' ').map(n => n[0]).join('')}
+            <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-os-accent/50 shadow-lg">
+              {personal.avatar ? (
+                <img 
+                  src={personal.avatar} 
+                  alt={personal.name}
+                  className="w-full h-full object-cover object-center filter brightness-105 contrast-105"
+                  style={{ 
+                    imageRendering: 'crisp-edges',
+                    transform: 'scale(1.01)' 
+                  }}
+                  loading="lazy"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-os-accent to-os-accent-hover flex items-center justify-center text-4xl font-bold text-white">
+                  {personal.name.split(' ').map(n => n[0]).join('')}
+                </div>
+              )}
             </div>
           </div>
           
