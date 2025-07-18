@@ -6,6 +6,28 @@ import { portfolioData } from '../../data/portfolio';
 const AboutWindow: React.FC = () => {
   const { personal } = portfolioData;
 
+  // Fonction pour mettre en évidence les termes spécifiés
+  const highlightTerms = (text: string, terms: string[]) => {
+    if (!terms.length) return text;
+    
+    // Créer une regex avec tous les termes à mettre en évidence
+    const pattern = new RegExp(`(\\b(?:${terms.map(term => 
+      term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // Échapper les caractères spéciaux
+    ).join('|')})\\b)`, 'gi');
+    
+    return text.split(pattern).map((part, index) => {
+      const isHighlighted = terms.some(term => 
+        part.toLowerCase() === term.toLowerCase()
+      );
+      
+      return isHighlighted ? (
+        <span key={index} className="text-os-accent font-medium">
+          {part}
+        </span>
+      ) : part;
+    });
+  };
+
   return (
     <div className="h-full overflow-auto">
       <div className="space-y-6">
@@ -67,9 +89,18 @@ const AboutWindow: React.FC = () => {
           </h3>
           
           <div className="bg-os-darker/30 rounded-lg p-6 border border-os-border">
-            <p className="text-os-text-muted leading-relaxed">
-              {personal.bio}
-            </p>
+            <div className="text-os-text-muted leading-relaxed space-y-4">
+              {personal.bio.split('\n\n').map((paragraph, index) => (
+                <p key={index} className="text-justify">
+                  {paragraph.split('\n').map((line, lineIndex, lines) => (
+                    <span key={lineIndex}>
+                      {highlightTerms(line, personal.highlightedTerms)}
+                      {lineIndex < lines.length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              ))}
+            </div>
           </div>
         </motion.div>
 

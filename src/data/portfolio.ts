@@ -14,6 +14,7 @@ export interface PersonalInfo {
   avatar: string;
   location: string;
   availability: string;
+  highlightedTerms: string[];
 }
 
 export interface Project {
@@ -85,7 +86,26 @@ export const portfolioData: PortfolioData = {
     bio: "Étudiant en 5e année à Polytech Grenoble (Informatique), actuellement en stage DevOps/Backend jusqu'à mi-septembre 2025.\n\nMon parcours a commencé par un DUT Informatique à Grenoble, où j'ai acquis des bases solides en développement logiciel et web. Depuis, je me suis spécialisé dans des environnements techniques variés, avec une appétence particulière pour les projets collaboratifs et la résolution de problèmes concrets.\n\nDurant mes expériences, j'ai travaillé sur des projets mêlant développement backend (Node.js, Python…), DevOps (CI/CD, Docker, GitLab), et parfois frontend (React). J'aime explorer tout le cycle de vie d'une application, de la conception à la mise en production.\n\nJe suis ouvert aux opportunités de CDI ou VIE en DevOps, Backend ou FullStack à partir de septembre 2025, en France ou à l'international.",
     avatar: "/avatar.jpg",
     location: "Grenoble, France",
-    availability: "Disponible pour de nouveaux projets"
+    availability: "Disponible pour de nouveaux projets",
+    highlightedTerms: [
+      "Polytech Grenoble",
+      "DUT Informatique", 
+      "DevOps",
+      "Backend",
+      "Frontend", 
+      "FullStack",
+      "Node.js",
+      "Python",
+      "React",
+      "Docker",
+      "GitLab",
+      "CI/CD",
+      "Terraform",
+      "AWS",
+      "CDI",
+      "VIE",
+      "septembre 2025"
+    ]
   },
   projects: [
     {
