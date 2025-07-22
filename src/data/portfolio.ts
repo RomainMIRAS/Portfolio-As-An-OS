@@ -107,7 +107,7 @@ export const portfolioConfig = {
     {
       id: "polytech-projects",
       technologies: ["Java", "Spring", "React", "Node.js", "Android", "Python", "C++", "Docker"],
-      githubUrl: "https://github.com/RomainMIRAS/Age-Of-Empires",
+      githubUrl: "https://github.com/RomainMIRAS/SeaOfCrabes",
       images: ["/projects/polytech-1.jpg"],
       featured: false,
       startDate: "2022-09",
