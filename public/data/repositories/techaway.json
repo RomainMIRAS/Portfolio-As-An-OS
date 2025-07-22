@@ -1,0 +1,92 @@
+{
+  "name": "TechAWay",
+  "fullName": "RomainMIRAS/TechAWay",
+  "description": "PHP recruitment website for tech professionals",
+  "url": "https://github.com/RomainMIRAS/TechAWay",
+  "language": "PHP",
+  "size": 15000,
+  "stars": 0,
+  "forks": 0,
+  "created": "2022-03-10",
+  "updated": "2022-06-15",
+  "license": null,
+  "topics": ["php", "recruitment", "web-development", "mysql", "bootstrap"],
+  "projectDetails": {
+    "type": "Web Application",
+    "category": "Recruitment Platform",
+    "targetUsers": "Tech professionals and recruiters",
+    "features": [
+      "User authentication system",
+      "Job posting management",
+      "Candidate profile creation",
+      "Application tracking",
+      "Search and filtering",
+      "Admin dashboard",
+      "Email notifications",
+      "Responsive design"
+    ],
+    "businessLogic": [
+      "Multi-role user system (candidates, recruiters, admins)",
+      "Job matching algorithm",
+      "Application workflow management",
+      "Profile completion tracking",
+      "Analytics and reporting"
+    ],
+    "technologies": [
+      "PHP 7.4",
+      "MySQL 8.0",
+      "Bootstrap 5",
+      "JavaScript (ES6)",
+      "HTML5/CSS3",
+      "Apache HTTP Server",
+      "Composer (dependency management)"
+    ],
+    "architecture": [
+      "MVC pattern",
+      "MySQL relational database",
+      "Session-based authentication",
+      "RESTful API endpoints",
+      "Responsive frontend"
+    ]
+  },
+  "academicContext": {
+    "institution": "IUT2 Grenoble",
+    "course": "Web Development Project",
+    "semester": "Spring 2022",
+    "teamSize": 3,
+    "duration": "3 months",
+    "objectives": [
+      "Master PHP/MySQL development",
+      "Learn project management",
+      "Practice team development",
+      "Implement real-world application"
+    ]
+  },
+  "technicalFeatures": {
+    "database": {
+      "type": "MySQL",
+      "tables": ["users", "jobs", "applications", "companies", "skills"],
+      "relationships": "Normalized relational model",
+      "security": "Prepared statements, input validation"
+    },
+    "frontend": {
+      "framework": "Bootstrap 5",
+      "responsiveness": "Mobile-first design",
+      "interactions": "Dynamic forms, AJAX calls",
+      "ux": "Intuitive navigation, search functionality"
+    },
+    "backend": {
+      "language": "PHP",
+      "patterns": "MVC architecture",
+      "security": "Password hashing, CSRF protection",
+      "validation": "Server-side input validation"
+    }
+  },
+  "achievements": [
+    "Full-featured recruitment platform",
+    "Clean, maintainable codebase",
+    "Responsive design implementation",
+    "Team collaboration success",
+    "Project delivered on time"
+  ]
+}

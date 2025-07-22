@@ -1,0 +1,120 @@
+{
+  "name": "DevOps Automation Collection",
+  "description": "Collection of DevOps automation projects and infrastructure as code",
+  "url": "https://github.com/RomainMIRAS?tab=repositories&q=&type=&language=&sort=",
+  "type": "Repository Collection",
+  "totalRepositories": 22,
+  "devopsRepositories": [
+    {
+      "category": "CI/CD Pipelines",
+      "description": "Automated build, test, and deployment pipelines",
+      "technologies": ["Azure DevOps", "GitLab CI", "GitHub Actions", "Jenkins"],
+      "projects": [
+        "Azure DevOps pipeline templates",
+        "GitLab CI/CD configurations",
+        "Multi-environment deployment strategies",
+        "Automated testing integration"
+      ]
+    },
+    {
+      "category": "Infrastructure as Code",
+      "description": "Infrastructure provisioning and management automation",
+      "technologies": ["Terraform", "AWS CDK", "CloudFormation", "Ansible"],
+      "projects": [
+        "AWS infrastructure templates",
+        "Azure resource provisioning",
+        "Multi-cloud deployment strategies",
+        "Infrastructure monitoring setup"
+      ]
+    },
+    {
+      "category": "Container Orchestration",
+      "description": "Containerization and orchestration solutions",
+      "technologies": ["Docker", "Kubernetes", "Docker Compose", "Helm"],
+      "projects": [
+        "Multi-stage Docker builds",
+        "Kubernetes deployment manifests",
+        "Container registry management",
+        "Microservices architecture"
+      ]
+    }
+  ],
+  "keyProjects": {
+    "cicdTemplates": {
+      "name": "CI/CD Templates",
+      "description": "Reusable pipeline templates for different tech stacks",
+      "features": [
+        "Multi-environment support",
+        "Automated testing integration",
+        "Security scanning",
+        "Deployment approvals"
+      ],
+      "technologies": ["YAML", "PowerShell", "Bash", "Docker"]
+    },
+    "infrastructureModules": {
+      "name": "Infrastructure Modules",
+      "description": "Modular Terraform and CDK components",
+      "features": [
+        "Reusable infrastructure components",
+        "Environment-specific configurations",
+        "Cost optimization",
+        "Security best practices"
+      ],
+      "technologies": ["Terraform", "AWS CDK", "TypeScript", "HCL"]
+    },
+    "monitoringStack": {
+      "name": "Monitoring & Observability",
+      "description": "Complete monitoring and logging solutions",
+      "features": [
+        "Application metrics collection",
+        "Log aggregation",
+        "Alerting rules",
+        "Dashboard creation"
+      ],
+      "technologies": ["Prometheus", "Grafana", "ELK Stack", "Azure Monitor"]
+    }
+  },
+  "professionalContext": {
+    "companies": ["VISEO", "Redtaag"],
+    "duration": "2024-2025",
+    "role": "DevOps Engineer Intern",
+    "responsibilities": [
+      "CI/CD pipeline creation and maintenance",
+      "Infrastructure automation",
+      "Cloud resource management",
+      "Security implementation",
+      "Performance optimization"
+    ]
+  },
+  "technicalExpertise": {
+    "cloudPlatforms": {
+      "AWS": ["EC2", "S3", "Lambda", "RDS", "VPC", "CloudFormation"],
+      "Azure": ["App Service", "SQL Database", "Storage", "DevOps", "Monitor"],
+      "tools": ["Terraform", "Docker", "Kubernetes", "Helm"]
+    },
+    "cicdTools": {
+      "primary": ["Azure DevOps", "GitLab CI"],
+      "secondary": ["GitHub Actions", "Jenkins"],
+      "capabilities": ["Multi-stage pipelines", "Parallel execution", "Environment promotion"]
+    },
+    "security": {
+      "practices": ["Secret management", "Security scanning", "Compliance"],
+      "tools": ["Azure Key Vault", "SonarQube", "Dependency scanning"]
+    }
+  },
+  "achievements": [
+    "Reduced deployment time by 60%",
+    "Implemented infrastructure as code",
+    "Automated security scanning",
+    "Established monitoring practices",
+    "Improved development workflow"
+  ],
+  "bestPractices": [
+    "Infrastructure as Code",
+    "GitOps methodology",
+    "Immutable infrastructure",
+    "Security-first approach",
+    "Monitoring and observability",
+    "Cost optimization"
+  ]
+}

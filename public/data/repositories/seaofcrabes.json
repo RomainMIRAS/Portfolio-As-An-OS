@@ -1,0 +1,67 @@
+{
+  "name": "SeaOfCrabes",
+  "fullName": "RomainMIRAS/SeaOfCrabes",
+  "description": "GameJam project - Sea of Crabs game developed in Unity",
+  "url": "https://github.com/RomainMIRAS/SeaOfCrabes",
+  "language": "C#",
+  "size": 52000,
+  "stars": 0,
+  "forks": 0,
+  "created": "2023-06-15",
+  "updated": "2023-06-18",
+  "license": null,
+  "topics": ["unity", "gamejam", "csharp", "game-development"],
+  "projectDetails": {
+    "type": "GameJam Project",
+    "duration": "48 hours",
+    "teamSize": 4,
+    "engine": "Unity",
+    "platform": "PC/Windows",
+    "features": [
+      "2D platformer mechanics",
+      "Crab character controller",
+      "Multiple levels",
+      "Collectible system",
+      "Sound effects and music",
+      "Game UI/UX"
+    ],
+    "challenges": [
+      "Time constraint (48h GameJam)",
+      "Team coordination",
+      "Rapid prototyping",
+      "Asset integration"
+    ],
+    "technologies": [
+      "Unity 2022.3",
+      "C#",
+      "Visual Studio",
+      "Git",
+      "Aseprite (for sprites)"
+    ],
+    "achievements": [
+      "Complete game delivered within 48h",
+      "Functional gameplay loop",
+      "Team collaboration success",
+      "Creative game concept execution"
+    ]
+  },
+  "academicContext": {
+    "institution": "Polytech Grenoble",
+    "course": "Game Development Workshop",
+    "semester": "Spring 2023",
+    "objectives": [
+      "Learn Unity development",
+      "Practice team collaboration",
+      "Experience game design process",
+      "Meet tight deadlines"
+    ]
+  },
+  "technicalSpecs": {
+    "gameType": "2D Platformer",
+    "controls": "Keyboard input",
+    "graphics": "2D sprites",
+    "audio": "Background music + SFX",
+    "performance": "60 FPS target",
+    "buildTarget": "Windows Standalone"
+  }
+}

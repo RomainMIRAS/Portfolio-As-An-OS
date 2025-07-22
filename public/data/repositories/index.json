@@ -1,0 +1,43 @@
+{
+  "repositories": [
+    {
+      "id": "devops-automation",
+      "name": "DevOps Automation Collection",
+      "type": "collection",
+      "file": "devops-automation.json",
+      "projectId": "devops-automation",
+      "category": "DevOps",
+      "description": "Collection of DevOps automation projects including CI/CD pipelines, infrastructure as code, and container orchestration solutions."
+    },
+    {
+      "id": "seaofcrabes",
+      "name": "SeaOfCrabes",
+      "type": "repository",
+      "file": "seaofcrabes.json",
+      "projectId": "polytech-projects",
+      "category": "Academic",
+      "description": "GameJam project - Sea of Crabs game developed in Unity during a 48-hour game development challenge."
+    },
+    {
+      "id": "techaway",
+      "name": "TechAWay",
+      "type": "repository", 
+      "file": "techaway.json",
+      "projectId": "iut-web-projects",
+      "category": "Academic",
+      "description": "PHP recruitment website for tech professionals with job posting and candidate management features."
+    }
+  ],
+  "categories": {
+    "DevOps": {
+      "description": "Infrastructure automation, CI/CD pipelines, and cloud solutions",
+      "count": 1
+    },
+    "Academic": {
+      "description": "Educational projects from Polytech and IUT studies",
+      "count": 2
+    }
+  },
+  "totalCount": 3,
+  "lastUpdated": "2025-01-13"
+}
