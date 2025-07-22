@@ -1,0 +1,300 @@
+{
+  "personal": {
+    "name": "MIRAS Romain",
+    "title": "Software Engineer & DevOps Specialist",
+    "bio": "Étudiant en 5e année à Polytech Grenoble (Informatique), actuellement en stage DevOps/Backend jusqu'à mi-septembre 2025.\n\nMon parcours a commencé par un DUT Informatique à Grenoble, où j'ai acquis des bases solides en développement logiciel et web. Depuis, je me suis spécialisé dans des environnements techniques variés, avec une appétence particulière pour les projets collaboratifs et la résolution de problèmes concrets.\n\nDurant mes expériences, j'ai travaillé sur des projets mêlant développement backend (Node.js, Python…), DevOps (CI/CD, Docker, GitLab), et parfois frontend (React). J'aime explorer tout le cycle de vie d'une application, de la conception à la mise en production.\n\nJe suis ouvert aux opportunités de CDI ou VIE en DevOps, Backend ou FullStack à partir de septembre 2025, en France ou à l'international.",
+    "location": "Grenoble, France",
+    "availability": "Disponible pour de nouveaux projets",
+    "highlightedTerms": [
+      "Polytech Grenoble",
+      "DUT Informatique", 
+      "DevOps",
+      "Backend",
+      "Frontend", 
+      "FullStack",
+      "Node.js",
+      "Python",
+      "React",
+      "Docker",
+      "GitLab",
+      "CI/CD",
+      "Terraform",
+      "AWS",
+      "CDI",
+      "VIE",
+      "septembre 2025"
+    ]
+  },
+  "projects": [
+    {
+      "title": "OS Portfolio",
+      "description": "Portfolio immersif simulant un système d'exploitation",
+      "longDescription": "Un portfolio interactif unique qui simule l'expérience d'un système d'exploitation personnalisé. Développé avec React, TypeScript et TailwindCSS, il offre une interface utilisateur innovante avec des fenêtres draggables, un terminal interactif et des animations fluides utilisant Framer Motion.",
+      "category": "Frontend"
+    },
+    {
+      "title": "Automatisation DevOps",
+      "description": "Pipelines CI/CD et infrastructure as code",
+      "longDescription": "Projets d'automatisation DevOps incluant la création de pipelines CI/CD robustes, l'infrastructure as code avec Terraform et AWS CDK, et l'orchestration de conteneurs Docker. Focus sur les bonnes pratiques DevOps et la sécurité.",
+      "category": "DevOps"
+    },
+    {
+      "title": "Projets Académiques Polytech",
+      "description": "Collection de projets développés durant la formation d'ingénieur",
+      "longDescription": "Ensemble de projets académiques couvrant différents domaines : développement web fullstack, applications mobiles, systèmes distribués, et projets de réseau. Ces projets démontrent la maîtrise de technologies variées et la capacité à travailler en équipe sur des problématiques complexes.",
+      "category": "Académique"
+    },
+    {
+      "title": "Projets Web IUT",
+      "description": "Applications web développées durant le DUT Informatique",
+      "longDescription": "Projets web réalisés en équipe durant la formation DUT, incluant des sites e-commerce, des applications de gestion, et des projets utilisant différentes technologies web. Focus sur les bonnes pratiques de développement et l'expérience utilisateur.",
+      "category": "Académique"
+    }
+  ],
+  "experience": [
+    {
+      "company": "VISEO",
+      "position": "Stage d'ingénieur DevOps / Backend",
+      "duration": "7 mois",
+      "description": "Stage de fin d'études d'ingénieur chez VISEO Grenoble. Mise en place de processus DevOps pour des projets web sur Cloud Azure/AWS. Maintenance et création de solutions CI/CD sur Azure DevOps et GitLab CI. Développement et maintenance de solutions backend .NET et Spring. Automatisation des déploiements et gestion de l'infrastructure as code.",
+      "location": "Grenoble, France",
+      "type": "Stage"
+    },
+    {
+      "company": "Redtaag",
+      "position": "Développeur web fullstack",
+      "duration": "5 mois",
+      "description": "Développement et maintenance de l'application web Redtaag ainsi qu'une application mobile Android.",
+      "location": "Valence, Espagne",
+      "type": "Stage"
+    },
+    {
+      "company": "BLUE ORTHO",
+      "position": "Développeur web",
+      "duration": "4 mois",
+      "description": "Évolution et maintenance de l'applicatif web de gestion orthopédique. Développement de nouvelles fonctionnalités et correction de bugs. Travail avec les technologies web modernes et participation à l'amélioration de l'expérience utilisateur.",
+      "location": "Meylan, France",
+      "type": "Stage"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Polytech Grenoble",
+      "degree": "Diplôme d'ingénieur",
+      "field": "Informatique",
+      "duration": "3 ans",
+      "description": "Formation d'ingénieur en informatique généraliste avec une spécialisation dans le domaine du réseau.",
+      "location": "Grenoble, France"
+    },
+    {
+      "institution": "IUT2 Grenoble - Université Grenoble Alpes",
+      "degree": "Diplôme universitaire de technologie (DUT)",
+      "field": "Informatique",
+      "duration": "2 ans",
+      "description": "Formation en informatique généraliste couvrant la programmation, les bases de données, les réseaux, le développement web et le génie logiciel. Équivalent d'un Bachelor en Computer Science.",
+      "location": "Grenoble, France"
+    },
+    {
+      "institution": "Lycée Polyvalent Ferdinand Buisson",
+      "degree": "Baccalauréat général",
+      "field": "Sciences et Technologies de l'Ingénieur",
+      "duration": "3 ans",
+      "description": "Baccalauréat général avec spécialisation en sciences et technologies de l'ingénieur, incluant mathématiques, physique et sciences de l'ingénieur.",
+      "location": "Voiron, France"
+    }
+  ],
+  "skills": {
+    "categories": {
+      "Programming Languages": "Langages de Programmation",
+      "Frontend Development": "Développement Frontend",
+      "Backend Development": "Développement Backend",
+      "Database": "Base de Données",
+      "DevOps & Cloud": "DevOps & Cloud",
+      "Mobile & Desktop": "Mobile & Desktop",
+      "Tools & Other": "Outils & Autres"
+    }
+  },
+  "contact": {
+    "email": "romain.miras@gmail.com",
+    "phone": "+33 6 01 30 67 94",
+    "location": "Grenoble, France"
+  },
+  "ui": {
+    "about": {
+      "title": "À propos",
+      "downloadCv": "Télécharger CV",
+      "personalInfo": "Informations Personnelles",
+      "overview": "À propos de moi",
+      "projects": "Projets",
+      "experiences": "Expériences",
+      "skills": "Compétences",
+      "viewPortfolio": "Voir Portfolio",
+      "recentJourney": "Parcours récent"
+    },
+    "projects": {
+      "title": "Projets",
+      "filterAll": "Tous",
+      "technologies": "Technologies",
+      "viewProject": "Voir le Projet",
+      "viewCode": "Voir le Code",
+      "startDate": "Début",
+      "endDate": "Fin",
+      "ongoing": "En cours",
+      "myProjects": "Mes Projets",
+      "searchProject": "Rechercher un projet...",
+      "all": "Tous",
+      "featured": "Mis en avant",
+      "noProjectsFound": "Aucun projet trouvé pour ces critères.",
+      "selectProject": "Sélectionnez un projet pour voir les détails",
+      "category": "Catégorie",
+      "period": "Période",
+      "viewSourceCode": "Voir le code source",
+      "viewOnline": "Voir le projet en ligne",
+      "screenshots": "Captures d'écran"
+    },
+    "experience": {
+      "title": "Expérience",
+      "workExperience": "Expérience Professionnelle",
+      "education": "Formation",
+      "technologies": "Technologies",
+      "fullTime": "Temps plein",
+      "partTime": "Temps partiel",
+      "contract": "Contrat",
+      "internship": "Stage",
+      "at": "chez",
+      "professionalExperience": "Expérience Professionnelle",
+      "usefulLinks": "Liens utiles",
+      "linkedinProfile": "Profil LinkedIn",
+      "github": "GitHub"
+    },
+    "skills": {
+      "title": "Compétences",
+      "level": "Niveau",
+      "years": "{{count}} an",
+      "years_plural": "{{count}} ans",
+      "experience": "Expérience",
+      "technicalSkills": "Compétences Techniques",
+      "skillsOverview": "Aperçu de mes compétences et niveau d'expertise dans différentes technologies",
+      "expert": "Expert",
+      "advanced": "Avancé",
+      "intermediate": "Intermédiaire",
+      "beginner": "Débutant",
+      "averageYears": "Années moy.",
+      "skill": "compétence",
+      "skills_plural": "compétences",
+      "levelsLegend": "Légende des niveaux"
+    },
+    "terminal": {
+      "title": "Terminal",
+      "welcome": "PortfolioOS Terminal v1.0.0\nBienvenue ! Tapez 'help' pour voir les commandes disponibles.\n",
+      "helpText": "Tapez 'help' pour voir les commandes disponibles.",
+      "prompt": "Tapez une commande...",
+      "processing": "Traitement",
+      "helpFooter": "Astuce: Utilisez 'help' pour voir toutes les commandes | 'clear' pour effacer l'écran",
+      "commands": {
+        "help": "Affiche la liste des commandes disponibles",
+        "about": "Affiche les informations personnelles",
+        "projects": "Liste les projets",
+        "skills": "Affiche les compétences techniques",
+        "experience": "Affiche l'expérience professionnelle",
+        "contact": "Affiche les informations de contact",
+        "clear": "Efface l'écran du terminal",
+        "ls": "Liste le contenu du répertoire",
+        "pwd": "Affiche le répertoire courant",
+        "whoami": "Affiche l'utilisateur courant",
+        "date": "Affiche la date et l'heure actuelles",
+        "echo": "Affiche du texte"
+      },
+      "commandsAvailable": "Commandes disponibles:",
+      "useHelpCommand": "Utilisez 'help <commande>' pour plus d'informations.",
+      "projectNotFound": "Projet #{{number}} non trouvé. Utilisez 'projects' pour voir la liste.",
+      "categoryNotFound": "Catégorie '{{category}}' non trouvée.",
+      "commandNotFound": "Commande '{{command}}' non reconnue. Tapez 'help' pour voir les commandes disponibles.",
+      "executionError": "Erreur lors de l'exécution de '{{command}}': {{error}}",
+      "contactInfo": "Informations de contact:",
+      "period": "Période:",
+      "location": "Lieu:",
+      "technologies": "Technologies:",
+      "github": "GitHub:",
+      "demo": "Demo:",
+      "notAvailable": "N/A"
+    },
+    "contact": {
+      "title": "Contact",
+      "contactInfo": "Informations de Contact",
+      "sendMessage": "Envoyer un Message",
+      "name": "Nom",
+      "email": "Email",
+      "subject": "Sujet",
+      "message": "Message",
+      "send": "Envoyer",
+      "sending": "Envoi en cours...",
+      "copy": "Copier",
+      "copied": "Copié !",
+      "messageSent": "Message envoyé avec succès !",
+      "messageError": "Erreur lors de l'envoi du message. Veuillez réessayer.",
+      "enterName": "Entrez votre nom",
+      "enterEmail": "Entrez votre email",
+      "enterSubject": "Entrez le sujet",
+      "enterMessage": "Entrez votre message",
+      "contactInformation": "Informations de contact",
+      "phone": "Téléphone",
+      "location": "Localisation",
+      "professionalLinks": "Liens professionnels",
+      "viewProfile": "Voir mon profil",
+      "viewProjects": "Voir mes projets",
+      "visit": "Visiter",
+      "availability": "Disponibilité",
+      "website": "Site web",
+      "nameRequired": "Nom *",
+      "yourName": "Votre nom",
+      "subjectRequired": "Sujet *",
+      "messageSubject": "Sujet de votre message",
+      "yourMessage": "Votre message...",
+      "messageSentShort": "Message envoyé !",
+      "sendMessageButton": "Envoyer le message",
+      "note": "Note:",
+      "noteText": "Je réponds généralement sous 24h. Pour des demandes urgentes, n'hésitez pas à me contacter directement par téléphone."
+    },
+    "taskbar": {
+      "startMenu": "Menu Démarrer",
+      "notifications": "Notifications",
+      "settings": "Paramètres",
+      "shutdown": "Arrêter",
+      "lightTheme": "Passer au thème clair",
+      "darkTheme": "Passer au thème sombre"
+    },
+    "notifications": {
+      "systemReady": "Système Prêt",
+      "welcomeMessage": "Bienvenue dans Portfolio OS ! Explorez les applications pour découvrir mon profil.",
+      "themeChanged": "Thème Modifié",
+      "themeChangedMessage": "Le thème de l'interface a été modifié avec succès.",
+      "languageChanged": "Langue Modifiée",
+      "languageChangedMessage": "La langue de l'interface a été changée vers {{language}}."
+    },
+    "boot": {
+      "loading": "Chargement...",
+      "systemCheck": "Vérification du système en cours...",
+      "loadingComponents": "Chargement des composants...",
+      "initializingSystem": "Initialisation du système...",
+      "welcome": "Bienvenue dans Portfolio OS"
+    },
+    "shutdown": {
+      "shuttingDown": "Arrêt en cours...",
+      "savingData": "Sauvegarde des données...",
+      "closingApplications": "Fermeture des applications...",
+      "goodbye": "À bientôt !"
+    },
+    "languageSelector": {
+      "english": "English",
+      "french": "Français",
+      "selectLanguage": "Choisir la Langue"
+    },
+    "desktop": {
+      "showIcons": "Afficher les icônes du bureau",
+      "hideIcons": "Masquer les icônes du bureau",
+      "doubleClickToOpen": "Double-clic pour ouvrir {{appName}}"
+    },
+    "comingSoon": "Bientôt disponible"
+  }
+}

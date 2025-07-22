@@ -216,6 +216,14 @@ const useOSState = () => {
     }));
   }, []);
 
+  // Supprimer une notification
+  const removeNotification = useCallback((notificationId: string) => {
+    setOSState(prev => ({
+      ...prev,
+      notifications: prev.notifications.filter(n => n.id !== notificationId)
+    }));
+  }, []);
+
   // Ajouter une notification
   const addNotification = useCallback((notification: Omit<NotificationState, 'id' | 'timestamp'>) => {
     const newNotification: NotificationState = {
@@ -235,15 +243,7 @@ const useOSState = () => {
         removeNotification(newNotification.id);
       }, notification.duration);
     }
-  }, []);
-
-  // Supprimer une notification
-  const removeNotification = useCallback((notificationId: string) => {
-    setOSState(prev => ({
-      ...prev,
-      notifications: prev.notifications.filter(n => n.id !== notificationId)
-    }));
-  }, []);
+  }, [removeNotification]);
 
   // Initier la séquence d'extinction
   const initiateShutdown = useCallback(() => {

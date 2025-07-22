@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, Calendar, Tag, Filter, Search } from 'lucide-react';
-import { portfolioData } from '../../data/portfolio';
+import { useTranslation } from 'react-i18next';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const ProjectsWindow: React.FC = () => {
+  const { t } = useTranslation();
+  const { projects } = usePortfolioData();
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const categories = ['all', ...new Set(portfolioData.projects.map(p => p.category))];
+  const categories = ['all', ...new Set(projects.map(p => p.category))];
   
-  const filteredProjects = portfolioData.projects.filter(project => {
+  const filteredProjects = projects.filter(project => {
     const matchesFilter = filter === 'all' || project.category === filter;
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -19,7 +22,7 @@ const ProjectsWindow: React.FC = () => {
   });
 
   const selectedProjectData = selectedProject ? 
-    portfolioData.projects.find(p => p.id === selectedProject) : null;
+    projects.find(p => p.id === selectedProject) : null;
 
   return (
     <div className="h-full flex flex-col">
@@ -27,7 +30,7 @@ const ProjectsWindow: React.FC = () => {
       <div className="p-4 border-b border-os-border space-y-4">
         <h2 className="text-xl font-semibold text-os-text flex items-center space-x-2">
           <span className="text-os-accent">&gt;</span>
-          <span>Mes Projets</span>
+          <span>{t('ui.projects.myProjects')}</span>
         </h2>
         
         {/* Barre de recherche */}
@@ -35,7 +38,7 @@ const ProjectsWindow: React.FC = () => {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-os-text-muted w-4 h-4" />
           <input
             type="text"
-            placeholder="Rechercher un projet..."
+            placeholder={t('ui.projects.searchProject')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="input-field w-full pl-10"
@@ -55,7 +58,7 @@ const ProjectsWindow: React.FC = () => {
                   : 'bg-os-lighter text-os-text-muted hover:bg-os-border'
               }`}
             >
-              {category === 'all' ? 'Tous' : category}
+              {category === 'all' ? t('ui.projects.all') : category}
             </button>
           ))}
         </div>
@@ -81,7 +84,7 @@ const ProjectsWindow: React.FC = () => {
                   <h3 className="font-semibold text-os-text">{project.title}</h3>
                   {project.featured && (
                     <span className="px-2 py-1 bg-os-warning/20 text-os-warning text-xs rounded-full">
-                      Mis en avant
+                      {t('ui.projects.featured')}
                     </span>
                   )}
                 </div>
@@ -106,7 +109,7 @@ const ProjectsWindow: React.FC = () => {
             
             {filteredProjects.length === 0 && (
               <div className="text-center py-8 text-os-text-muted">
-                <p>Aucun projet trouvé pour ces critères.</p>
+                <p>{t('ui.projects.noProjectsFound')}</p>
               </div>
             )}
           </div>
@@ -135,7 +138,7 @@ const ProjectsWindow: React.FC = () => {
                   
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {selectedProjectData.technologies.map((tech) => (
+                    {selectedProjectData.technologies.map((tech: string) => (
                       <span
                         key={tech}
                         className="px-2 py-1 bg-os-accent/20 text-os-accent text-xs rounded-full"
@@ -149,14 +152,14 @@ const ProjectsWindow: React.FC = () => {
                 {/* Métadonnées */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-os-darker/30 rounded-lg p-3 border border-os-border">
-                    <div className="text-xs text-os-text-muted mb-1">Catégorie</div>
+                    <div className="text-xs text-os-text-muted mb-1">{t('ui.projects.category')}</div>
                     <div className="text-sm text-os-text">{selectedProjectData.category}</div>
                   </div>
                   
                   <div className="bg-os-darker/30 rounded-lg p-3 border border-os-border">
-                    <div className="text-xs text-os-text-muted mb-1">Période</div>
+                    <div className="text-xs text-os-text-muted mb-1">{t('ui.projects.period')}</div>
                     <div className="text-sm text-os-text">
-                      {selectedProjectData.startDate} - {selectedProjectData.endDate || 'En cours'}
+                      {selectedProjectData.startDate} - {selectedProjectData.endDate || t('ui.projects.ongoing')}
                     </div>
                   </div>
                 </div>
@@ -171,7 +174,7 @@ const ProjectsWindow: React.FC = () => {
                       className="button-secondary w-full flex items-center justify-center space-x-2"
                     >
                       <Github className="w-4 h-4" />
-                      <span>Voir le code source</span>
+                      <span>{t('ui.projects.viewSourceCode')}</span>
                     </a>
                   )}
                   
@@ -183,16 +186,16 @@ const ProjectsWindow: React.FC = () => {
                       className="button-primary w-full flex items-center justify-center space-x-2"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      <span>Voir le projet en ligne</span>
+                      <span>{t('ui.projects.viewOnline')}</span>
                     </a>
                   )}
                 </div>
 
                 {/* Images du projet */}
                 <div className="space-y-3">
-                  <h4 className="text-sm font-medium text-os-text">Captures d'écran</h4>
+                  <h4 className="text-sm font-medium text-os-text">{t('ui.projects.screenshots')}</h4>
                   <div className="grid grid-cols-1 gap-3">
-                    {selectedProjectData.images.map((image, index) => (
+                    {selectedProjectData.images.map((image: string, index: number) => (
                       <div
                         key={index}
                         className="rounded-lg border border-os-border overflow-hidden bg-os-darker/30 p-1"
@@ -209,7 +212,7 @@ const ProjectsWindow: React.FC = () => {
               </motion.div>
             ) : (
               <div className="flex items-center justify-center h-full text-os-text-muted">
-                <p>Sélectionnez un projet pour voir les détails</p>
+                <p>{t('ui.projects.selectProject')}</p>
               </div>
             )}
           </AnimatePresence>

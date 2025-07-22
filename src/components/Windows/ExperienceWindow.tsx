@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
-import { portfolioData } from '../../data/portfolio';
+import { useTranslation } from 'react-i18next';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const ExperienceWindow: React.FC = () => {
+  const { t } = useTranslation();
+  const portfolioData = usePortfolioData();
   const { experience, education } = portfolioData;
 
   const getTypeColor = (type: string) => {
@@ -24,13 +27,13 @@ const ExperienceWindow: React.FC = () => {
   const getTypeLabel = (type: string) => {
     switch (type) {
       case 'full-time':
-        return 'Temps plein';
+        return t('ui.experience.fullTime');
       case 'part-time':
-        return 'Temps partiel';
+        return t('ui.experience.partTime');
       case 'contract':
-        return 'Freelance';
+        return t('ui.experience.contract');
       case 'internship':
-        return 'Stage';
+        return t('ui.experience.internship');
       default:
         return type;
     }
@@ -46,7 +49,7 @@ const ExperienceWindow: React.FC = () => {
       >
         <h2 className="text-xl font-semibold text-os-text flex items-center space-x-2 mb-6">
           <span className="text-os-accent">&gt;</span>
-          <span>Expérience Professionnelle</span>
+          <span>{t('ui.experience.professionalExperience')}</span>
         </h2>
         
         <div className="space-y-6">
@@ -119,7 +122,7 @@ const ExperienceWindow: React.FC = () => {
       >
         <h2 className="text-xl font-semibold text-os-text flex items-center space-x-2 mb-6">
           <span className="text-os-accent">&gt;</span>
-          <span>Formation</span>
+          <span>{t('ui.experience.education')}</span>
         </h2>
         
         <div className="space-y-6">
@@ -179,7 +182,7 @@ const ExperienceWindow: React.FC = () => {
       >
         <h3 className="text-lg font-semibold text-os-text mb-4 flex items-center space-x-2">
           <span className="text-os-accent">&gt;</span>
-          <span>Liens utiles</span>
+          <span>{t('ui.experience.usefulLinks')}</span>
         </h3>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -190,7 +193,7 @@ const ExperienceWindow: React.FC = () => {
             className="flex items-center space-x-2 p-3 bg-os-light/50 rounded-lg border border-os-border hover:border-os-accent transition-colors"
           >
             <ExternalLink className="w-4 h-4 text-os-accent" />
-            <span className="text-os-text">Profil LinkedIn</span>
+            <span className="text-os-text">{t('ui.experience.linkedinProfile')}</span>
           </a>
           
           <a
@@ -200,7 +203,7 @@ const ExperienceWindow: React.FC = () => {
             className="flex items-center space-x-2 p-3 bg-os-light/50 rounded-lg border border-os-border hover:border-os-accent transition-colors"
           >
             <ExternalLink className="w-4 h-4 text-os-accent" />
-            <span className="text-os-text">GitHub</span>
+            <span className="text-os-text">{t('ui.experience.github')}</span>
           </a>
         </div>
       </motion.div>

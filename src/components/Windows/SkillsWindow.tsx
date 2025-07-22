@@ -1,10 +1,12 @@
 import React, { useMemo, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Award, Star } from 'lucide-react';
-import { portfolioData } from '../../data/portfolio';
+import { useTranslation } from 'react-i18next';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
+import type { Skill } from '../../data/portfolio';
 
 // Composant SkillBar memoized pour éviter les re-renders
-const SkillBar = React.memo<{ skill: any; index: number; getSkillLevel: (level: number) => any }>(({ skill, index, getSkillLevel }) => {
+const SkillBar = React.memo<{ skill: Skill; index: number; getSkillLevel: (level: number) => { label: string; color: string; bgColor: string }; t: (key: string, options?: { count: number }) => string }>(({ skill, index, getSkillLevel, t }) => {
   const levelInfo = getSkillLevel(skill.level);
   
   return (
@@ -25,7 +27,7 @@ const SkillBar = React.memo<{ skill: any; index: number; getSkillLevel: (level: 
         <div className="text-right text-sm text-os-text-muted">
           <div className="flex items-center space-x-1">
             <TrendingUp className="w-3 h-3" />
-            <span>{skill.years} an{skill.years > 1 ? 's' : ''}</span>
+            <span>{t('ui.skills.years', { count: skill.years })}</span>
           </div>
         </div>
       </div>
@@ -52,15 +54,16 @@ const SkillBar = React.memo<{ skill: any; index: number; getSkillLevel: (level: 
 });
 
 const SkillsWindow: React.FC = () => {
-  const { skills } = portfolioData;
+  const { t } = useTranslation();
+  const { skills } = usePortfolioData();
 
   // Fonction memoized pour éviter les re-renders
   const getSkillLevel = useCallback((level: number) => {
-    if (level >= 90) return { label: 'Expert', color: 'text-os-success', bgColor: 'bg-os-success' };
-    if (level >= 75) return { label: 'Avancé', color: 'text-os-accent', bgColor: 'bg-os-accent' };
-    if (level >= 60) return { label: 'Intermédiaire', color: 'text-os-warning', bgColor: 'bg-os-warning' };
-    return { label: 'Débutant', color: 'text-os-error', bgColor: 'bg-os-error' };
-  }, []);
+    if (level >= 90) return { label: t('ui.skills.expert'), color: 'text-os-success', bgColor: 'bg-os-success' };
+    if (level >= 75) return { label: t('ui.skills.advanced'), color: 'text-os-accent', bgColor: 'bg-os-accent' };
+    if (level >= 60) return { label: t('ui.skills.intermediate'), color: 'text-os-warning', bgColor: 'bg-os-warning' };
+    return { label: t('ui.skills.beginner'), color: 'text-os-error', bgColor: 'bg-os-error' };
+  }, [t]);
 
   // Categories triées memoized
   const sortedCategories = useMemo(() => {
@@ -79,9 +82,9 @@ const SkillsWindow: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <h2 className="text-2xl font-bold text-os-text mb-2">Compétences Techniques</h2>
+        <h2 className="text-2xl font-bold text-os-text mb-2">{t('ui.skills.technicalSkills')}</h2>
         <p className="text-os-text-muted">
-          Aperçu de mes compétences et niveau d'expertise dans différentes technologies
+          {t('ui.skills.skillsOverview')}
         </p>
       </motion.div>
 
@@ -97,7 +100,7 @@ const SkillsWindow: React.FC = () => {
           <div className="text-2xl font-bold text-os-success mb-1">
             {skills.reduce((acc, cat) => acc + cat.skills.filter(s => s.level >= 90).length, 0)}
           </div>
-          <div className="text-sm text-os-text-muted">Expert</div>
+          <div className="text-sm text-os-text-muted">{t('ui.skills.expert')}</div>
         </div>
         
         <div className="bg-os-darker/30 rounded-lg p-4 border border-os-border text-center">
@@ -105,7 +108,7 @@ const SkillsWindow: React.FC = () => {
           <div className="text-2xl font-bold text-os-accent mb-1">
             {skills.reduce((acc, cat) => acc + cat.skills.filter(s => s.level >= 75).length, 0)}
           </div>
-          <div className="text-sm text-os-text-muted">Avancé</div>
+          <div className="text-sm text-os-text-muted">{t('ui.skills.advanced')}</div>
         </div>
         
         <div className="bg-os-darker/30 rounded-lg p-4 border border-os-border text-center">
@@ -113,7 +116,7 @@ const SkillsWindow: React.FC = () => {
           <div className="text-2xl font-bold text-os-warning mb-1">
             {Math.round(skills.reduce((acc, cat) => acc + cat.skills.reduce((sum, s) => sum + s.years, 0), 0) / skills.reduce((acc, cat) => acc + cat.skills.length, 0))}
           </div>
-          <div className="text-sm text-os-text-muted">Années moy.</div>
+          <div className="text-sm text-os-text-muted">{t('ui.skills.averageYears')}</div>
         </div>
       </motion.div>
 
@@ -130,7 +133,7 @@ const SkillsWindow: React.FC = () => {
             <span className="text-os-accent">&gt;</span>
             <span>{category.category}</span>
             <span className="text-sm text-os-text-muted font-normal">
-              ({category.skills.length} compétence{category.skills.length > 1 ? 's' : ''})
+              ({category.skills.length} {t(`ui.skills.skill${category.skills.length > 1 ? 's_plural' : ''}`)})
             </span>
           </h3>
           
@@ -141,6 +144,7 @@ const SkillsWindow: React.FC = () => {
                 skill={skill} 
                 index={skillIndex} 
                 getSkillLevel={getSkillLevel}
+                t={t}
               />
             ))}
           </div>
@@ -156,25 +160,25 @@ const SkillsWindow: React.FC = () => {
       >
         <h3 className="text-lg font-semibold text-os-text mb-4 flex items-center space-x-2">
           <span className="text-os-accent">&gt;</span>
-          <span>Légende des niveaux</span>
+          <span>{t('ui.skills.levelsLegend')}</span>
         </h3>
         
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-os-success rounded-full"></div>
-            <span className="text-sm text-os-text-muted">Expert (90%+)</span>
+            <span className="text-sm text-os-text-muted">{t('ui.skills.expert')} (90%+)</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-os-accent rounded-full"></div>
-            <span className="text-sm text-os-text-muted">Avancé (75%+)</span>
+            <span className="text-sm text-os-text-muted">{t('ui.skills.advanced')} (75%+)</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-os-warning rounded-full"></div>
-            <span className="text-sm text-os-text-muted">Intermédiaire (60%+)</span>
+            <span className="text-sm text-os-text-muted">{t('ui.skills.intermediate')} (60%+)</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-os-error rounded-full"></div>
-            <span className="text-sm text-os-text-muted">Débutant (&lt;60%)</span>
+            <span className="text-sm text-os-text-muted">{t('ui.skills.beginner')} (&lt;60%)</span>
           </div>
         </div>
       </motion.div>

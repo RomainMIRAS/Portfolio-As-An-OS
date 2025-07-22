@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import * as Icons from 'lucide-react';
 import type { AppConfig } from '../../types/os';
 
@@ -16,6 +17,7 @@ const DesktopIcons: React.FC<DesktopIconsProps> = ({
   visible = true,
   onToggleDesktopIcons
 }) => {
+  const { t } = useTranslation();
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   
   // Filtrer uniquement les applications configurées pour apparaître sur le bureau
@@ -91,7 +93,7 @@ const DesktopIcons: React.FC<DesktopIconsProps> = ({
                     className="w-full text-left px-3 py-2 text-sm text-white hover:bg-white/10 rounded-md flex items-center gap-2"
                   >
                     <Icons.Eye size={16} />
-                    Afficher les icônes du bureau
+                    {t('ui.desktop.showIcons')}
                   </button>
                 </div>
               </motion.div>
@@ -110,7 +112,9 @@ const DesktopIcons: React.FC<DesktopIconsProps> = ({
     >
       {desktopApps.map((app, index) => {
         const position = gridPositions[index];
-        const IconComponent = Icons[app.icon as keyof typeof Icons] as React.ComponentType<any>;
+        const IconComponent = Icons[app.icon as keyof typeof Icons] as React.ComponentType<{ className?: string; size?: number }>;
+        
+        if (!IconComponent) return null;
         
         return (
           <motion.div
@@ -194,7 +198,7 @@ const DesktopIcons: React.FC<DesktopIconsProps> = ({
               whileHover={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
             >
-              Double-clic pour ouvrir {app.name}
+              {t('ui.desktop.doubleClickToOpen', { appName: app.name })}
               {/* Flèche */}
               <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-os-darker/90" />
             </motion.div>
@@ -230,7 +234,7 @@ const DesktopIcons: React.FC<DesktopIconsProps> = ({
                   className="w-full text-left px-3 py-2 text-sm text-white hover:bg-white/10 rounded-md flex items-center gap-2"
                 >
                   <Icons.EyeOff size={16} />
-                  Masquer les icônes du bureau
+                  {t('ui.desktop.hideIcons')}
                 </button>
               </div>
             </motion.div>

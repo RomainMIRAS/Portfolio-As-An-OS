@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { portfolioData } from '../../data/portfolio';
+import { useTranslation } from 'react-i18next';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 import type { TerminalCommand } from '../../types/os';
 
 const TerminalWindow: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const portfolioData = usePortfolioData();
   const [history, setHistory] = useState<Array<{ command: string; output: string; timestamp: Date }>>([]);
   const [currentCommand, setCurrentCommand] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -12,28 +15,28 @@ const TerminalWindow: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Commandes disponibles
-  const commands: Record<string, TerminalCommand> = {
+  const commands: Record<string, TerminalCommand> = useMemo(() => ({
     help: {
       command: 'help',
-      description: 'Affiche la liste des commandes disponibles',
+      description: t('terminal.commands.help', 'Show list of available commands'),
       action: () => {
         const commandList = Object.values(commands)
           .map(cmd => `  ${cmd.command.padEnd(15)} - ${cmd.description}`)
           .join('\n');
-        return `Commandes disponibles:\n${commandList}\n\nUtilisez 'help <commande>' pour plus d'informations.`;
+        return `${t('terminal.commandsAvailable', 'Available commands:')}\n${commandList}\n\n${t('terminal.useHelpCommand', 'Use \'help <command>\' for more information.')}`;
       }
     },
     about: {
       command: 'about',
-      description: 'Affiche les informations personnelles',
+      description: t('terminal.commands.about', 'Display personal information'),
       action: () => {
         const { personal } = portfolioData;
-        return `${personal.name} - ${personal.title}\n\nBio: ${personal.bio}\n\nLocalisation: ${personal.location}\nStatut: ${personal.availability}`;
+        return `${personal.name} - ${personal.title}\n\nBio: ${personal.bio}\n\n${t('terminal.location', 'Location')}: ${personal.location}\n${t('personal.availability', 'Availability')}: ${personal.availability}`;
       }
     },
     projects: {
       command: 'projects',
-      description: 'Liste les projets',
+      description: t('terminal.commands.projects', 'List projects'),
       action: (args) => {
         if (args.length === 0) {
           return portfolioData.projects
@@ -45,15 +48,15 @@ const TerminalWindow: React.FC = () => {
         const project = portfolioData.projects[projectIndex];
         
         if (!project) {
-          return `Projet #${args[0]} non trouvé. Utilisez 'projects' pour voir la liste.`;
+          return t('terminal.projectNotFound', 'Project #{{number}} not found. Use \'projects\' to see the list.', { number: args[0] });
         }
         
-        return `${project.title}\n${'='.repeat(project.title.length)}\n\nDescription: ${project.longDescription}\n\nTechnologies: ${project.technologies.join(', ')}\n\nGitHub: ${project.githubUrl || 'N/A'}\nDemo: ${project.liveUrl || 'N/A'}`;
+        return `${project.title}\n${'='.repeat(project.title.length)}\n\n${t('projects.description', 'Description')}: ${project.longDescription}\n\n${t('terminal.technologies', 'Technologies')}: ${project.technologies.join(', ')}\n\n${t('terminal.github', 'GitHub')}: ${project.githubUrl || t('terminal.notAvailable', 'N/A')}\n${t('terminal.demo', 'Demo')}: ${project.liveUrl || t('terminal.notAvailable', 'N/A')}`;
       }
     },
     skills: {
       command: 'skills',
-      description: 'Affiche les compétences techniques',
+      description: t('terminal.commands.skills', 'Display technical skills'),
       action: (args) => {
         if (args.length === 0) {
           return portfolioData.skills
@@ -66,32 +69,32 @@ const TerminalWindow: React.FC = () => {
         );
         
         if (!category) {
-          return `Catégorie '${args[0]}' non trouvée.`;
+          return t('terminal.categoryNotFound', 'Category \'{{category}}\' not found.', { category: args[0] });
         }
         
-        return `${category.category}:\n${category.skills.map(s => `  ${s.name.padEnd(15)} ${s.level}% (${s.years} ans)`).join('\n')}`;
+        return `${category.category}:\n${category.skills.map(s => `  ${s.name.padEnd(15)} ${s.level}% (${s.years} ${t('skills.years', '{{count}} year', { count: s.years })})`).join('\n')}`;
       }
     },
     experience: {
       command: 'experience',
-      description: 'Affiche l\'expérience professionnelle',
+      description: t('terminal.commands.experience', 'Display professional experience'),
       action: () => {
         return portfolioData.experience
-          .map(exp => `${exp.position} chez ${exp.company}\n  Période: ${exp.duration}\n  Lieu: ${exp.location}\n  Technologies: ${exp.technologies.join(', ')}\n`)
+          .map(exp => `${exp.position} ${t('experience.at', 'at')} ${exp.company}\n  ${t('terminal.period', 'Period')}: ${exp.duration}\n  ${t('terminal.location', 'Location')}: ${exp.location}\n  ${t('terminal.technologies', 'Technologies')}: ${exp.technologies.join(', ')}\n`)
           .join('\n');
       }
     },
     contact: {
       command: 'contact',
-      description: 'Affiche les informations de contact',
+      description: t('terminal.commands.contact', 'Display contact information'),
       action: () => {
         const { contact } = portfolioData;
-        return `Informations de contact:\n\nEmail: ${contact.email}\nTéléphone: ${contact.phone || 'N/A'}\nLinkedIn: ${contact.linkedin || 'N/A'}\nGitHub: ${contact.github || 'N/A'}\nSite web: ${contact.website || 'N/A'}`;
+        return `${t('terminal.contactInfo', 'Contact Information:')}\n\nEmail: ${contact.email}\n${t('contact.phone', 'Phone')}: ${contact.phone || t('terminal.notAvailable', 'N/A')}\nLinkedIn: ${contact.linkedin || t('terminal.notAvailable', 'N/A')}\nGitHub: ${contact.github || t('terminal.notAvailable', 'N/A')}\n${t('contact.website', 'Website')}: ${contact.website || t('terminal.notAvailable', 'N/A')}`;
       }
     },
     clear: {
       command: 'clear',
-      description: 'Efface l\'écran du terminal',
+      description: t('terminal.commands.clear', 'Clear terminal screen'),
       action: () => {
         setHistory([]);
         return '';
@@ -99,32 +102,32 @@ const TerminalWindow: React.FC = () => {
     },
     ls: {
       command: 'ls',
-      description: 'Liste le contenu du répertoire',
+      description: t('terminal.commands.ls', 'List directory contents'),
       action: () => {
         return 'about.txt\nprojects/\nskills.json\nexperience.md\ncontact.vcf\nREADME.md';
       }
     },
     pwd: {
       command: 'pwd',
-      description: 'Affiche le répertoire courant',
+      description: t('terminal.commands.pwd', 'Display current directory'),
       action: () => currentPath
     },
     whoami: {
       command: 'whoami',
-      description: 'Affiche l\'utilisateur courant',
+      description: t('terminal.commands.whoami', 'Display current user'),
       action: () => portfolioData.personal.name.toLowerCase().replace(' ', '_')
     },
     date: {
       command: 'date',
-      description: 'Affiche la date et l\'heure actuelles',
-      action: () => new Date().toLocaleString('fr-FR')
+      description: t('terminal.commands.date', 'Display current date and time'),
+      action: () => new Date().toLocaleString(i18n.language === 'fr' ? 'fr-FR' : 'en-US')
     },
     echo: {
       command: 'echo',
-      description: 'Affiche du texte',
+      description: t('terminal.commands.echo', 'Display text'),
       action: (args) => args.join(' ')
     }
-  };
+  }), [t, portfolioData, currentPath, i18n.language, setHistory]);
 
   // Traitement des commandes
   const processCommand = async (command: string) => {
@@ -138,14 +141,14 @@ const TerminalWindow: React.FC = () => {
     
     let output: string;
     
-    if (commandHandler) {
+    if (commandHandler && Object.keys(commands).length > 0) {
       try {
         output = await Promise.resolve(commandHandler.action(args));
       } catch (error) {
-        output = `Erreur lors de l'exécution de '${cmd}': ${error}`;
+        output = t('terminal.executionError', 'Error executing \'{{command}}\': {{error}}', { command: cmd, error: String(error) });
       }
     } else {
-      output = `Commande '${cmd}' non reconnue. Tapez 'help' pour voir les commandes disponibles.`;
+      output = t('terminal.commandNotFound', 'Command \'{{command}}\' not recognized. Type \'help\' to see available commands.', { command: cmd });
     }
 
     const newEntry = {
@@ -187,11 +190,11 @@ const TerminalWindow: React.FC = () => {
   useEffect(() => {
     const welcomeMessage = {
       command: '',
-      output: `PortfolioOS Terminal v1.0.0\nBienvenue ! Tapez 'help' pour voir les commandes disponibles.\n`,
+      output: t('terminal.welcome', 'PortfolioOS Terminal v1.0.0\nWelcome! Type \'help\' to see available commands.\n'),
       timestamp: new Date()
     };
     setHistory([welcomeMessage]);
-  }, []);
+  }, [t, i18n.language]); // Re-run when language changes
 
   return (
     <div className="h-full flex flex-col bg-os-darker text-os-text font-mono text-sm">
@@ -242,7 +245,7 @@ const TerminalWindow: React.FC = () => {
               onChange={(e) => setCurrentCommand(e.target.value)}
               onKeyPress={handleKeyPress}
               className="flex-1 bg-transparent border-none outline-none text-os-text"
-              placeholder="Tapez une commande..."
+              placeholder={t('terminal.prompt', 'Type a command...')}
               autoComplete="off"
               spellCheck={false}
             />
@@ -261,7 +264,7 @@ const TerminalWindow: React.FC = () => {
             animate={{ opacity: 1 }}
             className="flex items-center text-os-warning"
           >
-            <span className="mr-2">Traitement</span>
+            <span className="mr-2">{t('terminal.processing', 'Processing')}</span>
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -273,7 +276,7 @@ const TerminalWindow: React.FC = () => {
 
       {/* Aide en bas */}
       <div className="px-4 py-2 border-t border-os-border text-xs text-os-text-subtle">
-        Astuce: Utilisez 'help' pour voir toutes les commandes | 'clear' pour effacer l'écran
+        {t('terminal.helpFooter', 'Tip: Use \'help\' to see all commands | \'clear\' to clear screen')}
       </div>
     </div>
   );

@@ -1,0 +1,300 @@
+{
+  "personal": {
+    "name": "MIRAS Romain",
+    "title": "Software Engineer & DevOps Specialist",
+    "bio": "5th year student at Polytech Grenoble (Computer Science), currently doing a DevOps/Backend internship until mid-September 2025.\n\nMy journey started with a Computer Science DUT in Grenoble, where I acquired solid foundations in software and web development. Since then, I've specialized in various technical environments, with a particular appetite for collaborative projects and solving concrete problems.\n\nDuring my experiences, I've worked on projects combining backend development (Node.js, Python...), DevOps (CI/CD, Docker, GitLab), and sometimes frontend (React). I enjoy exploring the entire application lifecycle, from design to production deployment.\n\nI'm open to permanent contract or VIE opportunities in DevOps, Backend or FullStack from September 2025, in France or internationally.",
+    "location": "Grenoble, France",
+    "availability": "Available for new projects",
+    "highlightedTerms": [
+      "Polytech Grenoble",
+      "Computer Science DUT", 
+      "DevOps",
+      "Backend",
+      "Frontend", 
+      "FullStack",
+      "Node.js",
+      "Python",
+      "React",
+      "Docker",
+      "GitLab",
+      "CI/CD",
+      "Terraform",
+      "AWS",
+      "permanent contract",
+      "VIE",
+      "September 2025"
+    ]
+  },
+  "projects": [
+    {
+      "title": "OS Portfolio",
+      "description": "Immersive portfolio simulating an operating system",
+      "longDescription": "A unique interactive portfolio that simulates the experience of a custom operating system. Developed with React, TypeScript and TailwindCSS, it offers an innovative user interface with draggable windows, an interactive terminal and smooth animations using Framer Motion.",
+      "category": "Frontend"
+    },
+    {
+      "title": "DevOps Automation",
+      "description": "CI/CD pipelines and infrastructure as code",
+      "longDescription": "DevOps automation projects including robust CI/CD pipeline creation, infrastructure as code with Terraform and AWS CDK, and Docker container orchestration. Focus on DevOps best practices and security.",
+      "category": "DevOps"
+    },
+    {
+      "title": "Polytech Academic Projects",
+      "description": "Collection of projects developed during engineering training",
+      "longDescription": "Set of academic projects covering different domains: fullstack web development, mobile applications, distributed systems, and network projects. These projects demonstrate mastery of various technologies and the ability to work in teams on complex issues.",
+      "category": "Academic"
+    },
+    {
+      "title": "IUT Web Projects",
+      "description": "Web applications developed during Computer Science DUT",
+      "longDescription": "Web projects carried out in teams during DUT training, including e-commerce sites, management applications, and projects using different web technologies. Focus on development best practices and user experience.",
+      "category": "Academic"
+    }
+  ],
+  "experience": [
+    {
+      "company": "VISEO",
+      "position": "DevOps / Backend Engineer Intern",
+      "duration": "7 months",
+      "description": "Final year engineering internship at VISEO Grenoble. Implementation of DevOps processes for web projects on Azure/AWS Cloud. Maintenance and creation of CI/CD solutions on Azure DevOps and GitLab CI. Development and maintenance of .NET and Spring backend solutions. Deployment automation and infrastructure as code management.",
+      "location": "Grenoble, France",
+      "type": "Internship"
+    },
+    {
+      "company": "Redtaag",
+      "position": "Fullstack Web Developer",
+      "duration": "5 months",
+      "description": "Development and maintenance of the Redtaag web application as well as an Android mobile application.",
+      "location": "Valencia, Spain",
+      "type": "Internship"
+    },
+    {
+      "company": "BLUE ORTHO",
+      "position": "Web Developer",
+      "duration": "4 months",
+      "description": "Evolution and maintenance of the orthopedic management web application. Development of new features and bug fixes. Work with modern web technologies and participation in improving user experience.",
+      "location": "Meylan, France",
+      "type": "Internship"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Polytech Grenoble",
+      "degree": "Engineering Degree",
+      "field": "Computer Science",
+      "duration": "3 years",
+      "description": "General computer science engineering training with specialization in networking.",
+      "location": "Grenoble, France"
+    },
+    {
+      "institution": "IUT2 Grenoble - Université Grenoble Alpes",
+      "degree": "University Diploma of Technology (DUT)",
+      "field": "Computer Science",
+      "duration": "2 years",
+      "description": "General computer science training covering programming, databases, networks, web development and software engineering. Equivalent to a Bachelor in Computer Science.",
+      "location": "Grenoble, France"
+    },
+    {
+      "institution": "Lycée Polyvalent Ferdinand Buisson",
+      "degree": "General Baccalaureate",
+      "field": "Science and Engineering Technology",
+      "duration": "3 years",
+      "description": "General baccalaureate with specialization in science and engineering technology, including mathematics, physics and engineering sciences.",
+      "location": "Voiron, France"
+    }
+  ],
+  "skills": {
+    "categories": {
+      "Programming Languages": "Programming Languages",
+      "Frontend Development": "Frontend Development",
+      "Backend Development": "Backend Development",
+      "Database": "Database",
+      "DevOps & Cloud": "DevOps & Cloud",
+      "Mobile & Desktop": "Mobile & Desktop",
+      "Tools & Other": "Tools & Other"
+    }
+  },
+  "contact": {
+    "email": "romain.miras@gmail.com",
+    "phone": "+33 6 01 30 67 94",
+    "location": "Grenoble, France"
+  },
+  "ui": {
+    "about": {
+      "title": "About",
+      "downloadCv": "Download CV",
+      "personalInfo": "Personal Information",
+      "overview": "About me",
+      "projects": "Projects",
+      "experiences": "Experiences",
+      "skills": "Skills",
+      "viewPortfolio": "View Portfolio",
+      "recentJourney": "Recent Journey"
+    },
+    "projects": {
+      "title": "Projects",
+      "filterAll": "All",
+      "technologies": "Technologies",
+      "viewProject": "View Project",
+      "viewCode": "View Code",
+      "startDate": "Start",
+      "endDate": "End",
+      "ongoing": "Ongoing",
+      "myProjects": "My Projects",
+      "searchProject": "Search for a project...",
+      "all": "All",
+      "featured": "Featured",
+      "noProjectsFound": "No projects found for these criteria.",
+      "selectProject": "Select a project to see details",
+      "category": "Category",
+      "period": "Period",
+      "viewSourceCode": "View source code",
+      "viewOnline": "View project online",
+      "screenshots": "Screenshots"
+    },
+    "experience": {
+      "title": "Experience",
+      "workExperience": "Work Experience",
+      "education": "Education",
+      "technologies": "Technologies",
+      "fullTime": "Full-time",
+      "partTime": "Part-time",
+      "contract": "Contract",
+      "internship": "Internship",
+      "at": "at",
+      "professionalExperience": "Professional Experience",
+      "usefulLinks": "Useful Links",
+      "linkedinProfile": "LinkedIn Profile",
+      "github": "GitHub"
+    },
+    "skills": {
+      "title": "Skills",
+      "level": "Level",
+      "years": "{{count}} year",
+      "years_plural": "{{count}} years",
+      "experience": "Experience",
+      "technicalSkills": "Technical Skills",
+      "skillsOverview": "Overview of my skills and expertise level in different technologies",
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "beginner": "Beginner",
+      "averageYears": "Avg. years",
+      "skill": "skill",
+      "skills_plural": "skills",
+      "levelsLegend": "Levels Legend"
+    },
+    "terminal": {
+      "title": "Terminal",
+      "welcome": "PortfolioOS Terminal v1.0.0\nWelcome! Type 'help' to see available commands.\n",
+      "helpText": "Type 'help' to see available commands.",
+      "prompt": "Type a command...",
+      "processing": "Processing",
+      "helpFooter": "Tip: Use 'help' to see all commands | 'clear' to clear screen",
+      "commands": {
+        "help": "Show list of available commands",
+        "about": "Display personal information",
+        "projects": "List projects",
+        "skills": "Display technical skills",
+        "experience": "Display professional experience",
+        "contact": "Display contact information",
+        "clear": "Clear terminal screen",
+        "ls": "List directory contents",
+        "pwd": "Display current directory",
+        "whoami": "Display current user",
+        "date": "Display current date and time",
+        "echo": "Display text"
+      },
+      "commandsAvailable": "Available commands:",
+      "useHelpCommand": "Use 'help <command>' for more information.",
+      "projectNotFound": "Project #{{number}} not found. Use 'projects' to see the list.",
+      "categoryNotFound": "Category '{{category}}' not found.",
+      "commandNotFound": "Command '{{command}}' not recognized. Type 'help' to see available commands.",
+      "executionError": "Error executing '{{command}}': {{error}}",
+      "contactInfo": "Contact Information:",
+      "period": "Period:",
+      "location": "Location:",
+      "technologies": "Technologies:",
+      "github": "GitHub:",
+      "demo": "Demo:",
+      "notAvailable": "N/A"
+    },
+    "contact": {
+      "title": "Contact",
+      "contactInfo": "Contact Information",
+      "sendMessage": "Send Message",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send",
+      "sending": "Sending...",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "messageSent": "Message sent successfully!",
+      "messageError": "Error sending message. Please try again.",
+      "enterName": "Enter your name",
+      "enterEmail": "Enter your email",
+      "enterSubject": "Enter subject",
+      "enterMessage": "Enter your message",
+      "contactInformation": "Contact Information",
+      "phone": "Phone",
+      "location": "Location",
+      "professionalLinks": "Professional Links",
+      "viewProfile": "View Profile",
+      "viewProjects": "View Projects",
+      "visit": "Visit",
+      "availability": "Availability",
+      "website": "Website",
+      "nameRequired": "Name *",
+      "yourName": "Your name",
+      "subjectRequired": "Subject *",
+      "messageSubject": "Subject of your message",
+      "yourMessage": "Your message...",
+      "messageSentShort": "Message sent!",
+      "sendMessageButton": "Send message",
+      "note": "Note:",
+      "noteText": "I usually respond within 24h. For urgent requests, don't hesitate to contact me directly by phone."
+    },
+    "taskbar": {
+      "startMenu": "Start Menu",
+      "notifications": "Notifications",
+      "settings": "Settings",
+      "shutdown": "Shutdown",
+      "lightTheme": "Switch to light theme",
+      "darkTheme": "Switch to dark theme"
+    },
+    "notifications": {
+      "systemReady": "System Ready",
+      "welcomeMessage": "Welcome to Portfolio OS! Explore the applications to discover more about my profile.",
+      "themeChanged": "Theme Changed",
+      "themeChangedMessage": "Interface theme has been successfully changed.",
+      "languageChanged": "Language Changed",
+      "languageChangedMessage": "Interface language has been changed to {{language}}."
+    },
+    "boot": {
+      "loading": "Loading...",
+      "systemCheck": "System check in progress...",
+      "loadingComponents": "Loading components...",
+      "initializingSystem": "Initializing system...",
+      "welcome": "Welcome to Portfolio OS"
+    },
+    "shutdown": {
+      "shuttingDown": "Shutting down...",
+      "savingData": "Saving data...",
+      "closingApplications": "Closing applications...",
+      "goodbye": "See you soon!"
+    },
+    "languageSelector": {
+      "english": "English",
+      "french": "Français",
+      "selectLanguage": "Select Language"
+    },
+    "desktop": {
+      "showIcons": "Show desktop icons",
+      "hideIcons": "Hide desktop icons",
+      "doubleClickToOpen": "Double-click to open {{appName}}"
+    },
+    "comingSoon": "Coming soon"
+  }
+}

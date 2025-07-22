@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { MapPin, Calendar, Star, Download } from 'lucide-react';
-import { portfolioData } from '../../data/portfolio';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const AboutWindow: React.FC = () => {
-  const { personal } = portfolioData;
+  const { t } = useTranslation();
+  const portfolioData = usePortfolioData();
 
   // Fonction pour mettre en évidence les termes spécifiés
   const highlightTerms = (text: string, terms: string[]) => {
@@ -40,10 +42,10 @@ const AboutWindow: React.FC = () => {
         >
           <div className="flex-shrink-0">
             <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-os-accent/50 shadow-lg">
-              {personal.avatar ? (
+              {portfolioData.personal.avatar ? (
                 <img 
-                  src={personal.avatar} 
-                  alt={personal.name}
+                  src={portfolioData.personal.avatar} 
+                  alt={portfolioData.personal.name}
                   className="w-full h-full object-cover object-center filter brightness-105 contrast-105"
                   style={{ 
                     imageRendering: 'crisp-edges',
@@ -53,24 +55,24 @@ const AboutWindow: React.FC = () => {
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-os-accent to-os-accent-hover flex items-center justify-center text-4xl font-bold text-white">
-                  {personal.name.split(' ').map(n => n[0]).join('')}
+                  {portfolioData.personal.name.split(' ').map(n => n[0]).join('')}
                 </div>
               )}
             </div>
           </div>
           
           <div className="flex-1 min-w-0">
-            <h2 className="text-2xl font-bold text-os-text mb-2">{personal.name}</h2>
-            <p className="text-lg text-os-accent mb-3">{personal.title}</p>
+            <h2 className="text-2xl font-bold text-os-text mb-2">{portfolioData.personal.name}</h2>
+            <p className="text-lg text-os-accent mb-3">{portfolioData.personal.title}</p>
             
             <div className="flex flex-wrap gap-4 text-sm text-os-text-muted">
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>{personal.location}</span>
+                <span>{portfolioData.personal.location}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Star className="w-4 h-4 text-os-success" />
-                <span>{personal.availability}</span>
+                <span>{portfolioData.personal.availability}</span>
               </div>
             </div>
           </div>
@@ -85,16 +87,16 @@ const AboutWindow: React.FC = () => {
         >
           <h3 className="text-xl font-semibold text-os-text flex items-center space-x-2">
             <span className="text-os-accent">&gt;</span>
-            <span>À propos de moi</span>
+            <span>{t('ui.about.overview')}</span>
           </h3>
           
           <div className="bg-os-darker/30 rounded-lg p-6 border border-os-border">
             <div className="text-os-text-muted leading-relaxed space-y-4">
-              {personal.bio.split('\n\n').map((paragraph, index) => (
+              {portfolioData.personal.bio.split('\n\n').map((paragraph, index) => (
                 <p key={index} className="text-justify">
                   {paragraph.split('\n').map((line, lineIndex, lines) => (
                     <span key={lineIndex}>
-                      {highlightTerms(line, personal.highlightedTerms)}
+                      {highlightTerms(line, portfolioData.personal.highlightedTerms)}
                       {lineIndex < lines.length - 1 && <br />}
                     </span>
                   ))}
@@ -115,21 +117,21 @@ const AboutWindow: React.FC = () => {
             <div className="text-2xl font-bold text-os-accent mb-1">
               {portfolioData.projects.length}
             </div>
-            <div className="text-sm text-os-text-muted">Projets</div>
+            <div className="text-sm text-os-text-muted">{t('ui.about.projects')}</div>
           </div>
           
           <div className="bg-os-darker/30 rounded-lg p-4 border border-os-border text-center">
             <div className="text-2xl font-bold text-os-success mb-1">
               {portfolioData.experience.length}
             </div>
-            <div className="text-sm text-os-text-muted">Expériences</div>
+            <div className="text-sm text-os-text-muted">{t('ui.about.experiences')}</div>
           </div>
           
           <div className="bg-os-darker/30 rounded-lg p-4 border border-os-border text-center">
             <div className="text-2xl font-bold text-os-warning mb-1">
               {portfolioData.skills.reduce((acc, category) => acc + category.skills.length, 0)}
             </div>
-            <div className="text-sm text-os-text-muted">Compétences</div>
+            <div className="text-sm text-os-text-muted">{t('ui.about.skills')}</div>
           </div>
         </motion.div>
 
@@ -142,11 +144,11 @@ const AboutWindow: React.FC = () => {
         >
           <button className="button-primary flex items-center space-x-2">
             <Download className="w-4 h-4" />
-            <span>Télécharger CV</span>
+            <span>{t('ui.about.downloadCv')}</span>
           </button>
           
           <button className="button-secondary">
-            Voir Portfolio
+            {t('ui.about.viewPortfolio')}
           </button>
         </motion.div>
 
@@ -159,7 +161,7 @@ const AboutWindow: React.FC = () => {
         >
           <h3 className="text-xl font-semibold text-os-text flex items-center space-x-2">
             <span className="text-os-accent">&gt;</span>
-            <span>Parcours récent</span>
+            <span>{t('ui.about.recentJourney')}</span>
           </h3>
           
           <div className="space-y-3">
