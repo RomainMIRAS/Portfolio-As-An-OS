@@ -1,18 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { TrendingUp, Award, Star } from 'lucide-react';
 import { portfolioData } from '../../data/portfolio';
-
 import type { Skill } from '../../data/portfolio';
 
 const SkillsWindow: React.FC = () => {
   const { skills } = portfolioData;
+  const { t } = useTranslation();
+
+  const getCategoryName = (category: string) => {
+    switch (category) {
+      case 'Frontend': return t('skills.frontend');
+      case 'Backend': return t('skills.backend');
+      case 'DevOps & Tools': return t('skills.devopsTools');
+      default: return category;
+    }
+  };
 
   const getSkillLevel = (level: number) => {
-    if (level >= 90) return { label: 'Expert', color: 'text-os-success', bgColor: 'bg-os-success' };
-    if (level >= 75) return { label: 'Avancé', color: 'text-os-accent', bgColor: 'bg-os-accent' };
-    if (level >= 60) return { label: 'Intermédiaire', color: 'text-os-warning', bgColor: 'bg-os-warning' };
-    return { label: 'Débutant', color: 'text-os-error', bgColor: 'bg-os-error' };
+    if (level >= 90) return { label: t('skills.levels.expert'), color: 'text-os-success', bgColor: 'bg-os-success' };
+    if (level >= 75) return { label: t('skills.levels.advanced'), color: 'text-os-accent', bgColor: 'bg-os-accent' };
+    if (level >= 60) return { label: t('skills.levels.intermediate'), color: 'text-os-warning', bgColor: 'bg-os-warning' };
+    return { label: t('skills.levels.beginner'), color: 'text-os-error', bgColor: 'bg-os-error' };
   };
 
   const SkillBar: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) => {
@@ -71,7 +81,7 @@ const SkillsWindow: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <h2 className="text-2xl font-bold text-os-text mb-2">Compétences Techniques</h2>
+        <h2 className="text-2xl font-bold text-os-text mb-2">{t('skills.title')}</h2>
         <p className="text-os-text-muted">
           Aperçu de mes compétences et niveau d'expertise dans différentes technologies
         </p>
@@ -120,7 +130,7 @@ const SkillsWindow: React.FC = () => {
         >
           <h3 className="text-xl font-semibold text-os-text flex items-center space-x-2">
             <span className="text-os-accent">&gt;</span>
-            <span>{category.category}</span>
+            <span>{getCategoryName(category.category)}</span>
             <span className="text-sm text-os-text-muted font-normal">
               ({category.skills.length} compétence{category.skills.length > 1 ? 's' : ''})
             </span>
