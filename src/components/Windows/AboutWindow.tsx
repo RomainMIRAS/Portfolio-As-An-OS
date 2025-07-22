@@ -5,7 +5,6 @@ import { MapPin, Calendar, Star, Download } from 'lucide-react';
 import { portfolioData } from '../../data/portfolio';
 
 const AboutWindow: React.FC = () => {
-  const { personal } = portfolioData;
   const { t } = useTranslation();
 
   return (

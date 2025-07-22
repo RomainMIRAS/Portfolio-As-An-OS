@@ -94,7 +94,9 @@
     "maximize": "Agrandir",
     "language": "Langue",
     "theme": "Thème",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "location": "Localisation",
+    "status": "Statut"
   },
   "terminal": {
     "help": {

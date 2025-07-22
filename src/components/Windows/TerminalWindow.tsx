@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { portfolioData } from '../../data/portfolio';
 import type { TerminalCommand } from '../../types/os';
 
 const TerminalWindow: React.FC = () => {
+  const { t } = useTranslation();
   const [history, setHistory] = useState<Array<{ command: string; output: string; timestamp: Date }>>([]);
   const [currentCommand, setCurrentCommand] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -15,25 +17,24 @@ const TerminalWindow: React.FC = () => {
   const commands: Record<string, TerminalCommand> = {
     help: {
       command: 'help',
-      description: 'Affiche la liste des commandes disponibles',
+      description: t('terminal.help.description'),
       action: () => {
         const commandList = Object.values(commands)
           .map(cmd => `  ${cmd.command.padEnd(15)} - ${cmd.description}`)
           .join('\n');
-        return `Commandes disponibles:\n${commandList}\n\nUtilisez 'help <commande>' pour plus d'informations.`;
+        return `${t('terminal.responses.availableCommands')}\n${commandList}\n\n${t('terminal.responses.useHelpCommand')}`;
       }
     },
     about: {
       command: 'about',
-      description: 'Affiche les informations personnelles',
+      description: t('terminal.about.description'),
       action: () => {
-        const { personal } = portfolioData;
-        return `${personal.name} - ${personal.title}\n\nBio: ${personal.bio}\n\nLocalisation: ${personal.location}\nStatut: ${personal.availability}`;
+        return `${t('personal.name')} - ${t('personal.title')}\n\nBio: ${t('personal.bio')}\n\n${t('ui.location')}: ${t('personal.location')}\n${t('ui.status')}: ${t('personal.availability')}`;
       }
     },
     projects: {
       command: 'projects',
-      description: 'Liste les projets',
+      description: t('terminal.projects.description'),
       action: (args) => {
         if (args.length === 0) {
           return portfolioData.projects
@@ -45,7 +46,7 @@ const TerminalWindow: React.FC = () => {
         const project = portfolioData.projects[projectIndex];
         
         if (!project) {
-          return `Projet #${args[0]} non trouvé. Utilisez 'projects' pour voir la liste.`;
+          return t('terminal.responses.projectNotFound', { number: args[0] });
         }
         
         return `${project.title}\n${'='.repeat(project.title.length)}\n\nDescription: ${project.longDescription}\n\nTechnologies: ${project.technologies.join(', ')}\n\nGitHub: ${project.githubUrl || 'N/A'}\nDemo: ${project.liveUrl || 'N/A'}`;

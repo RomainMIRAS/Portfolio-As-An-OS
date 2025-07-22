@@ -94,7 +94,9 @@
     "maximize": "Maximize",
     "language": "Language",
     "theme": "Theme",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "location": "Location",
+    "status": "Status"
   },
   "terminal": {
     "help": {

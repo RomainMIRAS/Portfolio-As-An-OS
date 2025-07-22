@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { OSState, WindowState, AppConfig, NotificationState } from '../types/os';
 
 // Configuration des applications disponibles
-export const availableApps: AppConfig[] = [
+const getAvailableApps = (t: (key: string) => string): AppConfig[] => [
   {
     id: 'about',
-    name: 'À propos',
+    name: t('ui.about'),
     icon: 'User',
     component: 'AboutWindow',
     defaultSize: { width: 600, height: 500 },
@@ -15,7 +16,7 @@ export const availableApps: AppConfig[] = [
   },
   {
     id: 'projects',
-    name: 'Projets',
+    name: t('projects.title'),
     icon: 'FolderOpen',
     component: 'ProjectsWindow',
     defaultSize: { width: 800, height: 600 },
@@ -25,7 +26,7 @@ export const availableApps: AppConfig[] = [
   },
   {
     id: 'experience',
-    name: 'Expérience',
+    name: t('experience.title'),
     icon: 'Briefcase',
     component: 'ExperienceWindow',
     defaultSize: { width: 700, height: 550 },
@@ -35,7 +36,7 @@ export const availableApps: AppConfig[] = [
   },
   {
     id: 'skills',
-    name: 'Compétences',
+    name: t('skills.title'),
     icon: 'Code',
     component: 'SkillsWindow',
     defaultSize: { width: 650, height: 500 },
@@ -55,7 +56,7 @@ export const availableApps: AppConfig[] = [
   },
   {
     id: 'contact',
-    name: 'Contact',
+    name: t('contact.title'),
     icon: 'Mail',
     component: 'ContactWindow',
     defaultSize: { width: 750, height: 550 },
@@ -66,6 +67,8 @@ export const availableApps: AppConfig[] = [
 ];
 
 const useOSState = () => {
+  const { t } = useTranslation();
+  const availableApps = getAvailableApps(t);
   const [osState, setOSState] = useState<OSState>({
     windows: [],
     notifications: [],
