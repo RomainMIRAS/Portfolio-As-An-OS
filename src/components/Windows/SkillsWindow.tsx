@@ -1,10 +1,11 @@
 import React, { useMemo, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Award, Star } from 'lucide-react';
-import { portfolioData } from '../../data/portfolio';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
+import type { Skill } from '../../data/portfolio';
 
 // Composant SkillBar memoized pour éviter les re-renders
-const SkillBar = React.memo<{ skill: any; index: number; getSkillLevel: (level: number) => any }>(({ skill, index, getSkillLevel }) => {
+const SkillBar = React.memo<{ skill: Skill; index: number; getSkillLevel: (level: number) => { label: string; color: string; bgColor: string } }>(({ skill, index, getSkillLevel }) => {
   const levelInfo = getSkillLevel(skill.level);
   
   return (
@@ -52,7 +53,7 @@ const SkillBar = React.memo<{ skill: any; index: number; getSkillLevel: (level: 
 });
 
 const SkillsWindow: React.FC = () => {
-  const { skills } = portfolioData;
+  const { skills } = usePortfolioData();
 
   // Fonction memoized pour éviter les re-renders
   const getSkillLevel = useCallback((level: number) => {

@@ -8,11 +8,11 @@ import WindowManager from './components/OS/WindowManager';
 import NotificationCenter from './components/OS/NotificationCenter';
 import DesktopIcons from './components/OS/DesktopIcons';
 import useOSState from './hooks/useOSState';
+import { useLocalizedApps } from './hooks/useLocalizedApps';
 
 const App: React.FC = () => {
   const {
     osState,
-    availableApps,
     markBootComplete,
     openApp,
     closeWindow,
@@ -28,6 +28,8 @@ const App: React.FC = () => {
     resetSystem,
     toggleDesktopIcons
   } = useOSState();
+
+  const availableApps = useLocalizedApps();
 
   return (
     <div className="min-h-screen overflow-hidden">

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import { Github, ExternalLink, Calendar, Tag, Filter, Search } from 'lucide-react';
 import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const ProjectsWindow: React.FC = () => {
-  const { t } = useTranslation();
   const { projects } = usePortfolioData();
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>('all');
@@ -22,7 +20,7 @@ const ProjectsWindow: React.FC = () => {
   });
 
   const selectedProjectData = selectedProject ? 
-    portfolioData.projects.find(p => p.id === selectedProject) : null;
+    projects.find(p => p.id === selectedProject) : null;
 
   return (
     <div className="h-full flex flex-col">
@@ -138,7 +136,7 @@ const ProjectsWindow: React.FC = () => {
                   
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {selectedProjectData.technologies.map((tech) => (
+                    {selectedProjectData.technologies.map((tech: string) => (
                       <span
                         key={tech}
                         className="px-2 py-1 bg-os-accent/20 text-os-accent text-xs rounded-full"
@@ -195,7 +193,7 @@ const ProjectsWindow: React.FC = () => {
                 <div className="space-y-3">
                   <h4 className="text-sm font-medium text-os-text">Captures d'écran</h4>
                   <div className="grid grid-cols-1 gap-3">
-                    {selectedProjectData.images.map((image, index) => (
+                    {selectedProjectData.images.map((image: string, index: number) => (
                       <div
                         key={index}
                         className="rounded-lg border border-os-border overflow-hidden bg-os-darker/30 p-1"

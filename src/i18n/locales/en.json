@@ -231,6 +231,11 @@
       "french": "Français",
       "selectLanguage": "Select Language"
     },
+    "desktop": {
+      "showIcons": "Show desktop icons",
+      "hideIcons": "Hide desktop icons",
+      "doubleClickToOpen": "Double-click to open {{appName}}"
+    },
     "comingSoon": "Coming soon"
   }
 }
