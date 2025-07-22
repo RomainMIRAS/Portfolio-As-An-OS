@@ -1,84 +1,75 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 # Portfolio OS 🖥️
 
-Un portfolio interactif et immersif simulant un système d'exploitation personnalisé. Une expérience unique qui présente mes compétences et projets dans une interface moderne et innovante.
+An interactive and immersive portfolio simulating a custom operating system. A unique experience that showcases my skills and projects in a modern and innovative interface.
 
 ![Portfolio OS](./public/screenshot.png)
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-### 🚀 Système d'exploitation simulé
-- **Écran de démarrage animé** avec séquence de boot réaliste
-- **Interface de bureau** avec fond d'écran dynamique et particules
-- **Fenêtres draggables et redimensionnables** avec contrôles macOS
-- **Barre des tâches interactive** avec dock d'applications
-- **Système de notifications** en temps réel
+### 🚀 Simulated Operating System
+- **Animated boot screen** with realistic boot sequence
+- **Desktop interface** with dynamic wallpaper and particles
+- **Draggable and resizable windows** with macOS controls
+- **Interactive taskbar** with application dock
+- **Real-time notification system**
 
-### 📱 Applications intégrées
-- **À propos** : Présentation personnelle avec stats
-- **Projets** : Portfolio avec filtres et recherche
-- **Expérience** : Timeline professionnelle et formation
-- **Compétences** : Barres de progression avec niveaux
-- **Terminal** : Interface en ligne de commande interactive
-- **Contact** : Formulaire et informations de contact
+### 📱 Integrated Applications
+- **About** : Personal presentation with stats
+- **Projects** : Portfolio with filters and search
+- **Experience** : Professional timeline and education
+- **Skills** : Progress bars with skill levels
+- **Terminal** : Interactive command-line interface
+- **Contact** : Contact form and information
 
-### 🎨 Design et UX
-- **Thème sombre/clair** avec transition fluide
-- **Animations Framer Motion** pour une expérience fluide
-- **Design responsive** adapté mobile et desktop
-- **Effets visuels** : backdrop blur, particules, scan lines
-- **Typographie** : Inter pour l'interface, JetBrains Mono pour le code
+### 🎨 Design and UX
+- **Dark/light theme** with smooth transitions
+- **Framer Motion animations** for fluid experience
+- **Responsive design** adapted for mobile and desktop
+- **Visual effects** : backdrop blur, particles, scan lines
+- **Typography** : Inter for interface, JetBrains Mono for code
 
 ## 🛠️ Technologies
 
 - **Frontend** : React 18 + TypeScript
-- **Styles** : TailwindCSS avec thème personnalisé
+- **Styles** : TailwindCSS with custom theme
 - **Animations** : Framer Motion
-- **Icônes** : Lucide React
+- **Icons** : Lucide React
 - **Build** : Vite
-- **Deployment** : Compatible Vercel, Netlify, GitHub Pages
+- **Deployment** : Compatible with Vercel, Netlify, GitHub Pages
 
-## 🚀 Installation et développement
+## 🚀 Installation and Development
 
-### Prérequis
+### Prerequisites
 - Node.js 18+ 
-- npm ou yarn
+- npm or yarn
 
 ### Installation
 ```bash
-# Cloner le repository
-git clone https://github.com/votre-username/os-portfolio.git
+# Clone the repository
+git clone https://github.com/your-username/os-portfolio.git
 cd os-portfolio
 
-# Installer les dépendances
+# Install dependencies
 npm install
 
-# Lancer en mode développement
+# Start development server
 npm run dev
 ```
 
-### Scripts disponibles
+### Available Scripts
 ```bash
-npm run dev          # Serveur de développement
-npm run build        # Build de production
-npm run preview      # Prévisualiser le build
-npm run lint         # Linter le code
+npm run dev          # Development server
+npm run build        # Production build
+npm run preview      # Preview build
+npm run lint         # Lint code
 ```
 
-## 📁 Structure du projet
+## 📁 Project Structure
 
 ```
 src/
 ├── components/
-│   ├── OS/              # Composants système
+│   ├── OS/              # System components
 │   │   ├── BootScreen.tsx
 │   │   ├── WindowManager.tsx
 │   │   ├── DraggableWindow.tsx
@@ -93,141 +84,88 @@ src/
 │       ├── TerminalWindow.tsx
 │       └── ContactWindow.tsx
 ├── hooks/
-│   └── useOSState.ts    # État global de l'OS
+│   └── useOSState.ts    # Global OS state
 ├── types/
-│   └── os.ts           # Types TypeScript
+│   └── os.ts           # TypeScript types
 ├── data/
-│   └── portfolio.ts    # Données du portfolio
+│   └── portfolio.ts    # Portfolio data
 └── styles/
-    └── index.css       # Styles TailwindCSS
+  └── index.css       # TailwindCSS styles
 ```
 
 ## ⚙️ Configuration
 
-### Personnaliser les données
-Modifier le fichier `src/data/portfolio.ts` pour adapter :
-- Informations personnelles
-- Liste des projets
-- Expérience professionnelle
-- Compétences techniques
-- Coordonnées de contact
+### Customize Data
+Edit the `src/data/portfolio.ts` file to adapt:
+- Personal information
+- Project list
+- Professional experience
+- Technical skills
+- Contact details
 
-### Personnaliser le thème
-Les couleurs sont définies dans `tailwind.config.js` :
+### Customize Theme
+Colors are defined in `tailwind.config.js`:
 ```js
 colors: {
   'os-dark': '#0d1117',
   'os-accent': '#58a6ff',
-  // ... autres couleurs
+  // ... other colors
 }
 ```
 
-### Ajouter des applications
-1. Créer le composant dans `src/components/Windows/`
-2. L'ajouter à `availableApps` dans `src/hooks/useOSState.ts`
-3. Importer dans `WindowManager.tsx`
+### Add Applications
+1. Create component in `src/components/Windows/`
+2. Add to `availableApps` in `src/hooks/useOSState.ts`
+3. Import in `WindowManager.tsx`
 
-## 🚀 Déploiement
+## 🎮 Interactive Terminal
 
-### Vercel (recommandé)
-```bash
-# Installer Vercel CLI
-npm i -g vercel
+The terminal supports several commands:
+- `help` : List of commands
+- `about` : Personal information
+- `projects [number]` : List/detail projects
+- `skills [category]` : Skills by category
+- `experience` : Professional experience
+- `contact` : Contact information
+- `clear` : Clear screen
+- `ls`, `pwd`, `whoami` : Basic Unix commands
 
-# Déployer
-vercel
-```
+## 🔧 Development
 
-### Netlify
-```bash
-# Build du projet
-npm run build
+### Add a New Window
+1. Create component in `components/Windows/`
+2. Add necessary types
+3. Configure app in `useOSState.ts`
+4. Style with TailwindCSS classes
 
-# Déployer le dossier dist/
-```
+### Code Conventions
+- Use strict TypeScript
+- Functional components with hooks
+- Well-typed props with interfaces
+- TailwindCSS classes for styling
+- Framer Motion animations for interactivity
 
-### GitHub Pages
-1. Configurer le repository pour GitHub Pages
-2. Action automatique avec le workflow fourni
-3. Le site sera disponible sur `username.github.io/os-portfolio`
+## 🤝 Contributing
 
-## 🎮 Terminal interactif
-
-Le terminal supporte plusieurs commandes :
-- `help` : Liste des commandes
-- `about` : Informations personnelles
-- `projects [numéro]` : Liste/détail des projets
-- `skills [catégorie]` : Compétences par catégorie
-- `experience` : Expérience professionnelle
-- `contact` : Informations de contact
-- `clear` : Effacer l'écran
-- `ls`, `pwd`, `whoami` : Commandes Unix basiques
-
-## 🔧 Développement
-
-### Ajouter une nouvelle fenêtre
-1. Créer le composant dans `components/Windows/`
-2. Ajouter les types nécessaires
-3. Configurer l'app dans `useOSState.ts`
-4. Styliser avec les classes TailwindCSS
-
-### Conventions de code
-- Utiliser TypeScript strict
-- Composants fonctionnels avec hooks
-- Props bien typées avec interfaces
-- Classes TailwindCSS pour le style
-- Animations Framer Motion pour l'interactivité
-
-## 🤝 Contribution
-
-Les contributions sont bienvenues ! Pour contribuer :
-1. Fork le project
-2. Créer une branche (`git checkout -b feature/AmazingFeature`)
+Contributions are welcome! To contribute:
+1. Fork the project
+2. Create a branch (`git checkout -b feature/AmazingFeature`)
 3. Commit (`git commit -m 'Add some AmazingFeature'`)
 4. Push (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
+5. Open a Pull Request
 
-## 📜 Licence
+## 📜 License
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ## 📞 Contact
 
-**Votre Nom** - [email@example.com](mailto:email@example.com)
+**Your Name** - [romain.miras@gmail.com](mailto:romain.miras@gmail.com)
 
-Lien du projet : [https://github.com/votre-username/os-portfolio](https://github.com/votre-username/os-portfolio)
+Project Link: [https://github.com/RomainMIRAS/Portfolio-As-An-OS](https://github.com/RomainMIRAS/Portfolio-As-An-OS)
 
-Demo live : [https://os-portfolio.vercel.app](https://os-portfolio.vercel.app)
+Live Demo: [http://79.92.83.218/OS%20Portfolio](http://79.92.83.218/OS%20Portfolio)
 
 ---
 
-⭐ N'hésitez pas à mettre une étoile si ce projet vous plaît !
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+⭐ Don't hesitate to star this project if you like it!
