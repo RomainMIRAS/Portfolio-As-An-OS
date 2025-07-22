@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { X, Minus, Square, Maximize } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import type { WindowState } from '../../types/os';
 
 interface DraggableWindowProps {
@@ -24,6 +25,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   onUpdatePosition,
   onUpdateSize
 }) => {
+  const { t } = useTranslation();
   const [isDragging, setIsDragging] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -147,7 +149,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
                 onMinimize();
               }}
               className="w-6 h-6 rounded-full bg-os-warning/80 hover:bg-os-warning flex items-center justify-center transition-colors"
-              title="Minimiser"
+              title={t('ui.windowControls.minimize')}
             >
               <Minus className="w-3 h-3 text-os-darker" />
             </button>
@@ -159,7 +161,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
                 onMaximize();
               }}
               className="w-6 h-6 rounded-full bg-os-success/80 hover:bg-os-success flex items-center justify-center transition-colors"
-              title={window.isMaximized ? "Restaurer" : "Maximiser"}
+              title={window.isMaximized ? t('ui.windowControls.restore') : t('ui.windowControls.maximize')}
             >
               {window.isMaximized ? 
                 <Square className="w-3 h-3 text-os-darker" /> : 
@@ -174,7 +176,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
                 onClose();
               }}
               className="w-6 h-6 rounded-full bg-os-error/80 hover:bg-os-error flex items-center justify-center transition-colors"
-              title="Fermer"
+              title={t('ui.windowControls.close')}
             >
               <X className="w-3 h-3 text-os-darker" />
             </button>
