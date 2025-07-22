@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { 
   User, FolderOpen, Briefcase, Code, Terminal, Mail, 
-  Sun, Moon, Settings, Power 
+  Settings, Power 
 } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import type { AppConfig, WindowState } from '../../types/os';
@@ -12,10 +12,8 @@ interface TaskbarProps {
   availableApps: AppConfig[];
   openWindows: WindowState[];
   currentTime: Date;
-  theme: 'light' | 'dark';
   onOpenApp: (app: AppConfig) => void;
   onToggleMinimize: (windowId: string) => void;
-  onToggleTheme: () => void;
   onAddNotification: (notification: { title: string; message: string; type: 'info' | 'success' | 'warning' | 'error'; duration?: number }) => void;
   onShutdown: () => void;
 }
@@ -27,8 +25,6 @@ const iconMap = {
   Code,
   Terminal,
   Mail,
-  Sun,
-  Moon,
   Settings,
   Power
 };
@@ -37,10 +33,8 @@ const Taskbar: React.FC<TaskbarProps> = ({
   availableApps, 
   openWindows, 
   currentTime, 
-  theme,
   onOpenApp, 
   onToggleMinimize,
-  onToggleTheme,
   onAddNotification,
   onShutdown
 }) => {
@@ -63,16 +57,6 @@ const Taskbar: React.FC<TaskbarProps> = ({
       weekday: 'short',
       day: 'numeric',
       month: 'short'
-    });
-  };
-
-  const handleThemeToggle = () => {
-    onToggleTheme();
-    onAddNotification({
-      title: t('ui.notifications.themeChanged'),
-      message: t('ui.notifications.themeChangedMessage'),
-      type: 'info',
-      duration: 2000
     });
   };
 
@@ -162,17 +146,6 @@ const Taskbar: React.FC<TaskbarProps> = ({
 
         {/* Section droite - Contrôles système */}
         <div className="flex items-center space-x-4">
-          {/* Bouton thème */}
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleThemeToggle}
-            className="dock-item group"
-            title={theme === 'dark' ? t('ui.taskbar.lightTheme') : t('ui.taskbar.darkTheme')}
-          >
-            {theme === 'dark' ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
-          </motion.button>
-
           {/* Bouton paramètres */}
           <motion.button
             whileHover={{ scale: 1.1, rotate: 90 }}
