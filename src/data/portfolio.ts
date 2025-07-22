@@ -98,7 +98,7 @@ export const portfolioConfig = {
     {
       id: "devops-automation",
       technologies: ["Azure DevOps", "GitLab CI", "Terraform", "AWS CDK", "Docker", "Azure", "AWS"],
-      githubUrl: "https://github.com/RomainMIRAS",
+      githubUrl: "https://github.com/RomainMIRAS?tab=repositories&q=&type=&language=&sort=",
       images: ["projects/devops-1.jpg"],
       featured: true,
       startDate: "2024-04",
@@ -107,7 +107,7 @@ export const portfolioConfig = {
     {
       id: "polytech-projects",
       technologies: ["Java", "Spring", "React", "Node.js", "Android", "Python", "C++", "Docker"],
-      githubUrl: "https://github.com/RomainMIRAS",
+      githubUrl: "https://github.com/RomainMIRAS/Age-Of-Empires",
       images: ["/projects/polytech-1.jpg"],
       featured: false,
       startDate: "2022-09",
@@ -116,7 +116,7 @@ export const portfolioConfig = {
     {
       id: "iut-web-projects",
       technologies: ["PHP", "Symfony", "JavaScript", "HTML5", "CSS3", "MySQL", "Bootstrap"],
-      githubUrl: "https://github.com/RomainMIRAS",
+      githubUrl: "https://github.com/RomainMIRAS/TechAWay",
       images: ["/projects/iut-web-1.jpg"],
       featured: false,
       startDate: "2020-09",
