@@ -2,7 +2,7 @@
 
 An interactive and immersive portfolio simulating a custom operating system. A unique experience that showcases my skills and projects in a modern and innovative interface.
 
-![Portfolio OS](./public/screenshot.png)
+![Portfolio OS](./public/projects/os-portfolio-2.png)
 
 ## ✨ Features
 

@@ -117,7 +117,7 @@ export const portfolioData: PortfolioData = {
       category: "Frontend",
       githubUrl: "https://github.com/RomainMIRAS/Portfolio-As-An-OS",
       liveUrl: "https://romain-miras-portfolio.vercel.app",
-      images: ["/projects/os-portfolio-1.jpg", "/projects/os-portfolio-2.jpg"],
+      images: ["/projects/os-portfolio-1.png", "/projects/os-portfolio-2.png"],
       featured: true,
       startDate: "2024-12",
       endDate: "2025-01"
