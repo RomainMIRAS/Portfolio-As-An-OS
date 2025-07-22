@@ -82,7 +82,7 @@ export interface ContactInfo {
 // Static configuration data that doesn't need translation
 export const portfolioConfig = {
   personal: {
-    avatar: "/avatar.jpg"
+    avatar: "avatar.jpg"
   },
   projects: [
     {
@@ -90,7 +90,7 @@ export const portfolioConfig = {
       technologies: ["React", "TypeScript", "TailwindCSS", "Framer Motion", "Vite"],
       githubUrl: "https://github.com/RomainMIRAS/Portfolio-As-An-OS",
       liveUrl: "https://romain-miras-portfolio.vercel.app",
-      images: ["/projects/os-portfolio-1.png", "/projects/os-portfolio-2.png"],
+      images: ["projects/os-portfolio-1.png", "projects/os-portfolio-2.png"],
       featured: true,
       startDate: "2024-12",
       endDate: "2025-01"
@@ -99,7 +99,7 @@ export const portfolioConfig = {
       id: "devops-automation",
       technologies: ["Azure DevOps", "GitLab CI", "Terraform", "AWS CDK", "Docker", "Azure", "AWS"],
       githubUrl: "https://github.com/RomainMIRAS",
-      images: ["/projects/devops-1.jpg"],
+      images: ["projects/devops-1.jpg"],
       featured: true,
       startDate: "2024-04",
       endDate: "2025-01"
