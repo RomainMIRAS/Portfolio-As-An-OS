@@ -139,7 +139,18 @@
       "viewCode": "View Code",
       "startDate": "Start",
       "endDate": "End",
-      "ongoing": "Ongoing"
+      "ongoing": "Ongoing",
+      "myProjects": "My Projects",
+      "searchProject": "Search for a project...",
+      "all": "All",
+      "featured": "Featured",
+      "noProjectsFound": "No projects found for these criteria.",
+      "selectProject": "Select a project to see details",
+      "category": "Category",
+      "period": "Period",
+      "viewSourceCode": "View source code",
+      "viewOnline": "View project online",
+      "screenshots": "Screenshots"
     },
     "experience": {
       "title": "Experience",
@@ -150,14 +161,28 @@
       "partTime": "Part-time",
       "contract": "Contract",
       "internship": "Internship",
-      "at": "at"
+      "at": "at",
+      "professionalExperience": "Professional Experience",
+      "usefulLinks": "Useful Links",
+      "linkedinProfile": "LinkedIn Profile",
+      "github": "GitHub"
     },
     "skills": {
       "title": "Skills",
       "level": "Level",
       "years": "{{count}} year",
       "years_plural": "{{count}} years",
-      "experience": "Experience"
+      "experience": "Experience",
+      "technicalSkills": "Technical Skills",
+      "skillsOverview": "Overview of my skills and expertise level in different technologies",
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "beginner": "Beginner",
+      "averageYears": "Avg. years",
+      "skill": "skill",
+      "skills_plural": "skills",
+      "levelsLegend": "Levels Legend"
     },
     "terminal": {
       "title": "Terminal",
@@ -211,7 +236,25 @@
       "enterName": "Enter your name",
       "enterEmail": "Enter your email",
       "enterSubject": "Enter subject",
-      "enterMessage": "Enter your message"
+      "enterMessage": "Enter your message",
+      "contactInformation": "Contact Information",
+      "phone": "Phone",
+      "location": "Location",
+      "professionalLinks": "Professional Links",
+      "viewProfile": "View Profile",
+      "viewProjects": "View Projects",
+      "visit": "Visit",
+      "availability": "Availability",
+      "website": "Website",
+      "nameRequired": "Name *",
+      "yourName": "Your name",
+      "subjectRequired": "Subject *",
+      "messageSubject": "Subject of your message",
+      "yourMessage": "Your message...",
+      "messageSentShort": "Message sent!",
+      "sendMessageButton": "Send message",
+      "note": "Note:",
+      "noteText": "I usually respond within 24h. For urgent requests, don't hesitate to contact me directly by phone."
     },
     "taskbar": {
       "startMenu": "Start Menu",

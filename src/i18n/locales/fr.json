@@ -139,7 +139,18 @@
       "viewCode": "Voir le Code",
       "startDate": "Début",
       "endDate": "Fin",
-      "ongoing": "En cours"
+      "ongoing": "En cours",
+      "myProjects": "Mes Projets",
+      "searchProject": "Rechercher un projet...",
+      "all": "Tous",
+      "featured": "Mis en avant",
+      "noProjectsFound": "Aucun projet trouvé pour ces critères.",
+      "selectProject": "Sélectionnez un projet pour voir les détails",
+      "category": "Catégorie",
+      "period": "Période",
+      "viewSourceCode": "Voir le code source",
+      "viewOnline": "Voir le projet en ligne",
+      "screenshots": "Captures d'écran"
     },
     "experience": {
       "title": "Expérience",
@@ -150,14 +161,28 @@
       "partTime": "Temps partiel",
       "contract": "Contrat",
       "internship": "Stage",
-      "at": "chez"
+      "at": "chez",
+      "professionalExperience": "Expérience Professionnelle",
+      "usefulLinks": "Liens utiles",
+      "linkedinProfile": "Profil LinkedIn",
+      "github": "GitHub"
     },
     "skills": {
       "title": "Compétences",
       "level": "Niveau",
       "years": "{{count}} an",
       "years_plural": "{{count}} ans",
-      "experience": "Expérience"
+      "experience": "Expérience",
+      "technicalSkills": "Compétences Techniques",
+      "skillsOverview": "Aperçu de mes compétences et niveau d'expertise dans différentes technologies",
+      "expert": "Expert",
+      "advanced": "Avancé",
+      "intermediate": "Intermédiaire",
+      "beginner": "Débutant",
+      "averageYears": "Années moy.",
+      "skill": "compétence",
+      "skills_plural": "compétences",
+      "levelsLegend": "Légende des niveaux"
     },
     "terminal": {
       "title": "Terminal",
@@ -211,7 +236,25 @@
       "enterName": "Entrez votre nom",
       "enterEmail": "Entrez votre email",
       "enterSubject": "Entrez le sujet",
-      "enterMessage": "Entrez votre message"
+      "enterMessage": "Entrez votre message",
+      "contactInformation": "Informations de contact",
+      "phone": "Téléphone",
+      "location": "Localisation",
+      "professionalLinks": "Liens professionnels",
+      "viewProfile": "Voir mon profil",
+      "viewProjects": "Voir mes projets",
+      "visit": "Visiter",
+      "availability": "Disponibilité",
+      "website": "Site web",
+      "nameRequired": "Nom *",
+      "yourName": "Votre nom",
+      "subjectRequired": "Sujet *",
+      "messageSubject": "Sujet de votre message",
+      "yourMessage": "Votre message...",
+      "messageSentShort": "Message envoyé !",
+      "sendMessageButton": "Envoyer le message",
+      "note": "Note:",
+      "noteText": "Je réponds généralement sous 24h. Pour des demandes urgentes, n'hésitez pas à me contacter directement par téléphone."
     },
     "taskbar": {
       "startMenu": "Menu Démarrer",

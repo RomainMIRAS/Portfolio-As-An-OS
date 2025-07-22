@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, Phone, MapPin, ExternalLink, Copy, Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const ContactWindow: React.FC = () => {
+  const { t } = useTranslation();
   const portfolioData = usePortfolioData();
   const [formData, setFormData] = useState({
     name: '',
@@ -84,7 +86,7 @@ const ContactWindow: React.FC = () => {
           <button
             onClick={() => copyToClipboard(value, label)}
             className="p-2 text-os-text-muted hover:text-os-accent transition-colors rounded-md hover:bg-os-border/50"
-            title="Copier"
+            title={t('ui.contact.copy')}
           >
             {copiedField === label ? (
               <Check className="w-4 h-4 text-os-success" />
@@ -109,13 +111,13 @@ const ContactWindow: React.FC = () => {
           >
             <h2 className="text-xl font-semibold text-os-text flex items-center space-x-2 mb-6">
               <span className="text-os-accent">&gt;</span>
-              <span>Informations de contact</span>
+              <span>{t('ui.contact.contactInformation')}</span>
             </h2>
             
             <div className="space-y-4">
               <ContactItem
                 icon={<Mail className="w-5 h-5" />}
-                label="Email"
+                label={t('ui.contact.email')}
                 value={contact.email}
                 href={`mailto:${contact.email}`}
                 copyable
@@ -124,7 +126,7 @@ const ContactWindow: React.FC = () => {
               {contact.phone && (
                 <ContactItem
                   icon={<Phone className="w-5 h-5" />}
-                  label="Téléphone"
+                  label={t('ui.contact.phone')}
                   value={contact.phone}
                   href={`tel:${contact.phone}`}
                   copyable
@@ -133,7 +135,7 @@ const ContactWindow: React.FC = () => {
               
               <ContactItem
                 icon={<MapPin className="w-5 h-5" />}
-                label="Localisation"
+                label={t('ui.contact.location')}
                 value={contact.location}
                 copyable
               />
@@ -148,7 +150,7 @@ const ContactWindow: React.FC = () => {
           >
             <h3 className="text-lg font-semibold text-os-text flex items-center space-x-2 mb-4">
               <span className="text-os-accent">&gt;</span>
-              <span>Liens professionnels</span>
+              <span>{t('ui.contact.professionalLinks')}</span>
             </h3>
             
             <div className="space-y-4">
@@ -156,7 +158,7 @@ const ContactWindow: React.FC = () => {
                 <ContactItem
                   icon={<ExternalLink className="w-5 h-5" />}
                   label="LinkedIn"
-                  value="Voir mon profil"
+                  value={t('ui.contact.viewProfile')}
                   href={contact.linkedin}
                 />
               )}
@@ -165,7 +167,7 @@ const ContactWindow: React.FC = () => {
                 <ContactItem
                   icon={<ExternalLink className="w-5 h-5" />}
                   label="GitHub"
-                  value="Voir mes projets"
+                  value={t('ui.contact.viewProjects')}
                   href={contact.github}
                 />
               )}
@@ -173,8 +175,8 @@ const ContactWindow: React.FC = () => {
               {contact.website && (
                 <ContactItem
                   icon={<ExternalLink className="w-5 h-5" />}
-                  label="Site web"
-                  value="Visiter"
+                  label={t('ui.contact.website')}
+                  value={t('ui.contact.visit')}
                   href={contact.website}
                 />
               )}
@@ -188,7 +190,7 @@ const ContactWindow: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-os-success/10 border border-os-success/30 rounded-lg p-4"
           >
-            <h3 className="text-lg font-semibold text-os-success mb-2">Disponibilité</h3>
+            <h3 className="text-lg font-semibold text-os-success mb-2">{t('ui.contact.availability')}</h3>
             <p className="text-os-text-muted">
               {portfolioData.personal.availability}
             </p>
@@ -204,14 +206,14 @@ const ContactWindow: React.FC = () => {
           >
             <h2 className="text-xl font-semibold text-os-text flex items-center space-x-2 mb-6">
               <span className="text-os-accent">&gt;</span>
-              <span>Envoyer un message</span>
+              <span>{t('ui.contact.sendMessage')}</span>
             </h2>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-os-text mb-2">
-                    Nom *
+                    {t('ui.contact.nameRequired')}
                   </label>
                   <input
                     type="text"
@@ -221,13 +223,13 @@ const ContactWindow: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     className="input-field w-full"
-                    placeholder="Votre nom"
+                    placeholder={t('ui.contact.yourName')}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-os-text mb-2">
-                    Email *
+                    {t('ui.contact.email')} *
                   </label>
                   <input
                     type="email"
@@ -237,14 +239,14 @@ const ContactWindow: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     className="input-field w-full"
-                    placeholder="votre@email.com"
+                    placeholder={t('ui.contact.enterEmail')}
                   />
                 </div>
               </div>
               
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-os-text mb-2">
-                  Sujet *
+                  {t('ui.contact.subjectRequired')}
                 </label>
                 <input
                   type="text"
@@ -254,13 +256,13 @@ const ContactWindow: React.FC = () => {
                   onChange={handleInputChange}
                   required
                   className="input-field w-full"
-                  placeholder="Sujet de votre message"
+                  placeholder={t('ui.contact.messageSubject')}
                 />
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-os-text mb-2">
-                  Message *
+                  {t('ui.contact.message')} *
                 </label>
                 <textarea
                   id="message"
@@ -270,7 +272,7 @@ const ContactWindow: React.FC = () => {
                   required
                   rows={6}
                   className="input-field w-full resize-none"
-                  placeholder="Votre message..."
+                  placeholder={t('ui.contact.yourMessage')}
                 />
               </div>
               
@@ -294,17 +296,17 @@ const ContactWindow: React.FC = () => {
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                       className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
                     />
-                    <span>Envoi en cours...</span>
+                    <span>{t('ui.contact.sending')}</span>
                   </>
                 ) : submitStatus === 'success' ? (
                   <>
                     <Check className="w-4 h-4" />
-                    <span>Message envoyé !</span>
+                    <span>{t('ui.contact.messageSentShort')}</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span>Envoyer le message</span>
+                    <span>{t('ui.contact.sendMessageButton')}</span>
                   </>
                 )}
               </motion.button>
@@ -319,8 +321,7 @@ const ContactWindow: React.FC = () => {
             className="bg-os-darker/30 rounded-lg p-4 border border-os-border"
           >
             <p className="text-sm text-os-text-muted">
-              <strong className="text-os-accent">Note:</strong> Je réponds généralement sous 24h. 
-              Pour des demandes urgentes, n'hésitez pas à me contacter directement par téléphone.
+              <strong className="text-os-accent">{t('ui.contact.note')}</strong> {t('ui.contact.noteText')}
             </p>
           </motion.div>
         </div>
