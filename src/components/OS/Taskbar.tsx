@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { 
   User, FolderOpen, Briefcase, Code, Terminal, Mail, 
   Sun, Moon, Settings, Power 
 } from 'lucide-react';
+import LanguageSelector from './LanguageSelector';
 import type { AppConfig, WindowState } from '../../types/os';
 
 interface TaskbarProps {
@@ -42,13 +44,14 @@ const Taskbar: React.FC<TaskbarProps> = ({
   onAddNotification,
   onShutdown
 }) => {
+  const { t, i18n } = useTranslation();
   const getIcon = (iconName: string) => {
     const IconComponent = iconMap[iconName as keyof typeof iconMap];
     return IconComponent ? <IconComponent className="w-6 h-6" /> : <Code className="w-6 h-6" />;
   };
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('fr-FR', {
+    return date.toLocaleTimeString(i18n.language === 'fr' ? 'fr-FR' : 'en-US', {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit'
@@ -56,7 +59,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
   };
 
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString('fr-FR', {
+    return date.toLocaleDateString(i18n.language === 'fr' ? 'fr-FR' : 'en-US', {
       weekday: 'short',
       day: 'numeric',
       month: 'short'
@@ -66,26 +69,35 @@ const Taskbar: React.FC<TaskbarProps> = ({
   const handleThemeToggle = () => {
     onToggleTheme();
     onAddNotification({
-      title: 'Thème changé',
-      message: `Thème ${theme === 'dark' ? 'clair' : 'sombre'} activé`,
+      title: t('ui.notifications.themeChanged'),
+      message: t('ui.notifications.themeChangedMessage'),
       type: 'info',
       duration: 2000
     });
   };
 
   const handleShutdown = () => {
-    // Afficher une notification de confirmation
     onAddNotification({
-      title: 'Extinction en cours...',
-      message: 'Fermeture de toutes les applications',
+      title: t('ui.shutdown.shuttingDown'),
+      message: t('ui.shutdown.closingApplications'),
       type: 'warning',
       duration: 2000
     });
     
-    // Démarrer la séquence d'extinction après un petit délai
     setTimeout(() => {
       onShutdown();
     }, 1000);
+  };
+
+  const handleLanguageChange = (language: string) => {
+    onAddNotification({
+      title: t('ui.notifications.languageChanged'),
+      message: t('ui.notifications.languageChangedMessage', { 
+        language: language === 'en' ? 'English' : 'Français' 
+      }),
+      type: 'info',
+      duration: 3000
+    });
   };
 
   return (
@@ -102,13 +114,13 @@ const Taskbar: React.FC<TaskbarProps> = ({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => onAddNotification({
-              title: 'Menu principal',
-              message: 'Portfolio OS v1.0 - Développé par Romain MIRAS',
+              title: t('ui.taskbar.startMenu'),
+              message: 'Portfolio OS v1.0 - Romain MIRAS',
               type: 'info',
               duration: 4000
             })}
             className="dock-item group"
-            title="Menu principal"
+            title={t('ui.taskbar.startMenu')}
           >
             <Terminal className="w-6 h-6 text-os-accent" />
           </motion.button>
@@ -156,7 +168,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
             whileTap={{ scale: 0.95 }}
             onClick={handleThemeToggle}
             className="dock-item group"
-            title={`Passer au thème ${theme === 'dark' ? 'clair' : 'sombre'}`}
+            title={theme === 'dark' ? t('ui.taskbar.lightTheme') : t('ui.taskbar.darkTheme')}
           >
             {theme === 'dark' ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
           </motion.button>
@@ -166,16 +178,19 @@ const Taskbar: React.FC<TaskbarProps> = ({
             whileHover={{ scale: 1.1, rotate: 90 }}
             whileTap={{ scale: 0.95 }}
             className="dock-item group"
-            title="Paramètres"
+            title={t('ui.taskbar.settings')}
             onClick={() => onAddNotification({
-              title: 'Paramètres',
-              message: 'Fonctionnalité bientôt disponible',
+              title: t('ui.taskbar.settings'),
+              message: t('ui.comingSoon'),
               type: 'info',
               duration: 3000
             })}
           >
             <Settings className="w-6 h-6" />
           </motion.button>
+
+          {/* Language Selector */}
+          <LanguageSelector onLanguageChange={handleLanguageChange} />
 
           {/* Horloge système */}
           <div className="bg-os-lighter/50 border border-os-border rounded-lg px-4 py-2 text-center">
@@ -192,7 +207,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             className="dock-item group text-os-error"
-            title="Éteindre"
+            title={t('ui.taskbar.shutdown')}
             onClick={handleShutdown}
           >
             <Power className="w-6 h-6" />

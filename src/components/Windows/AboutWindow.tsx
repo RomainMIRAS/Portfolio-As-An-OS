@@ -1,10 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { MapPin, Calendar, Star, Download } from 'lucide-react';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 import { portfolioData } from '../../data/portfolio';
 
 const AboutWindow: React.FC = () => {
-  const { personal } = portfolioData;
+  const { t } = useTranslation();
+  const { personal } = usePortfolioData();
 
   // Fonction pour mettre en évidence les termes spécifiés
   const highlightTerms = (text: string, terms: string[]) => {
@@ -85,7 +88,7 @@ const AboutWindow: React.FC = () => {
         >
           <h3 className="text-xl font-semibold text-os-text flex items-center space-x-2">
             <span className="text-os-accent">&gt;</span>
-            <span>À propos de moi</span>
+            <span>{t('ui.about.overview')}</span>
           </h3>
           
           <div className="bg-os-darker/30 rounded-lg p-6 border border-os-border">
@@ -115,21 +118,21 @@ const AboutWindow: React.FC = () => {
             <div className="text-2xl font-bold text-os-accent mb-1">
               {portfolioData.projects.length}
             </div>
-            <div className="text-sm text-os-text-muted">Projets</div>
+            <div className="text-sm text-os-text-muted">{t('ui.about.projects')}</div>
           </div>
           
           <div className="bg-os-darker/30 rounded-lg p-4 border border-os-border text-center">
             <div className="text-2xl font-bold text-os-success mb-1">
               {portfolioData.experience.length}
             </div>
-            <div className="text-sm text-os-text-muted">Expériences</div>
+            <div className="text-sm text-os-text-muted">{t('ui.about.experiences')}</div>
           </div>
           
           <div className="bg-os-darker/30 rounded-lg p-4 border border-os-border text-center">
             <div className="text-2xl font-bold text-os-warning mb-1">
               {portfolioData.skills.reduce((acc, category) => acc + category.skills.length, 0)}
             </div>
-            <div className="text-sm text-os-text-muted">Compétences</div>
+            <div className="text-sm text-os-text-muted">{t('ui.about.skills')}</div>
           </div>
         </motion.div>
 
@@ -142,11 +145,11 @@ const AboutWindow: React.FC = () => {
         >
           <button className="button-primary flex items-center space-x-2">
             <Download className="w-4 h-4" />
-            <span>Télécharger CV</span>
+            <span>{t('ui.about.downloadCv')}</span>
           </button>
           
           <button className="button-secondary">
-            Voir Portfolio
+            {t('ui.about.viewPortfolio')}
           </button>
         </motion.div>
 
@@ -159,7 +162,7 @@ const AboutWindow: React.FC = () => {
         >
           <h3 className="text-xl font-semibold text-os-text flex items-center space-x-2">
             <span className="text-os-accent">&gt;</span>
-            <span>Parcours récent</span>
+            <span>{t('ui.about.recentJourney')}</span>
           </h3>
           
           <div className="space-y-3">

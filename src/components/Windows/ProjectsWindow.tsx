@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Github, ExternalLink, Calendar, Tag, Filter, Search } from 'lucide-react';
-import { portfolioData } from '../../data/portfolio';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const ProjectsWindow: React.FC = () => {
+  const { t } = useTranslation();
+  const { projects } = usePortfolioData();
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const categories = ['all', ...new Set(portfolioData.projects.map(p => p.category))];
+  const categories = ['all', ...new Set(projects.map(p => p.category))];
   
-  const filteredProjects = portfolioData.projects.filter(project => {
+  const filteredProjects = projects.filter(project => {
     const matchesFilter = filter === 'all' || project.category === filter;
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
