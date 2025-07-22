@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BootScreen from './components/OS/BootScreen';
+import ShutdownScreen from './components/OS/ShutdownScreen';
 import Wallpaper from './components/OS/Wallpaper';
 import Taskbar from './components/OS/Taskbar';
 import WindowManager from './components/OS/WindowManager';
 import NotificationCenter from './components/OS/NotificationCenter';
+import DesktopIcons from './components/OS/DesktopIcons';
 import useOSState from './hooks/useOSState';
 
 const App: React.FC = () => {
@@ -21,7 +23,10 @@ const App: React.FC = () => {
     updateWindowSize,
     toggleTheme,
     addNotification,
-    removeNotification
+    removeNotification,
+    initiateShutdown,
+    resetSystem,
+    toggleDesktopIcons
   } = useOSState();
 
   return (
@@ -29,6 +34,8 @@ const App: React.FC = () => {
       <AnimatePresence mode="wait">
         {!osState.isBootComplete ? (
           <BootScreen onBootComplete={markBootComplete} />
+        ) : osState.isShuttingDown ? (
+          <ShutdownScreen onComplete={resetSystem} />
         ) : (
           <motion.div
             initial={{ opacity: 0 }}
@@ -38,6 +45,14 @@ const App: React.FC = () => {
           >
             {/* Wallpaper */}
             <Wallpaper theme={osState.theme} wallpaper={osState.wallpaper} />
+
+            {/* Desktop Icons */}
+            <DesktopIcons
+              availableApps={availableApps}
+              onOpenApp={openApp}
+              visible={osState.desktopIconsVisible}
+              onToggleDesktopIcons={toggleDesktopIcons}
+            />
 
             {/* Window Manager */}
             <WindowManager
@@ -60,6 +75,7 @@ const App: React.FC = () => {
               onToggleMinimize={toggleMinimize}
               onToggleTheme={toggleTheme}
               onAddNotification={addNotification}
+              onShutdown={initiateShutdown}
             />
 
             {/* Notification Center */}

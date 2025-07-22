@@ -11,7 +11,8 @@ export const availableApps: AppConfig[] = [
     defaultSize: { width: 600, height: 500 },
     defaultPosition: { x: 100, y: 100 },
     resizable: true,
-    color: '#58a6ff'
+    color: '#58a6ff',
+    showOnDesktop: true
   },
   {
     id: 'projects',
@@ -21,17 +22,19 @@ export const availableApps: AppConfig[] = [
     defaultSize: { width: 800, height: 600 },
     defaultPosition: { x: 150, y: 50 },
     resizable: true,
-    color: '#3fb950'
+    color: '#3fb950',
+    showOnDesktop: true
   },
   {
     id: 'experience',
-    name: 'Expérience',
+    name: 'Expériences',
     icon: 'Briefcase',
     component: 'ExperienceWindow',
     defaultSize: { width: 700, height: 550 },
     defaultPosition: { x: 200, y: 80 },
     resizable: true,
-    color: '#d29922'
+    color: '#d29922',
+    showOnDesktop: true
   },
   {
     id: 'skills',
@@ -41,7 +44,8 @@ export const availableApps: AppConfig[] = [
     defaultSize: { width: 650, height: 500 },
     defaultPosition: { x: 250, y: 120 },
     resizable: true,
-    color: '#f85149'
+    color: '#f85149',
+    showOnDesktop: true
   },
   {
     id: 'terminal',
@@ -51,7 +55,8 @@ export const availableApps: AppConfig[] = [
     defaultSize: { width: 700, height: 400 },
     defaultPosition: { x: 300, y: 150 },
     resizable: true,
-    color: '#8b949e'
+    color: '#8b949e',
+    showOnDesktop: false // Terminal pas affiché sur le bureau par défaut
   },
   {
     id: 'contact',
@@ -61,7 +66,8 @@ export const availableApps: AppConfig[] = [
     defaultSize: { width: 750, height: 550 },
     defaultPosition: { x: 180, y: 100 },
     resizable: true,
-    color: '#79c0ff'
+    color: '#79c0ff',
+    showOnDesktop: true
   }
 ];
 
@@ -70,10 +76,12 @@ const useOSState = () => {
     windows: [],
     notifications: [],
     isBootComplete: false,
+    isShuttingDown: false,
     theme: 'dark',
     wallpaper: 'default',
     time: new Date(),
-    maxZIndex: 1000
+    maxZIndex: 1000,
+    desktopIconsVisible: true
   });
 
   // Mettre à jour l'heure toutes les secondes
@@ -237,6 +245,39 @@ const useOSState = () => {
     }));
   }, []);
 
+  // Initier la séquence d'extinction
+  const initiateShutdown = useCallback(() => {
+    // Fermer toutes les fenêtres d'abord
+    setOSState(prev => ({
+      ...prev,
+      windows: [],
+      isShuttingDown: true
+    }));
+  }, []);
+
+  // Réinitialiser le système (pour redémarrer)
+  const resetSystem = useCallback(() => {
+    setOSState({
+      windows: [],
+      notifications: [],
+      isBootComplete: false,
+      isShuttingDown: false,
+      theme: 'dark',
+      wallpaper: 'default',
+      time: new Date(),
+      maxZIndex: 1000,
+      desktopIconsVisible: true
+    });
+  }, []);
+
+  // Basculer la visibilité des icônes de bureau
+  const toggleDesktopIcons = useCallback(() => {
+    setOSState(prev => ({
+      ...prev,
+      desktopIconsVisible: !prev.desktopIconsVisible
+    }));
+  }, []);
+
   return {
     osState,
     availableApps,
@@ -250,7 +291,10 @@ const useOSState = () => {
     updateWindowSize,
     toggleTheme,
     addNotification,
-    removeNotification
+    removeNotification,
+    initiateShutdown,
+    resetSystem,
+    toggleDesktopIcons
   };
 };
 

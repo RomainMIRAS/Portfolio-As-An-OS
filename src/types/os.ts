@@ -14,12 +14,14 @@ export interface WindowState {
 export interface AppConfig {
   id: string;
   name: string;
+  shortName?: string; // Nom court pour l'affichage sur le bureau
   icon: string;
   component: string;
   defaultSize: { width: number; height: number };
   defaultPosition: { x: number; y: number };
   resizable: boolean;
   color?: string;
+  showOnDesktop?: boolean; // Nouvelle propriété pour contrôler l'affichage sur le bureau
 }
 
 export interface NotificationState {
@@ -35,10 +37,12 @@ export interface OSState {
   windows: WindowState[];
   notifications: NotificationState[];
   isBootComplete: boolean;
+  isShuttingDown: boolean;
   theme: 'light' | 'dark';
   wallpaper: string;
   time: Date;
   maxZIndex: number;
+  desktopIconsVisible?: boolean; // Nouvelle propriété pour contrôler la visibilité des icônes
 }
 
 export interface TerminalCommand {

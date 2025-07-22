@@ -7,7 +7,7 @@ const TerminalWindow: React.FC = () => {
   const [history, setHistory] = useState<Array<{ command: string; output: string; timestamp: Date }>>([]);
   const [currentCommand, setCurrentCommand] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
-  const [currentPath, setCurrentPath] = useState('~/portfolio');
+  const [currentPath] = useState('~/portfolio');
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 

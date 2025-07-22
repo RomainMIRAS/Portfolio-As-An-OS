@@ -188,18 +188,20 @@ const ProjectsWindow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Images du projet (placeholder) */}
+                {/* Images du projet */}
                 <div className="space-y-3">
                   <h4 className="text-sm font-medium text-os-text">Captures d'écran</h4>
                   <div className="grid grid-cols-1 gap-3">
                     {selectedProjectData.images.map((image, index) => (
                       <div
                         key={index}
-                        className="aspect-video bg-os-darker/50 rounded-lg border border-os-border flex items-center justify-center"
+                        className="rounded-lg border border-os-border overflow-hidden bg-os-darker/30 p-1"
                       >
-                        <span className="text-os-text-muted text-sm">
-                          Image du projet {index + 1}
-                        </span>
+                        <img 
+                          src={image} 
+                          alt={`${selectedProjectData.title} - Image ${index + 1}`}
+                          className="w-full object-contain max-h-[300px] mx-auto"
+                        />
                       </div>
                     ))}
                   </div>

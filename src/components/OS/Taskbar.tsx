@@ -15,6 +15,7 @@ interface TaskbarProps {
   onToggleMinimize: (windowId: string) => void;
   onToggleTheme: () => void;
   onAddNotification: (notification: { title: string; message: string; type: 'info' | 'success' | 'warning' | 'error'; duration?: number }) => void;
+  onShutdown: () => void;
 }
 
 const iconMap = {
@@ -38,7 +39,8 @@ const Taskbar: React.FC<TaskbarProps> = ({
   onOpenApp, 
   onToggleMinimize,
   onToggleTheme,
-  onAddNotification
+  onAddNotification,
+  onShutdown
 }) => {
   const getIcon = (iconName: string) => {
     const IconComponent = iconMap[iconName as keyof typeof iconMap];
@@ -71,6 +73,21 @@ const Taskbar: React.FC<TaskbarProps> = ({
     });
   };
 
+  const handleShutdown = () => {
+    // Afficher une notification de confirmation
+    onAddNotification({
+      title: 'Extinction en cours...',
+      message: 'Fermeture de toutes les applications',
+      type: 'warning',
+      duration: 2000
+    });
+    
+    // Démarrer la séquence d'extinction après un petit délai
+    setTimeout(() => {
+      onShutdown();
+    }, 1000);
+  };
+
   return (
     <motion.div
       initial={{ y: 100 }}
@@ -81,13 +98,20 @@ const Taskbar: React.FC<TaskbarProps> = ({
       <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto">
         {/* Section gauche - Logo et menu */}
         <div className="flex items-center space-x-4">
-          <motion.div
+          <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="dock-item group bg-os-accent/20 border-os-accent/50"
+            onClick={() => onAddNotification({
+              title: 'Menu principal',
+              message: 'Portfolio OS v1.0 - Développé par Romain MIRAS',
+              type: 'info',
+              duration: 4000
+            })}
+            className="dock-item group"
+            title="Menu principal"
           >
             <Terminal className="w-6 h-6 text-os-accent" />
-          </motion.div>
+          </motion.button>
         </div>
 
         {/* Section centrale - Applications */}
@@ -169,12 +193,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
             whileTap={{ scale: 0.95 }}
             className="dock-item group text-os-error"
             title="Éteindre"
-            onClick={() => onAddNotification({
-              title: 'Système',
-              message: 'Merci d\'avoir visité mon portfolio !',
-              type: 'success',
-              duration: 5000
-            })}
+            onClick={handleShutdown}
           >
             <Power className="w-6 h-6" />
           </motion.button>

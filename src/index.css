@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   body {
@@ -39,7 +39,7 @@
   }
 
   .window-content {
-    @apply p-6 overflow-auto max-h-96;
+    @apply p-6 overflow-auto;
   }
 
   .button-primary {
@@ -75,7 +75,7 @@
   }
 
   .terminal-content {
-    @apply p-4 h-64 overflow-auto;
+    @apply p-4 flex-1 overflow-auto;
   }
 
   .taskbar {
