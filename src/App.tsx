@@ -21,7 +21,6 @@ const App: React.FC = () => {
     toggleMaximize,
     updateWindowPosition,
     updateWindowSize,
-    toggleTheme,
     addNotification,
     removeNotification,
     initiateShutdown,
@@ -46,7 +45,7 @@ const App: React.FC = () => {
             className="relative h-screen overflow-hidden"
           >
             {/* Wallpaper */}
-            <Wallpaper theme={osState.theme} wallpaper={osState.wallpaper} />
+            <Wallpaper theme="dark" wallpaper={osState.wallpaper} />
 
             {/* Desktop Icons */}
             <DesktopIcons
@@ -72,10 +71,8 @@ const App: React.FC = () => {
               availableApps={availableApps}
               openWindows={osState.windows}
               currentTime={osState.time}
-              theme={osState.theme}
               onOpenApp={openApp}
               onToggleMinimize={toggleMinimize}
-              onToggleTheme={toggleTheme}
               onAddNotification={addNotification}
               onShutdown={initiateShutdown}
             />
