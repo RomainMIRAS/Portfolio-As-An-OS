@@ -112,7 +112,9 @@ const DesktopIcons: React.FC<DesktopIconsProps> = ({
     >
       {desktopApps.map((app, index) => {
         const position = gridPositions[index];
-        const IconComponent = Icons[app.icon as keyof typeof Icons] as React.ComponentType<{ className?: string; size?: number }> | undefined;
+        const IconComponent = Icons[app.icon as keyof typeof Icons] as React.ComponentType<{ className?: string; size?: number }>;
+        
+        if (!IconComponent) return null;
         
         return (
           <motion.div
