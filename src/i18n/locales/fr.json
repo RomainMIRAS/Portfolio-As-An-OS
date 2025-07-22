@@ -283,12 +283,24 @@
       "shuttingDown": "Arrêt en cours...",
       "savingData": "Sauvegarde des données...",
       "closingApplications": "Fermeture des applications...",
-      "goodbye": "À bientôt !"
+      "goodbye": "À bientôt !",
+      "preparing": "Préparation de l'extinction...",
+      "systemShutdown": "Fermeture du système...",
+      "thankYouMessage": "Merci d'avoir visité mon portfolio !",
+      "enjoyedVisit": "J'espère que cette visite vous a plu ! 🚀",
+      "progress": "Progression",
+      "portfolioOSClosed": "✨ Portfolio OS fermé ✨"
     },
     "languageSelector": {
       "english": "English",
       "french": "Français",
       "selectLanguage": "Choisir la Langue"
+    },
+    "windowControls": {
+      "minimize": "Minimiser",
+      "maximize": "Maximiser", 
+      "restore": "Restaurer",
+      "close": "Fermer"
     },
     "desktop": {
       "showIcons": "Afficher les icônes du bureau",

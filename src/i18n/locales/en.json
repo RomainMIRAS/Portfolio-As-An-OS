@@ -283,12 +283,24 @@
       "shuttingDown": "Shutting down...",
       "savingData": "Saving data...",
       "closingApplications": "Closing applications...",
-      "goodbye": "See you soon!"
+      "goodbye": "See you soon!",
+      "preparing": "Preparing to shutdown...",
+      "systemShutdown": "System shutdown...",
+      "thankYouMessage": "Thank you for visiting my portfolio!",
+      "enjoyedVisit": "I hope you enjoyed this visit! 🚀",
+      "progress": "Progress",
+      "portfolioOSClosed": "✨ Portfolio OS closed ✨"
     },
     "languageSelector": {
       "english": "English",
       "french": "Français",
       "selectLanguage": "Select Language"
+    },
+    "windowControls": {
+      "minimize": "Minimize",
+      "maximize": "Maximize", 
+      "restore": "Restore",
+      "close": "Close"
     },
     "desktop": {
       "showIcons": "Show desktop icons",
