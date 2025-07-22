@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { TrendingUp, Award, Star } from 'lucide-react';
 import { portfolioData } from '../../data/portfolio';
 
+import type { Skill } from '../../data/portfolio';
+
 const SkillsWindow: React.FC = () => {
   const { skills } = portfolioData;
 
@@ -13,7 +15,7 @@ const SkillsWindow: React.FC = () => {
     return { label: 'Débutant', color: 'text-os-error', bgColor: 'bg-os-error' };
   };
 
-  const SkillBar: React.FC<{ skill: any; index: number }> = ({ skill, index }) => {
+  const SkillBar: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) => {
     const levelInfo = getSkillLevel(skill.level);
     
     return (

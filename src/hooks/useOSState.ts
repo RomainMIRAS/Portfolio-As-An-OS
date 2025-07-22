@@ -209,6 +209,14 @@ const useOSState = () => {
   }, []);
 
   // Ajouter une notification
+  // Supprimer une notification
+  const removeNotification = useCallback((notificationId: string) => {
+    setOSState(prev => ({
+      ...prev,
+      notifications: prev.notifications.filter(n => n.id !== notificationId)
+    }));
+  }, []);
+
   const addNotification = useCallback((notification: Omit<NotificationState, 'id' | 'timestamp'>) => {
     const newNotification: NotificationState = {
       ...notification,
@@ -227,15 +235,7 @@ const useOSState = () => {
         removeNotification(newNotification.id);
       }, notification.duration);
     }
-  }, []);
-
-  // Supprimer une notification
-  const removeNotification = useCallback((notificationId: string) => {
-    setOSState(prev => ({
-      ...prev,
-      notifications: prev.notifications.filter(n => n.id !== notificationId)
-    }));
-  }, []);
+  }, [removeNotification]);
 
   return {
     osState,

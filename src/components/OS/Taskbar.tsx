@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { 
   User, FolderOpen, Briefcase, Code, Terminal, Mail, 
-  Sun, Moon, Settings, Power 
+  Sun, Moon, Settings, Power, Globe
 } from 'lucide-react';
 import type { AppConfig, WindowState } from '../../types/os';
 
@@ -27,7 +28,8 @@ const iconMap = {
   Sun,
   Moon,
   Settings,
-  Power
+  Power,
+  Globe
 };
 
 const Taskbar: React.FC<TaskbarProps> = ({ 
@@ -40,6 +42,18 @@ const Taskbar: React.FC<TaskbarProps> = ({
   onToggleTheme,
   onAddNotification
 }) => {
+  const { t, i18n } = useTranslation();
+  
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'fr' : 'en';
+    i18n.changeLanguage(newLang);
+    onAddNotification({
+      title: t('ui.language'),
+      message: `${t('ui.language')}: ${newLang.toUpperCase()}`,
+      type: 'info',
+      duration: 2000
+    });
+  };
   const getIcon = (iconName: string) => {
     const IconComponent = iconMap[iconName as keyof typeof iconMap];
     return IconComponent ? <IconComponent className="w-6 h-6" /> : <Code className="w-6 h-6" />;
@@ -135,6 +149,20 @@ const Taskbar: React.FC<TaskbarProps> = ({
             title={`Passer au thème ${theme === 'dark' ? 'clair' : 'sombre'}`}
           >
             {theme === 'dark' ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+          </motion.button>
+
+          {/* Bouton langue */}
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={toggleLanguage}
+            className="dock-item group relative"
+            title={`${t('ui.language')}: ${i18n.language.toUpperCase()}`}
+          >
+            <Globe className="w-6 h-6" />
+            <span className="absolute -top-1 -right-1 bg-os-accent text-white text-xs rounded-full px-1 font-mono">
+              {i18n.language.toUpperCase()}
+            </span>
           </motion.button>
 
           {/* Bouton paramètres */}

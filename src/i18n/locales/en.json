@@ -1,0 +1,151 @@
+{
+  "personal": {
+    "name": "Your Name",
+    "title": "Full Stack Developer",
+    "bio": "Passionate about creating innovative digital experiences, I develop modern and performant web applications. With expertise in React, TypeScript and Node.js, I love transforming complex ideas into elegant and intuitive solutions.",
+    "location": "Paris, France",
+    "availability": "Available for new projects"
+  },
+  "projects": {
+    "title": "Projects",
+    "osPortfolio": {
+      "title": "OS Portfolio",
+      "description": "Immersive portfolio simulating an operating system",
+      "longDescription": "A unique interactive portfolio that simulates the experience of a personalized operating system. Developed with React, TypeScript and TailwindCSS, it offers an innovative user interface with draggable windows, an interactive terminal and smooth animations."
+    },
+    "ecommerceApp": {
+      "title": "E-commerce Platform",
+      "description": "Complete e-commerce platform with integrated payment",
+      "longDescription": "Full-stack e-commerce application with product management, shopping cart, Stripe payment system, admin dashboard and responsive user interface."
+    },
+    "taskManager": {
+      "title": "Task Manager",
+      "description": "Collaborative task management application",
+      "longDescription": "Team productivity tool with project management, task assignment, time tracking and real-time notifications."
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "seniorDev": {
+      "company": "TechCorp Solutions",
+      "position": "Senior Full Stack Developer",
+      "duration": "2 years",
+      "description": "Development of complex web applications for enterprise clients. Technical lead on several projects, mentoring junior developers and performance optimization."
+    },
+    "fullStackDev": {
+      "company": "StartupXYZ",
+      "position": "Full Stack Developer",
+      "duration": "1.5 years",
+      "description": "Development of the startup's main application, from design to production. Working in an agile team with rapid development cycles."
+    },
+    "frontendDev": {
+      "company": "WebAgency Pro",
+      "position": "Frontend Developer",
+      "duration": "1 year",
+      "description": "Creating responsive and interactive user interfaces for websites and mobile applications. Close collaboration with UX/UI designers."
+    }
+  },
+  "education": {
+    "title": "Education",
+    "masterCs": {
+      "institution": "École Supérieure d'Informatique",
+      "degree": "Master",
+      "field": "Computer Science and Information Systems",
+      "duration": "2 years",
+      "description": "Specialization in web development and software architecture. Final project on Progressive Web Apps."
+    },
+    "licenseInfo": {
+      "institution": "Université de Technologie",
+      "degree": "Bachelor",
+      "field": "Computer Science",
+      "duration": "3 years",
+      "description": "Complete training in computer science with focus on programming and algorithms."
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "devopsTools": "DevOps & Tools",
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "beginner": "Beginner"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "contact@votre-nom.com",
+    "phone": "+33 6 12 34 56 78",
+    "location": "Paris, France"
+  },
+  "ui": {
+    "about": "About",
+    "recentExperience": "Recent Experience",
+    "biography": "Biography",
+    "screenshots": "Screenshots",
+    "technologies": "Technologies",
+    "category": "Category",
+    "liveDemo": "Live Demo",
+    "sourceCode": "Source Code",
+    "close": "Close",
+    "minimize": "Minimize",
+    "maximize": "Maximize",
+    "language": "Language",
+    "theme": "Theme",
+    "notifications": "Notifications"
+  },
+  "terminal": {
+    "help": {
+      "command": "help",
+      "description": "Show the list of available commands"
+    },
+    "about": {
+      "command": "about",
+      "description": "Show personal information"
+    },
+    "projects": {
+      "command": "projects",
+      "description": "List projects"
+    },
+    "skills": {
+      "command": "skills",
+      "description": "Show technical skills"
+    },
+    "experience": {
+      "command": "experience",
+      "description": "Show professional experience"
+    },
+    "contact": {
+      "command": "contact",
+      "description": "Show contact information"
+    },
+    "clear": {
+      "command": "clear",
+      "description": "Clear the terminal"
+    },
+    "theme": {
+      "command": "theme",
+      "description": "Toggle between light and dark theme"
+    },
+    "responses": {
+      "availableCommands": "Available commands:",
+      "useHelpCommand": "Use 'help <command>' for more information.",
+      "projectNotFound": "Project #{{number}} not found. Use 'projects' to see the list.",
+      "unknownCommand": "Unknown command: {{command}}. Type 'help' for available commands.",
+      "terminalCleared": "Terminal cleared.",
+      "themeChanged": "Theme changed to {{theme}}."
+    }
+  },
+  "bootScreen": {
+    "systemStatus": "System Status",
+    "initializingSystem": "Initializing system...",
+    "loadingKernel": "Loading kernel modules...",
+    "startingServices": "Starting system services...",
+    "mountingFilesystems": "Mounting filesystems...",
+    "loadingUserProfile": "Loading user profile...",
+    "systemReady": "System ready. Welcome!",
+    "pressAnyKey": "Press any key to continue..."
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "personal": {
+    "name": "Votre Nom",
+    "title": "Développeur Full Stack",
+    "bio": "Passionné par la création d'expériences numériques innovantes, je développe des applications web modernes et performantes. Avec une expertise en React, TypeScript et Node.js, j'aime transformer des idées complexes en solutions élégantes et intuitives.",
+    "location": "Paris, France",
+    "availability": "Disponible pour de nouveaux projets"
+  },
+  "projects": {
+    "title": "Projets",
+    "osPortfolio": {
+      "title": "OS Portfolio",
+      "description": "Portfolio immersif simulant un système d'exploitation",
+      "longDescription": "Un portfolio interactif unique qui simule l'expérience d'un système d'exploitation personnalisé. Développé avec React, TypeScript et TailwindCSS, il offre une interface utilisateur innovante avec des fenêtres draggables, un terminal interactif et des animations fluides."
+    },
+    "ecommerceApp": {
+      "title": "E-commerce Platform",
+      "description": "Plateforme e-commerce complète avec paiement intégré",
+      "longDescription": "Application e-commerce full-stack avec gestion des produits, panier d'achat, système de paiement Stripe, tableau de bord administrateur et interface utilisateur responsive."
+    },
+    "taskManager": {
+      "title": "Task Manager",
+      "description": "Application de gestion de tâches collaborative",
+      "longDescription": "Outil de productivité en équipe avec gestion de projets, attribution de tâches, suivi du temps et notifications en temps réel."
+    }
+  },
+  "experience": {
+    "title": "Expérience",
+    "seniorDev": {
+      "company": "TechCorp Solutions",
+      "position": "Développeur Senior Full Stack",
+      "duration": "2 ans",
+      "description": "Développement d'applications web complexes pour des clients enterprise. Lead technique sur plusieurs projets, mentoring des développeurs juniors et optimisation des performances."
+    },
+    "fullStackDev": {
+      "company": "StartupXYZ",
+      "position": "Développeur Full Stack",
+      "duration": "1.5 ans",
+      "description": "Développement de l'application principale de la startup, de la conception à la mise en production. Travail en équipe agile avec des cycles de développement rapides."
+    },
+    "frontendDev": {
+      "company": "WebAgency Pro",
+      "position": "Développeur Frontend",
+      "duration": "1 an",
+      "description": "Création d'interfaces utilisateur responsives et interactives pour des sites web et applications mobiles. Collaboration étroite avec les designers UX/UI."
+    }
+  },
+  "education": {
+    "title": "Formation",
+    "masterCs": {
+      "institution": "École Supérieure d'Informatique",
+      "degree": "Master",
+      "field": "Informatique et Systèmes d'Information",
+      "duration": "2 ans",
+      "description": "Spécialisation en développement web et architecture logicielle. Projet de fin d'études sur les Progressive Web Apps."
+    },
+    "licenseInfo": {
+      "institution": "Université de Technologie",
+      "degree": "Licence",
+      "field": "Informatique",
+      "duration": "3 ans",
+      "description": "Formation complète en informatique avec focus sur la programmation et les algorithmes."
+    }
+  },
+  "skills": {
+    "title": "Compétences",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "devopsTools": "DevOps & Outils",
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Avancé",
+      "intermediate": "Intermédiaire",
+      "beginner": "Débutant"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "contact@votre-nom.com",
+    "phone": "+33 6 12 34 56 78",
+    "location": "Paris, France"
+  },
+  "ui": {
+    "about": "À propos",
+    "recentExperience": "Parcours récent",
+    "biography": "Biographie",
+    "screenshots": "Captures d'écran",
+    "technologies": "Technologies",
+    "category": "Catégorie",
+    "liveDemo": "Démo en direct",
+    "sourceCode": "Code source",
+    "close": "Fermer",
+    "minimize": "Réduire",
+    "maximize": "Agrandir",
+    "language": "Langue",
+    "theme": "Thème",
+    "notifications": "Notifications"
+  },
+  "terminal": {
+    "help": {
+      "command": "help",
+      "description": "Affiche la liste des commandes disponibles"
+    },
+    "about": {
+      "command": "about",
+      "description": "Affiche les informations personnelles"
+    },
+    "projects": {
+      "command": "projects",
+      "description": "Liste les projets"
+    },
+    "skills": {
+      "command": "skills",
+      "description": "Affiche les compétences techniques"
+    },
+    "experience": {
+      "command": "experience",
+      "description": "Affiche l'expérience professionnelle"
+    },
+    "contact": {
+      "command": "contact",
+      "description": "Affiche les informations de contact"
+    },
+    "clear": {
+      "command": "clear",
+      "description": "Efface le terminal"
+    },
+    "theme": {
+      "command": "theme",
+      "description": "Bascule entre le thème clair et sombre"
+    },
+    "responses": {
+      "availableCommands": "Commandes disponibles:",
+      "useHelpCommand": "Utilisez 'help <commande>' pour plus d'informations.",
+      "projectNotFound": "Projet #{{number}} non trouvé. Utilisez 'projects' pour voir la liste.",
+      "unknownCommand": "Commande inconnue: {{command}}. Tapez 'help' pour voir les commandes disponibles.",
+      "terminalCleared": "Terminal effacé.",
+      "themeChanged": "Thème changé vers {{theme}}."
+    }
+  },
+  "bootScreen": {
+    "systemStatus": "État du système",
+    "initializingSystem": "Initialisation du système...",
+    "loadingKernel": "Chargement des modules noyau...",
+    "startingServices": "Démarrage des services système...",
+    "mountingFilesystems": "Montage des systèmes de fichiers...",
+    "loadingUserProfile": "Chargement du profil utilisateur...",
+    "systemReady": "Système prêt. Bienvenue !",
+    "pressAnyKey": "Appuyez sur une touche pour continuer..."
+  }
+}

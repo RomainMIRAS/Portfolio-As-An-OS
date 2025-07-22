@@ -192,7 +192,7 @@ const ProjectsWindow: React.FC = () => {
                 <div className="space-y-3">
                   <h4 className="text-sm font-medium text-os-text">Captures d'écran</h4>
                   <div className="grid grid-cols-1 gap-3">
-                    {selectedProjectData.images.map((image, index) => (
+                    {selectedProjectData.images.map((_, index) => (
                       <div
                         key={index}
                         className="aspect-video bg-os-darker/50 rounded-lg border border-os-border flex items-center justify-center"

@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { MapPin, Calendar, Star, Download } from 'lucide-react';
 import { portfolioData } from '../../data/portfolio';
 
 const AboutWindow: React.FC = () => {
   const { personal } = portfolioData;
+  const { t } = useTranslation();
 
   return (
     <div className="h-full overflow-auto">
@@ -18,22 +20,22 @@ const AboutWindow: React.FC = () => {
         >
           <div className="flex-shrink-0">
             <div className="w-24 h-24 bg-gradient-to-br from-os-accent to-os-accent-hover rounded-full flex items-center justify-center text-3xl font-bold text-white">
-              {personal.name.split(' ').map(n => n[0]).join('')}
+              {t('personal.name').split(' ').map(n => n[0]).join('')}
             </div>
           </div>
           
           <div className="flex-1 min-w-0">
-            <h2 className="text-2xl font-bold text-os-text mb-2">{personal.name}</h2>
-            <p className="text-lg text-os-accent mb-3">{personal.title}</p>
+            <h2 className="text-2xl font-bold text-os-text mb-2">{t('personal.name')}</h2>
+            <p className="text-lg text-os-accent mb-3">{t('personal.title')}</p>
             
             <div className="flex flex-wrap gap-4 text-sm text-os-text-muted">
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>{personal.location}</span>
+                <span>{t('personal.location')}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Star className="w-4 h-4 text-os-success" />
-                <span>{personal.availability}</span>
+                <span>{t('personal.availability')}</span>
               </div>
             </div>
           </div>
@@ -48,12 +50,12 @@ const AboutWindow: React.FC = () => {
         >
           <h3 className="text-xl font-semibold text-os-text flex items-center space-x-2">
             <span className="text-os-accent">&gt;</span>
-            <span>À propos de moi</span>
+            <span>{t('ui.biography')}</span>
           </h3>
           
           <div className="bg-os-darker/30 rounded-lg p-6 border border-os-border">
             <p className="text-os-text-muted leading-relaxed">
-              {personal.bio}
+              {t('personal.bio')}
             </p>
           </div>
         </motion.div>
@@ -113,11 +115,11 @@ const AboutWindow: React.FC = () => {
         >
           <h3 className="text-xl font-semibold text-os-text flex items-center space-x-2">
             <span className="text-os-accent">&gt;</span>
-            <span>Parcours récent</span>
+            <span>{t('ui.recentExperience')}</span>
           </h3>
           
           <div className="space-y-3">
-            {portfolioData.experience.slice(0, 2).map((exp, index) => (
+            {portfolioData.experience.slice(0, 2).map((exp) => (
               <div key={exp.id} className="flex items-start space-x-3 p-4 bg-os-darker/30 rounded-lg border border-os-border">
                 <div className="flex-shrink-0 mt-1">
                   <Calendar className="w-4 h-4 text-os-accent" />
