@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, Phone, MapPin, ExternalLink, Copy, Check } from 'lucide-react';
-import { portfolioData } from '../../data/portfolio';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const ContactWindow: React.FC = () => {
+  const portfolioData = usePortfolioData();
   const [formData, setFormData] = useState({
     name: '',
     email: '',

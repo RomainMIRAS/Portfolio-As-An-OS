@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { portfolioData } from '../../data/portfolio';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 import type { TerminalCommand } from '../../types/os';
 
 const TerminalWindow: React.FC = () => {
+  const portfolioData = usePortfolioData();
   const [history, setHistory] = useState<Array<{ command: string; output: string; timestamp: Date }>>([]);
   const [currentCommand, setCurrentCommand] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);

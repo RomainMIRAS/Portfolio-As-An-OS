@@ -30,7 +30,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange })
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 bg-os-dark/80 hover:bg-os-dark text-os-text rounded-lg border border-os-border/50 backdrop-blur-sm transition-colors"
+        className="flex items-center space-x-2 px-3 py-2 bg-os-lighter/50 hover:bg-os-lighter text-os-text rounded-lg border border-os-border/50 backdrop-blur-sm transition-colors min-w-[120px]"
         title={t('ui.languageSelector.selectLanguage')}
       >
         <Globe className="w-4 h-4" />
@@ -46,7 +46,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange })
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full mt-2 right-0 bg-os-dark/95 backdrop-blur-sm border border-os-border/50 rounded-lg shadow-lg overflow-hidden z-50"
+            className="absolute top-full mt-2 right-0 bg-os-light/95 backdrop-blur-sm border border-os-border/50 rounded-lg shadow-lg overflow-hidden z-[100] min-w-[160px]"
           >
             {languages.map((language) => (
               <motion.button
@@ -56,7 +56,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange })
                 className={`w-full px-4 py-3 flex items-center space-x-3 text-left transition-colors ${
                   i18n.language === language.code 
                     ? 'bg-os-accent/20 text-os-accent' 
-                    : 'text-os-text hover:text-os-accent'
+                    : 'text-os-text hover:text-os-accent hover:bg-os-accent/10'
                 }`}
               >
                 <span className="text-lg">{language.flag}</span>
@@ -73,7 +73,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange })
       {/* Backdrop to close dropdown */}
       {isOpen && (
         <div 
-          className="fixed inset-0 z-40" 
+          className="fixed inset-0 z-[90]" 
           onClick={() => setIsOpen(false)}
         />
       )}

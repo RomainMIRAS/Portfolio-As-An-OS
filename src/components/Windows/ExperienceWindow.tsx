@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
-import { portfolioData } from '../../data/portfolio';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const ExperienceWindow: React.FC = () => {
+  const portfolioData = usePortfolioData();
   const { experience, education } = portfolioData;
 
   const getTypeColor = (type: string) => {

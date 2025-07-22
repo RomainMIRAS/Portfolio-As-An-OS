@@ -3,11 +3,10 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { MapPin, Calendar, Star, Download } from 'lucide-react';
 import { usePortfolioData } from '../../hooks/usePortfolioData';
-import { portfolioData } from '../../data/portfolio';
 
 const AboutWindow: React.FC = () => {
   const { t } = useTranslation();
-  const { personal } = usePortfolioData();
+  const portfolioData = usePortfolioData();
 
   // Fonction pour mettre en évidence les termes spécifiés
   const highlightTerms = (text: string, terms: string[]) => {
@@ -43,10 +42,10 @@ const AboutWindow: React.FC = () => {
         >
           <div className="flex-shrink-0">
             <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-os-accent/50 shadow-lg">
-              {personal.avatar ? (
+              {portfolioData.personal.avatar ? (
                 <img 
-                  src={personal.avatar} 
-                  alt={personal.name}
+                  src={portfolioData.personal.avatar} 
+                  alt={portfolioData.personal.name}
                   className="w-full h-full object-cover object-center filter brightness-105 contrast-105"
                   style={{ 
                     imageRendering: 'crisp-edges',
@@ -56,24 +55,24 @@ const AboutWindow: React.FC = () => {
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-os-accent to-os-accent-hover flex items-center justify-center text-4xl font-bold text-white">
-                  {personal.name.split(' ').map(n => n[0]).join('')}
+                  {portfolioData.personal.name.split(' ').map(n => n[0]).join('')}
                 </div>
               )}
             </div>
           </div>
           
           <div className="flex-1 min-w-0">
-            <h2 className="text-2xl font-bold text-os-text mb-2">{personal.name}</h2>
-            <p className="text-lg text-os-accent mb-3">{personal.title}</p>
+            <h2 className="text-2xl font-bold text-os-text mb-2">{portfolioData.personal.name}</h2>
+            <p className="text-lg text-os-accent mb-3">{portfolioData.personal.title}</p>
             
             <div className="flex flex-wrap gap-4 text-sm text-os-text-muted">
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>{personal.location}</span>
+                <span>{portfolioData.personal.location}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Star className="w-4 h-4 text-os-success" />
-                <span>{personal.availability}</span>
+                <span>{portfolioData.personal.availability}</span>
               </div>
             </div>
           </div>
@@ -93,11 +92,11 @@ const AboutWindow: React.FC = () => {
           
           <div className="bg-os-darker/30 rounded-lg p-6 border border-os-border">
             <div className="text-os-text-muted leading-relaxed space-y-4">
-              {personal.bio.split('\n\n').map((paragraph, index) => (
+              {portfolioData.personal.bio.split('\n\n').map((paragraph, index) => (
                 <p key={index} className="text-justify">
                   {paragraph.split('\n').map((line, lineIndex, lines) => (
                     <span key={lineIndex}>
-                      {highlightTerms(line, personal.highlightedTerms)}
+                      {highlightTerms(line, portfolioData.personal.highlightedTerms)}
                       {lineIndex < lines.length - 1 && <br />}
                     </span>
                   ))}
