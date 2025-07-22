@@ -149,7 +149,8 @@
       "fullTime": "Temps plein",
       "partTime": "Temps partiel",
       "contract": "Contrat",
-      "internship": "Stage"
+      "internship": "Stage",
+      "at": "chez"
     },
     "skills": {
       "title": "Compétences",
@@ -160,23 +161,38 @@
     },
     "terminal": {
       "title": "Terminal",
-      "welcome": "Bienvenue dans le Terminal Portfolio OS v1.0.0",
+      "welcome": "PortfolioOS Terminal v1.0.0\nBienvenue ! Tapez 'help' pour voir les commandes disponibles.\n",
       "helpText": "Tapez 'help' pour voir les commandes disponibles.",
+      "prompt": "Tapez une commande...",
+      "processing": "Traitement",
+      "helpFooter": "Astuce: Utilisez 'help' pour voir toutes les commandes | 'clear' pour effacer l'écran",
       "commands": {
-        "help": "Afficher les commandes disponibles",
-        "about": "Afficher les informations personnelles",
-        "projects": "Lister tous les projets",
-        "skills": "Afficher les compétences techniques",
-        "contact": "Afficher les informations de contact",
-        "clear": "Effacer le terminal",
-        "theme": "Changer le thème (clair/sombre)",
-        "lang": "Changer la langue (en/fr)",
-        "whoami": "Afficher l'utilisateur actuel"
+        "help": "Affiche la liste des commandes disponibles",
+        "about": "Affiche les informations personnelles",
+        "projects": "Liste les projets",
+        "skills": "Affiche les compétences techniques",
+        "experience": "Affiche l'expérience professionnelle",
+        "contact": "Affiche les informations de contact",
+        "clear": "Efface l'écran du terminal",
+        "ls": "Liste le contenu du répertoire",
+        "pwd": "Affiche le répertoire courant",
+        "whoami": "Affiche l'utilisateur courant",
+        "date": "Affiche la date et l'heure actuelles",
+        "echo": "Affiche du texte"
       },
-      "commandNotFound": "Commande introuvable : {{command}}. Tapez 'help' pour les commandes disponibles.",
-      "currentUser": "invité@portfolio-os",
-      "themeChanged": "Thème changé vers {{theme}}",
-      "languageChanged": "Langue changée vers {{language}}"
+      "commandsAvailable": "Commandes disponibles:",
+      "useHelpCommand": "Utilisez 'help <commande>' pour plus d'informations.",
+      "projectNotFound": "Projet #{{number}} non trouvé. Utilisez 'projects' pour voir la liste.",
+      "categoryNotFound": "Catégorie '{{category}}' non trouvée.",
+      "commandNotFound": "Commande '{{command}}' non reconnue. Tapez 'help' pour voir les commandes disponibles.",
+      "executionError": "Erreur lors de l'exécution de '{{command}}': {{error}}",
+      "contactInfo": "Informations de contact:",
+      "period": "Période:",
+      "location": "Lieu:",
+      "technologies": "Technologies:",
+      "github": "GitHub:",
+      "demo": "Demo:",
+      "notAvailable": "N/A"
     },
     "contact": {
       "title": "Contact",

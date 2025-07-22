@@ -42,11 +42,11 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange })
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full mt-2 right-0 bg-os-light/95 backdrop-blur-sm border border-os-border/50 rounded-lg shadow-lg overflow-hidden z-[100] min-w-[160px]"
+            className="absolute bottom-full mb-2 right-0 bg-os-light/95 backdrop-blur-sm border border-os-border/50 rounded-lg shadow-lg overflow-hidden z-[100] min-w-[160px]"
           >
             {languages.map((language) => (
               <motion.button

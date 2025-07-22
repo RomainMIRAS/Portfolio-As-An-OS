@@ -149,7 +149,8 @@
       "fullTime": "Full-time",
       "partTime": "Part-time",
       "contract": "Contract",
-      "internship": "Internship"
+      "internship": "Internship",
+      "at": "at"
     },
     "skills": {
       "title": "Skills",
@@ -160,23 +161,38 @@
     },
     "terminal": {
       "title": "Terminal",
-      "welcome": "Welcome to Portfolio OS Terminal v1.0.0",
+      "welcome": "PortfolioOS Terminal v1.0.0\nWelcome! Type 'help' to see available commands.\n",
       "helpText": "Type 'help' to see available commands.",
+      "prompt": "Type a command...",
+      "processing": "Processing",
+      "helpFooter": "Tip: Use 'help' to see all commands | 'clear' to clear screen",
       "commands": {
-        "help": "Show available commands",
+        "help": "Show list of available commands",
         "about": "Display personal information",
-        "projects": "List all projects",
-        "skills": "Show technical skills",
+        "projects": "List projects",
+        "skills": "Display technical skills",
+        "experience": "Display professional experience",
         "contact": "Display contact information",
-        "clear": "Clear terminal",
-        "theme": "Toggle theme (light/dark)",
-        "lang": "Change language (en/fr)",
-        "whoami": "Display current user"
+        "clear": "Clear terminal screen",
+        "ls": "List directory contents",
+        "pwd": "Display current directory",
+        "whoami": "Display current user",
+        "date": "Display current date and time",
+        "echo": "Display text"
       },
-      "commandNotFound": "Command not found: {{command}}. Type 'help' for available commands.",
-      "currentUser": "guest@portfolio-os",
-      "themeChanged": "Theme changed to {{theme}}",
-      "languageChanged": "Language changed to {{language}}"
+      "commandsAvailable": "Available commands:",
+      "useHelpCommand": "Use 'help <command>' for more information.",
+      "projectNotFound": "Project #{{number}} not found. Use 'projects' to see the list.",
+      "categoryNotFound": "Category '{{category}}' not found.",
+      "commandNotFound": "Command '{{command}}' not recognized. Type 'help' to see available commands.",
+      "executionError": "Error executing '{{command}}': {{error}}",
+      "contactInfo": "Contact Information:",
+      "period": "Period:",
+      "location": "Location:",
+      "technologies": "Technologies:",
+      "github": "GitHub:",
+      "demo": "Demo:",
+      "notAvailable": "N/A"
     },
     "contact": {
       "title": "Contact",
