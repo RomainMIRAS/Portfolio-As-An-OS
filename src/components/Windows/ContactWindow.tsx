@@ -43,11 +43,41 @@ const ContactWindow: React.FC = () => {
 
   const copyToClipboard = async (text: string, field: string) => {
     try {
-      await navigator.clipboard.writeText(text);
+      // Use modern clipboard API first
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        // Fallback for older browsers or insecure contexts
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        if (!successful) {
+          throw new Error('Fallback copy method failed');
+        }
+      }
+      
+      // Set success state
       setCopiedField(field);
-      setTimeout(() => setCopiedField(null), 2000);
+      
+      // Reset after 2 seconds
+      setTimeout(() => {
+        setCopiedField(null);
+      }, 2000);
+      
     } catch (err) {
       console.error('Erreur lors de la copie:', err);
+      // Show error state briefly
+      setCopiedField(`error-${field}`);
+      setTimeout(() => setCopiedField(null), 2000);
     }
   };
 
@@ -90,6 +120,8 @@ const ContactWindow: React.FC = () => {
           >
             {copiedField === label ? (
               <Check className="w-4 h-4 text-os-success" />
+            ) : copiedField?.startsWith('error-') && copiedField.endsWith(label) ? (
+              <Copy className="w-4 h-4 text-os-error" />
             ) : (
               <Copy className="w-4 h-4" />
             )}
