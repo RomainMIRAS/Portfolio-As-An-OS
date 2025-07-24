@@ -2,7 +2,7 @@
   "personal": {
     "name": "MIRAS Romain",
     "title": "Software Engineer & DevOps Specialist",
-    "bio": "5th year student at Polytech Grenoble (Computer Science), currently doing a DevOps/Backend internship until mid-September 2025.\n\nMy journey started with a Computer Science DUT in Grenoble, where I acquired solid foundations in software and web development. Since then, I've specialized in various technical environments, with a particular appetite for collaborative projects and solving concrete problems.\n\nDuring my experiences, I've worked on projects combining backend development (Node.js, Python...), DevOps (CI/CD, Docker, GitLab), and sometimes frontend (React). I enjoy exploring the entire application lifecycle, from design to production deployment.\n\nI'm open to permanent contract or VIE opportunities in DevOps, Backend or FullStack from September 2025, in France or internationally.",
+    "bio": "5th year student at Polytech Grenoble (Computer Science), currently doing a DevOps/Backend internship until mid-September 2025.\n\nMy journey started with a Computer Science DUT in Grenoble, where I acquired solid foundations in software and web development. Since then, I've specialized in various technical environments, with a particular appetite for collaborative projects and solving concrete problems.\n\nDuring my experiences, I've worked on projects combining backend development (Node.js, Python...), DevOps (CI/CD, Docker, GitLab), and sometimes frontend (React). I enjoy exploring the entire application lifecycle, from design to production deployment.\n\nI'm open to permanent contract opportunities in DevOps, Backend or FullStack from September 2025, in France or internationally.",
     "location": "Grenoble, France",
     "availability": "Available for new projects",
     "highlightedTerms": [
@@ -21,7 +21,6 @@
       "Terraform",
       "AWS",
       "permanent contract",
-      "VIE",
       "September 2025"
     ]
   },
@@ -33,21 +32,27 @@
       "category": "Frontend"
     },
     {
-      "title": "DevOps Automation",
-      "description": "CI/CD pipelines and infrastructure as code",
-      "longDescription": "DevOps automation projects including robust CI/CD pipeline creation, infrastructure as code with Terraform and AWS CDK, and Docker container orchestration. Focus on DevOps best practices and security.",
+      "title": "Personal Server on Raspberry Pi",
+      "description": "Installation and management of a self-hosted multifunction server on Raspberry Pi",
+      "longDescription": "Personal project involving the installation and configuration of a multifunction server on Raspberry Pi. I set up the system (Raspberry Pi OS), installed and maintained several services: web server (Apache with reverse proxy and HTTPS via Let’s Encrypt), file server (Samba), automated backup tools, network monitoring, and hosting of static/dynamic sites accessible locally and remotely.",
       "category": "DevOps"
     },
     {
-      "title": "Polytech Academic Projects",
-      "description": "Collection of projects developed during engineering training",
-      "longDescription": "Set of academic projects covering different domains: fullstack web development, mobile applications, distributed systems, and network projects. These projects demonstrate mastery of various technologies and the ability to work in teams on complex issues.",
+      "title": "My Best Menus",
+      "description": "Balanced menu website with CI/CD and automated cloud infrastructure",
+      "longDescription": "University project carried out by a team of 6, aiming to develop a web platform offering weekly personalized balanced menus according to user preferences. I acted as Lead Developer, leading the technical design, setting up cloud infrastructure on Azure via Terraform, and automating CI/CD deployments. The application was developed with React for the frontend and Spring Boot for the backend, ensuring robustness, scalability, and DevOps best practices.",
       "category": "Academic"
     },
     {
-      "title": "IUT Web Projects",
-      "description": "Web applications developed during Computer Science DUT",
-      "longDescription": "Web projects carried out in teams during DUT training, including e-commerce sites, management applications, and projects using different web technologies. Focus on development best practices and user experience.",
+      "title": "Sea Of Crabes",
+      "description": "Award-winning Game Jam project: development of an isometric game in native Java with a custom graphics engine.",
+      "longDescription": "Project completed during a three-week Game Jam at Polytech Grenoble, led by a team of 7 third-year engineering students. I served as project manager and lead developer. We designed a 2D isometric rendering engine in native Java from scratch and developed all game mechanics. This project won first place in the competition, demonstrating our ability to manage a complete development cycle, from technical design to delivering a functional product within tight deadlines.",
+      "category": "Academic"
+    },
+    {
+      "title": "Tech a Way",
+      "description": "Web project for the development of the Tech A Way client website.",
+      "longDescription": "Tech a Way is a recruitment agency specialized in the tech sector, operating fully remotely and across Europe. This academic project involved developing a complete web platform in PHP to facilitate the recruitment process, from candidate application to final hiring. The platform features candidate management, job postings, and recruiter dashboards, providing an end-to-end solution for tech recruitment. The project was carried out as a client assignment for 'Tech A Way', with a focus on delivering a robust, user-friendly, and secure recruitment site tailored to the client's needs.",
       "category": "Academic"
     }
   ],

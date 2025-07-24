@@ -89,38 +89,50 @@ export const portfolioConfig = {
       id: "os-portfolio",
       technologies: ["React", "TypeScript", "TailwindCSS", "Framer Motion", "Vite"],
       githubUrl: "https://github.com/RomainMIRAS/Portfolio-As-An-OS",
-      liveUrl: "https://romain-miras-portfolio.vercel.app",
+      liveUrl: "https://romainmiras.me/OS%20Portfolio/",
       images: ["projects/os-portfolio-1.png", "projects/os-portfolio-2.png"],
       featured: true,
       startDate: "2024-12",
       endDate: "2025-01"
     },
     {
-      id: "devops-automation",
-      technologies: ["Azure DevOps", "GitLab CI", "Terraform", "AWS CDK", "Docker", "Azure", "AWS"],
-      githubUrl: "https://github.com/RomainMIRAS",
-      images: ["projects/devops-1.jpg"],
+      id: "raspberry-pi-server",
+      title: "Personal Server on Raspberry Pi",
+      technologies: ["Raspberry Pi OS", "Apache", "Let’s Encrypt", "Plex", "Networking", "Linux", "Docker"],
+      liveUrl: "https://romainmiras.me",
+      category: "DevOps",
+      images: ["projects/raspberry-pi-server.png"],
       featured: true,
-      startDate: "2024-04",
+      startDate: "2024-01",
       endDate: "2025-01"
     },
     {
-      id: "polytech-projects",
-      technologies: ["Java", "Spring", "React", "Node.js", "Android", "Python", "C++", "Docker"],
-      githubUrl: "https://github.com/RomainMIRAS",
-      images: ["/projects/polytech-1.jpg"],
+      id: "mes-meilleurs-menu",
+      technologies: ["Java Spring", "React", "Grafana","Prometheus", "Terraform", "Docker", "Cloud Azure", "Github Actions", "Nginx"],
+      githubUrl: "https://github.com/2024-2025-ECOM-INFO5-G2",
+      images: ["projects/ecom-1.png"],
       featured: false,
-      startDate: "2022-09",
-      endDate: "2025-08"
+      startDate: "2024-10",
+      endDate: "2025-02"
     },
     {
-      id: "iut-web-projects",
-      technologies: ["PHP", "Symfony", "JavaScript", "HTML5", "CSS3", "MySQL", "Bootstrap"],
-      githubUrl: "https://github.com/RomainMIRAS",
-      images: ["/projects/iut-web-1.jpg"],
+      id: "sea-of-crabes",
+      technologies: ["Java", "Conception", "Automata","Video Game"],
+      githubUrl: "https://github.com/RomainMIRAS/SeaOfCrabes",
+      images: ["/projects/sea-of-crabes-1.jpg"],
       featured: false,
-      startDate: "2020-09",
-      endDate: "2022-06"
+      startDate: "2023-06",
+      endDate: "2023-07"
+    },
+    {
+      id: "tech-a-way",
+      technologies: ["PHP", "Web", "MySQL"],
+      githubUrl: "https://github.com/RomainMIRAS/TechAWay",
+      liveUrl: "https://romainmiras.me/TechAWay",
+      images: ["/projects/tech-a-way-1.png"],
+      featured: false,
+      startDate: "2021-10",
+      endDate: "2022-01"
     }
   ],
   experience: [
@@ -246,6 +258,6 @@ export const portfolioConfig = {
     phone: "+33 6 01 30 67 94",
     linkedin: "https://linkedin.com/in/romain-miras-427126232",
     github: "https://github.com/RomainMIRAS",
-    website: "http://79.92.83.218"
+    website: "https://romainmiras.me"
   }
 };
