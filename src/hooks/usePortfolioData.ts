@@ -14,7 +14,8 @@ export const usePortfolioData = (): PortfolioData => {
       avatar: portfolioConfig.personal.avatar,
       location: t('personal.location'),
       availability: t('personal.availability'),
-      highlightedTerms: t('personal.highlightedTerms', { returnObjects: true }) as string[]
+      highlightedTerms: t('personal.highlightedTerms', { returnObjects: true }) as string[],
+      cvUrl: portfolioConfig.personal.cvUrl
     },
     projects: portfolioConfig.projects.map((project, index) => ({
       id: project.id,

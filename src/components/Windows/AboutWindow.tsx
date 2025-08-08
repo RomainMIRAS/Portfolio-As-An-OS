@@ -8,6 +8,38 @@ const AboutWindow: React.FC = () => {
   const { t } = useTranslation();
   const portfolioData = usePortfolioData();
 
+  // Fonction pour télécharger le CV
+  const downloadCV = async () => {
+    if (!portfolioData.personal.cvUrl) {
+      console.warn('Aucune URL de CV configurée');
+      return;
+    }
+
+    try {
+      // Vérifier si le fichier existe
+      const response = await fetch(portfolioData.personal.cvUrl, { method: 'HEAD' });
+      
+      if (!response.ok) {
+        console.error('Le fichier CV n\'est pas accessible');
+        return;
+      }
+
+      // Créer le lien de téléchargement
+      const link = document.createElement('a');
+      link.href = portfolioData.personal.cvUrl;
+      link.download = portfolioData.personal.cvUrl.split('/').pop() || 'CV_Romain_MIRAS.pdf';
+      link.style.display = 'none';
+      
+      // Ajouter au DOM, cliquer et supprimer
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+    } catch (error) {
+      console.error('Erreur lors du téléchargement du CV:', error);
+    }
+  };
+
   // Fonction pour mettre en évidence les termes spécifiés
   const highlightTerms = (text: string, terms: string[]) => {
     if (!terms.length) return text;
@@ -142,7 +174,14 @@ const AboutWindow: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex space-x-4"
         >
-          <button className="button-primary flex items-center space-x-2">
+          <button 
+            className={`button-primary flex items-center space-x-2 ${
+              !portfolioData.personal.cvUrl ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            onClick={downloadCV}
+            disabled={!portfolioData.personal.cvUrl}
+            title={!portfolioData.personal.cvUrl ? 'CV non disponible' : 'Télécharger le CV'}
+          >
             <Download className="w-4 h-4" />
             <span>{t('ui.about.downloadCv')}</span>
           </button>

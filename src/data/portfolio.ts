@@ -15,6 +15,7 @@ export interface PersonalInfo {
   location: string;
   availability: string;
   highlightedTerms: string[];
+  cvUrl?: string;
 }
 
 export interface Project {
@@ -82,7 +83,8 @@ export interface ContactInfo {
 // Static configuration data that doesn't need translation
 export const portfolioConfig = {
   personal: {
-    avatar: "avatar.jpg"
+    avatar: "avatar.jpg",
+    cvUrl: "CV_Romain_MIRAS.pdf"
   },
   projects: [
     {
