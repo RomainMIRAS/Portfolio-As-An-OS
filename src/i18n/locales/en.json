@@ -238,6 +238,8 @@
       "copied": "Copied!",
       "messageSent": "Message sent successfully!",
       "messageError": "Error sending message. Please try again.",
+      "messageErrorDetails": "An error occurred while sending. Please check your connection and try again.",
+      "messageSentSuccess": "Your message has been sent successfully! I'll get back to you soon.",
       "enterName": "Enter your name",
       "enterEmail": "Enter your email",
       "enterSubject": "Enter subject",

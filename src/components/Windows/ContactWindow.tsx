@@ -3,8 +3,13 @@ import { motion } from 'framer-motion';
 import { Send, Mail, Phone, MapPin, ExternalLink, Copy, Check } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { usePortfolioData } from '../../hooks/usePortfolioData';
+import { sendContactEmail } from '../../services/email';
 
-const ContactWindow: React.FC = () => {
+interface ContactWindowProps {
+  onAddNotification?: (n: { title: string; message: string; type: 'info' | 'success' | 'warning' | 'error'; duration?: number }) => void;
+}
+
+const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
   const { t } = useTranslation();
   const portfolioData = usePortfolioData();
   const [formData, setFormData] = useState({
@@ -30,19 +35,42 @@ const ContactWindow: React.FC = () => {
     setSubmitStatus('idle');
     
     try {
-      // Simulation d'envoi - remplacer par vraie logique d'envoi
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const result = await sendContactEmail(formData);
       
-      setSubmitStatus('success');
-      
-      // Reset form after success
-      setTimeout(() => {
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setSubmitStatus('idle');
-      }, 3000);
+      if (result.status === 'ok') {
+        setSubmitStatus('success');
+        
+        // Notification OS
+        onAddNotification?.({
+          title: t('ui.contact.messageSent'),
+          message: t('ui.contact.messageSentSuccess'),
+          type: 'success',
+          duration: 4000
+        });
+        
+        // Reset form after success
+        setTimeout(() => {
+          setFormData({ name: '', email: '', subject: '', message: '' });
+          setSubmitStatus('idle');
+        }, 3000);
+      } else {
+        setSubmitStatus('error');
+        onAddNotification?.({
+          title: t('ui.contact.messageError'),
+          message: result.error || t('ui.contact.messageErrorDetails'),
+          type: 'error',
+          duration: 5000
+        });
+      }
     } catch (error) {
       console.error('Erreur lors de l\'envoi:', error);
       setSubmitStatus('error');
+      onAddNotification?.({
+        title: t('ui.contact.messageError'),
+        message: t('ui.contact.messageErrorDetails'),
+        type: 'error',
+        duration: 5000
+      });
     } finally {
       setIsSubmitting(false);
     }

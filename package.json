@@ -11,6 +11,7 @@
     "deploy:local": "bash scripts/deploy-local.sh"
   },
   "dependencies": {
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^12.23.6",
     "i18next": "^25.3.2",
     "i18next-browser-languagedetector": "^8.2.0",

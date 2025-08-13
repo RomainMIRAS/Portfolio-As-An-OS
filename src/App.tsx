@@ -64,6 +64,7 @@ const App: React.FC = () => {
               onMaximize={toggleMaximize}
               onUpdatePosition={updateWindowPosition}
               onUpdateSize={updateWindowSize}
+              onAddNotification={addNotification}
             />
 
             {/* Taskbar */}

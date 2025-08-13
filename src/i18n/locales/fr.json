@@ -238,6 +238,8 @@
       "copied": "Copié !",
       "messageSent": "Message envoyé avec succès !",
       "messageError": "Erreur lors de l'envoi du message. Veuillez réessayer.",
+      "messageErrorDetails": "Une erreur s'est produite lors de l'envoi. Veuillez vérifier votre connexion et réessayer.",
+      "messageSentSuccess": "Votre message a été envoyé avec succès ! Je vous répondrai bientôt.",
       "enterName": "Entrez votre nom",
       "enterEmail": "Entrez votre email",
       "enterSubject": "Entrez le sujet",

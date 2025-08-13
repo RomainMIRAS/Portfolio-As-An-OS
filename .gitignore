@@ -31,3 +31,6 @@ deployment-config.json
 .env.production
 scripts/*.key
 scripts/*.pem
+
+# Environment files
+.env
