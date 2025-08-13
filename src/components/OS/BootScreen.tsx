@@ -25,16 +25,19 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentMessageIndex(prev => {
-        if (prev < bootMessages.length - 1) {
-          setProgress((prev + 1) / bootMessages.length * 100);
-          return prev + 1;
-        } else {
+        const nextIndex = prev + 1;
+        setProgress(nextIndex / bootMessages.length * 100);
+        
+        if (nextIndex >= bootMessages.length) {
           setIsComplete(true);
           setTimeout(() => {
             onBootComplete();
           }, 1000);
+          clearInterval(interval);
           return prev;
         }
+        
+        return nextIndex;
       });
     }, 800);
 
@@ -98,28 +101,38 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
               <span className="text-os-text-muted ml-4">System Boot Log</span>
             </div>
             
-            <div className="space-y-2 h-32 overflow-hidden">
-              {bootMessages.slice(0, currentMessageIndex + 1).map((message, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`flex items-center space-x-2 ${
-                    index === currentMessageIndex ? 'text-os-accent' : 'text-os-text-muted'
-                  }`}
-                >
-                  <span className="text-os-success">[OK]</span>
-                  <span>{message}</span>
-                  {index === currentMessageIndex && !isComplete && (
-                    <motion.span
-                      animate={{ opacity: [1, 0] }}
-                      transition={{ duration: 0.5, repeat: Infinity }}
-                      className="w-2 h-4 bg-os-accent"
-                    />
-                  )}
-                </motion.div>
-              ))}
+            <div className="space-y-2 h-40 overflow-hidden">
+              {(() => {
+                const maxVisibleMessages = 6; // Nombre maximum de messages visibles
+                const startIndex = Math.max(0, currentMessageIndex + 1 - maxVisibleMessages);
+                const endIndex = currentMessageIndex + 1;
+                const visibleMessages = bootMessages.slice(startIndex, endIndex);
+                
+                return visibleMessages.map((message, relativeIndex) => {
+                  const absoluteIndex = startIndex + relativeIndex;
+                  return (
+                    <motion.div
+                      key={absoluteIndex}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: relativeIndex * 0.1 }}
+                      className={`flex items-center space-x-2 ${
+                        absoluteIndex === currentMessageIndex ? 'text-os-accent' : 'text-os-text-muted'
+                      }`}
+                    >
+                      <span className="text-os-success">[OK]</span>
+                      <span>{message}</span>
+                      {absoluteIndex === currentMessageIndex && !isComplete && (
+                        <motion.span
+                          animate={{ opacity: [1, 0] }}
+                          transition={{ duration: 0.5, repeat: Infinity }}
+                          className="w-2 h-4 bg-os-accent"
+                        />
+                      )}
+                    </motion.div>
+                  );
+                });
+              })()}
             </div>
           </div>
         </div>

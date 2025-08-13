@@ -2,7 +2,7 @@
   "personal": {
     "name": "MIRAS Romain",
     "title": "Software Engineer & DevOps Specialist",
-    "bio": "Étudiant en 5e année à Polytech Grenoble (Informatique), actuellement en stage DevOps/Backend jusqu'à mi-septembre 2025.\n\nMon parcours a commencé par un DUT Informatique à Grenoble, où j'ai acquis des bases solides en développement logiciel et web. Depuis, je me suis spécialisé dans des environnements techniques variés, avec une appétence particulière pour les projets collaboratifs et la résolution de problèmes concrets.\n\nDurant mes expériences, j'ai travaillé sur des projets mêlant développement backend (Node.js, Python…), DevOps (CI/CD, Docker, GitLab), et parfois frontend (React). J'aime explorer tout le cycle de vie d'une application, de la conception à la mise en production.\n\nJe suis ouvert aux opportunités de CDI ou VIE en DevOps, Backend ou FullStack à partir de septembre 2025, en France ou à l'international.",
+    "bio": "Étudiant en 5e année à Polytech Grenoble (Informatique), actuellement en stage DevOps/Backend jusqu'à mi-septembre 2025.\n\nMon parcours a commencé par un DUT Informatique à Grenoble, où j'ai acquis des bases solides en développement logiciel et web. Depuis, je me suis spécialisé dans des environnements techniques variés, avec une appétence particulière pour les projets collaboratifs et la résolution de problèmes concrets.\n\nDurant mes expériences, j'ai travaillé sur des projets mêlant développement backend (Node.js, Python…), DevOps (CI/CD, Docker, GitLab), et parfois frontend (React). J'aime explorer tout le cycle de vie d'une application, de la conception à la mise en production.\n\nJe suis ouvert aux opportunités de CDI en DevOps, Backend ou FullStack à partir de septembre 2025, en France ou à l'international.",
     "location": "Grenoble, France",
     "availability": "Disponible pour de nouveaux projets",
     "highlightedTerms": [
@@ -21,7 +21,6 @@
       "Terraform",
       "AWS",
       "CDI",
-      "VIE",
       "septembre 2025"
     ]
   },
@@ -33,21 +32,27 @@
       "category": "Frontend"
     },
     {
-      "title": "Automatisation DevOps",
-      "description": "Pipelines CI/CD et infrastructure as code",
-      "longDescription": "Projets d'automatisation DevOps incluant la création de pipelines CI/CD robustes, l'infrastructure as code avec Terraform et AWS CDK, et l'orchestration de conteneurs Docker. Focus sur les bonnes pratiques DevOps et la sécurité.",
+      "title": "Serveur personnel sur Raspberry Pi",
+      "description": "Installation et gestion d’un serveur multifonction auto-hébergé sur Raspberry Pi",
+      "longDescription": "Projet personnel d’installation et de configuration d’un serveur multifonction sur Raspberry Pi. J’ai configuré le système (Raspberry Pi OS), installé et maintenu plusieurs services : serveur web (Apache avec reverse proxy et HTTPS via Let’s Encrypt), serveur de fichiers (Samba), outils de sauvegarde automatisée, monitoring réseau, et hébergement de sites statiques/dynamiques accessibles localement et à distance.",
       "category": "DevOps"
     },
     {
-      "title": "Projets Académiques Polytech",
-      "description": "Collection de projets développés durant la formation d'ingénieur",
-      "longDescription": "Ensemble de projets académiques couvrant différents domaines : développement web fullstack, applications mobiles, systèmes distribués, et projets de réseau. Ces projets démontrent la maîtrise de technologies variées et la capacité à travailler en équipe sur des problématiques complexes.",
+      "title": "Mes Meilleurs Menus",
+      "description": "Site web de menus équilibrés avec CI/CD et infrastructure cloud automatisée",
+      "longDescription": "Projet universitaire réalisé en équipe de 6, visant à développer une plateforme web proposant chaque semaine des menus équilibrés personnalisés selon les préférences des utilisateurs. J'ai assuré le rôle de Lead Developer, en pilotant la conception technique, la mise en place de l'infrastructure cloud sur Azure via Terraform, ainsi que l'automatisation des déploiements CI/CD. L'application a été développée avec React pour le frontend et Spring Boot pour le backend, garantissant robustesse, évolutivité et bonnes pratiques DevOps.",
       "category": "Académique"
     },
     {
-      "title": "Projets Web IUT",
-      "description": "Applications web développées durant le DUT Informatique",
-      "longDescription": "Projets web réalisés en équipe durant la formation DUT, incluant des sites e-commerce, des applications de gestion, et des projets utilisant différentes technologies web. Focus sur les bonnes pratiques de développement et l'expérience utilisateur.",
+      "title": "Sea Of Crabes",
+      "description": "Projet de Game Jam primé : développement d'un jeu isométrique en Java natif avec moteur graphique personnalisé.",
+      "longDescription": "Projet réalisé lors d'une Game Jam de trois semaines à Polytech Grenoble, mené par une équipe de 7 étudiants en 3e année d'école d'ingénieur. J'ai assuré le rôle de chef de projet et développeur principal. Nous avons conçu un moteur de rendu 2D isométrique en Java natif, en partant de zéro, et développé l'ensemble des mécaniques de jeu. Ce projet a remporté la première place du concours, démontrant notre capacité à gérer un cycle de développement complet, de la conception technique à la livraison d'un produit fonctionnel dans des délais courts.",
+      "category": "Académique"
+    },
+    {
+      "title": "Tech a Way",
+      "description": "Projet Web pour la réalisation du site du client Tech A Way",
+      "longDescription": "Tech a Way est une agence de recrutement spécialisée dans le secteur tech, opérant entièrement à distance et à l'échelle européenne. Ce projet académique consistait à développer une plateforme web complète en PHP pour faciliter le processus de recrutement, de la candidature à l'embauche finale. La plateforme propose la gestion des candidats, la publication d'offres d'emploi et des tableaux de bord pour les recruteurs, offrant ainsi une solution de recrutement tech de bout en bout. Le projet a été réalisé en tant que mission client pour 'Tech A Way', avec un accent sur la robustesse, l'ergonomie et la sécurité du site selon les besoins du client.",
       "category": "Académique"
     }
   ],
@@ -233,6 +238,8 @@
       "copied": "Copié !",
       "messageSent": "Message envoyé avec succès !",
       "messageError": "Erreur lors de l'envoi du message. Veuillez réessayer.",
+      "messageErrorDetails": "Une erreur s'est produite lors de l'envoi. Veuillez vérifier votre connexion et réessayer.",
+      "messageSentSuccess": "Votre message a été envoyé avec succès ! Je vous répondrai bientôt.",
       "enterName": "Entrez votre nom",
       "enterEmail": "Entrez votre email",
       "enterSubject": "Entrez le sujet",
@@ -283,12 +290,24 @@
       "shuttingDown": "Arrêt en cours...",
       "savingData": "Sauvegarde des données...",
       "closingApplications": "Fermeture des applications...",
-      "goodbye": "À bientôt !"
+      "goodbye": "À bientôt !",
+      "preparing": "Préparation de l'extinction...",
+      "systemShutdown": "Fermeture du système...",
+      "thankYouMessage": "Merci d'avoir visité mon portfolio !",
+      "enjoyedVisit": "J'espère que cette visite vous a plu ! 🚀",
+      "progress": "Progression",
+      "portfolioOSClosed": "✨ Portfolio OS fermé ✨"
     },
     "languageSelector": {
       "english": "English",
       "french": "Français",
       "selectLanguage": "Choisir la Langue"
+    },
+    "windowControls": {
+      "minimize": "Minimiser",
+      "maximize": "Maximiser", 
+      "restore": "Restaurer",
+      "close": "Fermer"
     },
     "desktop": {
       "showIcons": "Afficher les icônes du bureau",

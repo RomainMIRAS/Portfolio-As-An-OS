@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+/scripts
+
+# Deployment files
+*.tar.gz
+deployment-config.json
+.env.production
+scripts/*.key
+scripts/*.pem
+
+# Environment files
+.env

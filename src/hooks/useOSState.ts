@@ -208,14 +208,6 @@ const useOSState = () => {
     }));
   }, []);
 
-  // Basculer le thème
-  const toggleTheme = useCallback(() => {
-    setOSState(prev => ({
-      ...prev,
-      theme: prev.theme === 'dark' ? 'light' : 'dark'
-    }));
-  }, []);
-
   // Supprimer une notification
   const removeNotification = useCallback((notificationId: string) => {
     setOSState(prev => ({
@@ -289,7 +281,6 @@ const useOSState = () => {
     toggleMaximize,
     updateWindowPosition,
     updateWindowSize,
-    toggleTheme,
     addNotification,
     removeNotification,
     initiateShutdown,

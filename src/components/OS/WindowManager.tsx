@@ -19,6 +19,7 @@ interface WindowManagerProps {
   onMaximize: (windowId: string) => void;
   onUpdatePosition: (windowId: string, position: { x: number; y: number }) => void;
   onUpdateSize: (windowId: string, size: { width: number; height: number }) => void;
+  onAddNotification?: (n: { title: string; message: string; type: 'info' | 'success' | 'warning' | 'error'; duration?: number }) => void;
 }
 
 const WindowManager: React.FC<WindowManagerProps> = ({
@@ -28,7 +29,8 @@ const WindowManager: React.FC<WindowManagerProps> = ({
   onMinimize,
   onMaximize,
   onUpdatePosition,
-  onUpdateSize
+  onUpdateSize,
+  onAddNotification
 }) => {
   // Composants de fenêtres disponibles
   const windowComponents = {
@@ -51,6 +53,10 @@ const WindowManager: React.FC<WindowManagerProps> = ({
       );
     }
 
+    // Inject props conditionnellement pour certaines fenêtres (ex: Contact)
+    if (window.component === 'ContactWindow' && onAddNotification) {
+      return <Component onAddNotification={onAddNotification} />;
+    }
     return <Component />;
   };
 

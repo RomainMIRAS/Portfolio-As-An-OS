@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Power, Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface ShutdownScreenProps {
   onComplete: () => void;
 }
 
 const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
+  const { t } = useTranslation();
   const [step, setStep] = useState<'preparing' | 'shutting-down' | 'goodbye' | 'complete'>('preparing');
   const [progress, setProgress] = useState(0);
 
@@ -39,13 +41,13 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
   const getMessage = () => {
     switch (step) {
       case 'preparing':
-        return 'Préparation de l\'extinction...';
+        return t('ui.shutdown.preparing');
       case 'shutting-down':
-        return 'Fermeture du système...';
+        return t('ui.shutdown.systemShutdown');
       case 'goodbye':
-        return 'Merci d\'avoir visité mon portfolio !';
+        return t('ui.shutdown.thankYouMessage');
       case 'complete':
-        return 'À bientôt !';
+        return t('ui.shutdown.goodbye');
       default:
         return '';
     }
@@ -89,7 +91,7 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex items-center justify-center gap-2"
               >
-                Merci d'avoir visité mon portfolio ! 
+                {t('ui.shutdown.thankYouMessage')} 
                 <Heart className="w-8 h-8 text-red-500 fill-current" />
               </motion.span>
             ) : (
@@ -99,7 +101,7 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
           
           {step !== 'goodbye' && step !== 'complete' && (
             <p className="text-os-text-muted text-lg">
-              Sauvegarde des données en cours...
+              {t('ui.shutdown.savingData')}
             </p>
           )}
 
@@ -110,7 +112,7 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
               transition={{ delay: 0.5 }}
               className="text-os-text-muted text-lg"
             >
-              J'espère que cette visite vous a plu ! 🚀
+              {t('ui.shutdown.enjoyedVisit')}
             </motion.p>
           )}
         </motion.div>
@@ -119,7 +121,7 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
         {step !== 'goodbye' && step !== 'complete' && (
           <div className="w-full max-w-md mx-auto">
             <div className="flex justify-between text-sm text-os-text-muted mb-2">
-              <span>Progression</span>
+              <span>{t('ui.shutdown.progress')}</span>
               <span>{progress}%</span>
             </div>
             <div className="w-full bg-os-darker rounded-full h-2 overflow-hidden border border-os-border">
@@ -189,7 +191,7 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
             animate={{ opacity: 1, scale: 1 }}
             className="text-2xl font-bold text-white"
           >
-            ✨ Portfolio OS fermé ✨
+            {t('ui.shutdown.portfolioOSClosed')}
           </motion.div>
         )}
       </div>

@@ -7,13 +7,35 @@ interface LanguageSelectorProps {
   onLanguageChange?: (language: string) => void;
 }
 
+// Composants de drapeaux SVG pour une meilleure compatibilité
+const FlagUS: React.FC<{ className?: string }> = ({ className = "w-5 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 18" fill="none">
+    <rect width="24" height="18" fill="#B22234"/>
+    <rect width="24" height="1.385" y="1.385" fill="white"/>
+    <rect width="24" height="1.385" y="4.154" fill="white"/>
+    <rect width="24" height="1.385" y="6.923" fill="white"/>
+    <rect width="24" height="1.385" y="9.692" fill="white"/>
+    <rect width="24" height="1.385" y="12.462" fill="white"/>
+    <rect width="24" height="1.385" y="15.231" fill="white"/>
+    <rect width="9.6" height="9.692" fill="#3C3B6E"/>
+  </svg>
+);
+
+const FlagFR: React.FC<{ className?: string }> = ({ className = "w-5 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 18" fill="none">
+    <rect width="8" height="18" fill="#002395"/>
+    <rect width="8" height="18" x="8" fill="white"/>
+    <rect width="8" height="18" x="16" fill="#ED2939"/>
+  </svg>
+);
+
 const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange }) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   
   const languages = [
-    { code: 'en', label: t('ui.languageSelector.english'), flag: '🇺🇸' },
-    { code: 'fr', label: t('ui.languageSelector.french'), flag: '🇫🇷' }
+    { code: 'en', label: t('ui.languageSelector.english'), flag: <FlagUS /> },
+    { code: 'fr', label: t('ui.languageSelector.french'), flag: <FlagFR /> }
   ];
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language);
@@ -34,7 +56,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange })
         title={t('ui.languageSelector.selectLanguage')}
       >
         <Globe className="w-4 h-4" />
-        <span className="text-lg">{currentLanguage?.flag}</span>
+        <div className="flex items-center justify-center">{currentLanguage?.flag}</div>
         <span className="text-sm font-medium">{currentLanguage?.code.toUpperCase()}</span>
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </motion.button>
@@ -59,7 +81,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange })
                     : 'text-os-text hover:text-os-accent hover:bg-os-accent/10'
                 }`}
               >
-                <span className="text-lg">{language.flag}</span>
+                <div className="flex items-center justify-center">{language.flag}</div>
                 <div>
                   <div className="text-sm font-medium">{language.label}</div>
                   <div className="text-xs text-os-text-muted">{language.code.toUpperCase()}</div>
