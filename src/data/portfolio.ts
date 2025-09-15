@@ -143,7 +143,7 @@ export const portfolioConfig = {
       company: "VISEO",
       startDate: "2025-03",
       endDate: "2025-09",
-      technologies: ["DevOps", "Azure", "AWS", "Azure DevOps", "GitLab CI", ".NET", "C#", "Docker", "AWS", "AWS CDK"],
+      technologies: ["DevOps", "Azure", "AWS", "Azure DevOps", "GitLab CI", ".NET", "C#", "Docker", "AWS", "AWS CDK", "Kubernetes", "Ansible", "Helm"],
       type: "internship"
     },
     {
@@ -229,13 +229,16 @@ export const portfolioConfig = {
       categoryKey: "DevOps & Cloud",
       skills: [
         { name: "Docker", level: 85, years: 2 },
-        { name: "Azure", level: 80, years: 1 },
+        { name: "Azure", level: 60, years: 1 },
         { name: "AWS", level: 75, years: 2 },
         { name: "Azure DevOps", level: 85, years: 1 },
         { name: "GitLab CI", level: 80, years: 2 },
-        { name: "Jenkins", level: 70, years: 1 },
-        { name: "Terraform", level: 70, years: 1 },
-        { name: "AWS CDK", level: 65, years: 1 }
+        { name: "Jenkins", level: 50, years: 1 },
+        { name: "Terraform", level: 50, years: 1 },
+        { name: "AWS CDK", level: 70, years: 1 },
+        { name: "Kubernetes", level: 55, years: 1 },
+        { name: "Ansible", level: 70, years: 1 },
+        { name: "Helm", level: 55, years: 1 }
       ]
     },
     {
