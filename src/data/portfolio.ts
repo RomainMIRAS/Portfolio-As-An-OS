@@ -131,7 +131,7 @@ export const portfolioConfig = {
       technologies: ["PHP", "Web", "MySQL"],
       githubUrl: "https://github.com/RomainMIRAS/TechAWay",
       liveUrl: "https://romainmiras.me/TechAWay",
-      images: ["/projects/tech-a-way-1.png"],
+      images: ["projects/tech-a-way-1.png"],
       featured: false,
       startDate: "2021-10",
       endDate: "2022-01"
@@ -187,65 +187,63 @@ export const portfolioConfig = {
     {
       categoryKey: "Programming Languages",
       skills: [
-        { name: "JavaScript", level: 90, years: 4 },
-        { name: "TypeScript", level: 85, years: 3 },
-        { name: "Python", level: 80, years: 3 },
-        { name: "C#", level: 75, years: 2 },
-        { name: "Java", level: 70, years: 3 },
-        { name: "PHP", level: 65, years: 2 },
-        { name: "C/C++", level: 70, years: 2 },
+        { name: "C#", level: 85, years: 2 },
+        { name: "Java", level: 80, years: 5 },
+        { name: "JavaScript", level: 80, years: 5 },
+        { name: "PHP", level: 80, years: 5 },
+        { name: "TypeScript", level: 75, years: 3 },
+        { name: "Python", level: 70, years: 5 },
+        { name: "C/C++", level: 60, years: 3 },
         { name: "Rust", level: 60, years: 1 }
       ]
     },
     {
       categoryKey: "Frontend Development",
       skills: [
-        { name: "React", level: 90, years: 4 },
         { name: "HTML5", level: 95, years: 5 },
         { name: "CSS3", level: 90, years: 5 },
-        { name: "Bootstrap", level: 80, years: 3 },
-        { name: "React Native", level: 70, years: 2 }
+        { name: "Bootstrap", level: 85, years: 3 },
+        { name: "React", level: 80, years: 4 },
       ]
     },
     {
       categoryKey: "Backend Development",
       skills: [
-        { name: "Node.js", level: 85, years: 4 },
-        { name: ".NET", level: 80, years: 2 },
+        { name: ".NET", level: 85, years: 2 },
         { name: "Spring Framework", level: 75, years: 2 },
-        { name: "Symfony", level: 70, years: 2 }
+        { name: "Symfony", level: 70, years: 2 },
+        { name: "Node.js", level: 60, years: 4 }
       ]
     },
     {
       categoryKey: "Database",
       skills: [
-        { name: "MySQL", level: 85, years: 4 },
-        { name: "PostgreSQL", level: 80, years: 3 },
-        { name: "MongoDB", level: 75, years: 3 },
-        { name: "SQLite", level: 70, years: 2 }
+        { name: "MySQL", level: 85, years: 5 },
+        { name: "PostgreSQL", level: 80, years: 2 },
+        { name: "MongoDB", level: 75, years: 1 },
+        { name: "SQLite", level: 70, years: 5 }
       ]
     },
     {
       categoryKey: "DevOps & Cloud",
       skills: [
         { name: "Docker", level: 85, years: 2 },
-        { name: "Azure", level: 60, years: 1 },
-        { name: "AWS", level: 75, years: 2 },
         { name: "Azure DevOps", level: 85, years: 1 },
         { name: "GitLab CI", level: 80, years: 2 },
-        { name: "Jenkins", level: 50, years: 1 },
-        { name: "Terraform", level: 50, years: 1 },
-        { name: "AWS CDK", level: 70, years: 1 },
-        { name: "Kubernetes", level: 55, years: 1 },
+        { name: "AWS", level: 75, years: 2 },
         { name: "Ansible", level: 70, years: 1 },
-        { name: "Helm", level: 55, years: 1 }
+        { name: "AWS CDK", level: 70, years: 1 },
+        { name: "Azure", level: 60, years: 1 },
+        { name: "Kubernetes", level: 55, years: 1 },
+        { name: "Helm", level: 55, years: 1 },
+        { name: "Jenkins", level: 50, years: 1 },
+        { name: "Terraform", level: 50, years: 1 }
       ]
     },
     {
       categoryKey: "Mobile & Desktop",
       skills: [
         { name: "Android", level: 70, years: 2 },
-        { name: "React Native", level: 70, years: 2 },
         { name: "Electron", level: 65, years: 1 }
       ]
     },
@@ -253,7 +251,8 @@ export const portfolioConfig = {
       categoryKey: "Tools & Other",
       skills: [
         { name: "Git", level: 95, years: 5 },
-        { name: "Linux", level: 85, years: 4 },
+        { name: "Linux", level: 85, years: 5 },
+        { name: "Apache", level: 80, years: 5 },
         { name: "Nginx", level: 75, years: 2 }
       ]
     }

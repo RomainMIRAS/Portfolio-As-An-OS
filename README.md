@@ -164,7 +164,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 Project Link: [https://github.com/RomainMIRAS/Portfolio-As-An-OS](https://github.com/RomainMIRAS/Portfolio-As-An-OS)
 
-Live Demo: [http://79.92.83.218/OS%20Portfolio](http://79.92.83.218/OS%20Portfolio)
+Live Demo: [http://romainmiras.me/OS%20Portfolio](http://79.92.83.218/OS%20Portfolio)
 
 ---
 
