@@ -62,6 +62,22 @@
   "experience": [
     {
       "company": "VISEO",
+      "position": "Ingénieur DevOps (CDI)",
+      "duration": "En cours",
+      "description": "Ingénieur DevOps en CDI chez VISEO, ESN spécialisée dans le conseil et les services numériques. Placé en mission chez des clients confidentiels.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO",
+      "position": "Mission 1 — Migration d'infrastructure & Support",
+      "duration": "En cours",
+      "description": "Participation à la migration de l'infrastructure d'un client lors d'un rachat d'entreprise. Support de leur solution sur une stack AWS, Kubernetes, GitHub, GitHub Actions et Jenkins.",
+      "location": "Client confidentiel",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO",
       "position": "Stage d'ingénieur DevOps / Backend",
       "duration": "7 mois",
       "description": "Stage de fin d'études d'ingénieur chez VISEO Grenoble. Mise en place de processus DevOps pour des projets web sur Cloud Azure/AWS. Maintenance et création de solutions CI/CD sur Azure DevOps et GitLab CI. Développement et maintenance de solutions backend .NET et Spring. Automatisation des déploiements et gestion de l'infrastructure as code.",

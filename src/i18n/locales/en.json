@@ -57,6 +57,22 @@
   "experience": [
     {
       "company": "VISEO",
+      "position": "DevOps Engineer (Permanent)",
+      "duration": "Ongoing",
+      "description": "DevOps Engineer on a permanent contract at VISEO, an IT services company (ESN) specializing in digital consulting and engineering. Assigned to confidential client missions.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO",
+      "position": "Mission 1 — Infrastructure Migration & Support",
+      "duration": "Ongoing",
+      "description": "Participation in the infrastructure migration of a client during a corporate acquisition. Support of their solution on a stack using AWS, Kubernetes, GitHub, GitHub Actions, and Jenkins.",
+      "location": "Confidential client",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO",
       "position": "DevOps / Backend Engineer Intern",
       "duration": "7 months",
       "description": "Final year engineering internship at VISEO Grenoble. Implementation of DevOps processes for web projects on Azure/AWS Cloud. Maintenance and creation of CI/CD solutions on Azure DevOps and GitLab CI. Development and maintenance of .NET and Spring backend solutions. Deployment automation and infrastructure as code management.",

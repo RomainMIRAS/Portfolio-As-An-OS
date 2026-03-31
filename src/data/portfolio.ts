@@ -139,6 +139,21 @@ export const portfolioConfig = {
   ],
   experience: [
     {
+      id: "viseo-cdi",
+      company: "VISEO",
+      startDate: "2025-09",
+      technologies: [],
+      type: "full-time"
+    },
+    {
+      id: "viseo-mission-1",
+      company: "VISEO",
+      startDate: "2026-01",
+      endDate: "2026-05",
+      technologies: ["AWS", "Kubernetes", "GitHub", "GitHub Actions", "Jenkins"],
+      type: "full-time"
+    },
+    {
       id: "viseo-devops",
       company: "VISEO",
       startDate: "2025-03",
