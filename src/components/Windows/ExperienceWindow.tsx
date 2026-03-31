@@ -5,9 +5,20 @@ import { useTranslation } from 'react-i18next';
 import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const ExperienceWindow: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const portfolioData = usePortfolioData();
   const { experience, education } = portfolioData;
+
+  const formatDate = (dateStr: string): string => {
+    const [year, month] = dateStr.split('-').map(Number);
+    return new Intl.DateTimeFormat(i18n.language, { month: 'short', year: 'numeric' }).format(new Date(year, month - 1));
+  };
+
+  const formatPeriod = (startDate: string, endDate?: string): string => {
+    const start = formatDate(startDate);
+    const end = endDate ? formatDate(endDate) : t('ui.projects.ongoing');
+    return `${start} — ${end}`;
+  };
 
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -83,10 +94,10 @@ const ExperienceWindow: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-4 text-sm text-os-text-muted mb-4">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-os-text-muted mb-4">
                   <div className="flex items-center space-x-1">
                     <Calendar className="w-4 h-4" />
-                    <span>{exp.duration}</span>
+                    <span>{formatPeriod(exp.startDate, exp.endDate)}</span>
                   </div>
                   <div className="flex items-center space-x-1">
                     <MapPin className="w-4 h-4" />
@@ -151,10 +162,10 @@ const ExperienceWindow: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-4 text-sm text-os-text-muted mb-4">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-os-text-muted mb-4">
                   <div className="flex items-center space-x-1">
                     <Calendar className="w-4 h-4" />
-                    <span>{edu.duration}</span>
+                    <span>{formatPeriod(edu.startDate, edu.endDate)}</span>
                   </div>
                   <div className="flex items-center space-x-1">
                     <MapPin className="w-4 h-4" />
