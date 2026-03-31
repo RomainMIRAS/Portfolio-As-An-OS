@@ -5,8 +5,19 @@ import { MapPin, Calendar, Star, Download } from 'lucide-react';
 import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const AboutWindow: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const portfolioData = usePortfolioData();
+
+  const formatDate = (dateStr: string): string => {
+    const [year, month] = dateStr.split('-').map(Number);
+    return new Intl.DateTimeFormat(i18n.language, { month: 'short', year: 'numeric' }).format(new Date(year, month - 1));
+  };
+
+  const formatPeriod = (startDate: string, endDate?: string): string => {
+    const start = formatDate(startDate);
+    const end = endDate ? formatDate(endDate) : t('ui.projects.ongoing');
+    return `${start} — ${end}`;
+  };
 
   // Fonction pour télécharger le CV
   const downloadCV = async () => {
@@ -212,7 +223,7 @@ const AboutWindow: React.FC = () => {
                 <div className="flex-1 min-w-0">
                   <h4 className="font-medium text-os-text">{exp.position}</h4>
                   <p className="text-sm text-os-accent">{exp.company}</p>
-                  <p className="text-xs text-os-text-muted mt-1">{exp.duration}</p>
+                  <p className="text-xs text-os-text-muted mt-1">{formatPeriod(exp.startDate, exp.endDate)}</p>
                 </div>
               </div>
             ))}

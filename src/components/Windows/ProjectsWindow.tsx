@@ -5,8 +5,19 @@ import { useTranslation } from 'react-i18next';
 import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const ProjectsWindow: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { projects } = usePortfolioData();
+
+  const formatDate = (dateStr: string): string => {
+    const [year, month] = dateStr.split('-').map(Number);
+    return new Intl.DateTimeFormat(i18n.language, { month: 'short', year: 'numeric' }).format(new Date(year, month - 1));
+  };
+
+  const formatPeriod = (startDate: string, endDate?: string): string => {
+    const start = formatDate(startDate);
+    const end = endDate ? formatDate(endDate) : t('ui.projects.ongoing');
+    return `${start} — ${end}`;
+  };
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -96,7 +107,7 @@ const ProjectsWindow: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2 text-xs text-os-text-subtle">
                     <Calendar className="w-3 h-3" />
-                    <span>{project.startDate}</span>
+                    <span>{formatPeriod(project.startDate, project.endDate)}</span>
                   </div>
                   
                   <div className="flex items-center space-x-2 text-xs">
@@ -159,7 +170,7 @@ const ProjectsWindow: React.FC = () => {
                   <div className="bg-os-darker/30 rounded-lg p-3 border border-os-border">
                     <div className="text-xs text-os-text-muted mb-1">{t('ui.projects.period')}</div>
                     <div className="text-sm text-os-text">
-                      {selectedProjectData.startDate} - {selectedProjectData.endDate || t('ui.projects.ongoing')}
+                      {formatPeriod(selectedProjectData.startDate, selectedProjectData.endDate)}
                     </div>
                   </div>
                 </div>

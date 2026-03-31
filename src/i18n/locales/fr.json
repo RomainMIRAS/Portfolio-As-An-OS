@@ -101,7 +101,6 @@
       "institution": "Polytech Grenoble",
       "degree": "Diplôme d'ingénieur",
       "field": "Informatique",
-      "duration": "3 ans",
       "description": "Formation d'ingénieur en informatique généraliste avec une spécialisation dans le domaine du réseau.",
       "location": "Grenoble, France"
     },
@@ -109,7 +108,6 @@
       "institution": "IUT2 Grenoble - Université Grenoble Alpes",
       "degree": "Diplôme universitaire de technologie (DUT)",
       "field": "Informatique",
-      "duration": "2 ans",
       "description": "Formation en informatique généraliste couvrant la programmation, les bases de données, les réseaux, le développement web et le génie logiciel. Équivalent d'un Bachelor en Computer Science.",
       "location": "Grenoble, France"
     },
@@ -117,7 +115,6 @@
       "institution": "Lycée Polyvalent Ferdinand Buisson",
       "degree": "Baccalauréat général",
       "field": "Sciences et Technologies de l'Ingénieur",
-      "duration": "3 ans",
       "description": "Baccalauréat général avec spécialisation en sciences et technologies de l'ingénieur, incluant mathématiques, physique et sciences de l'ingénieur.",
       "location": "Voiron, France"
     }
