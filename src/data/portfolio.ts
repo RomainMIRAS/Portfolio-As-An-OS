@@ -101,7 +101,7 @@ export const portfolioConfig = {
       id: "kuis",
       technologies: ["Go", "React", "TypeScript", "Vite", "TailwindCSS", "Fiber", "xterm.js", "Monaco Editor", "Docker"],
       githubUrl: "https://github.com/RomainMIRAS/kuis",
-      images: ["projects/kuis-1.png", "projects/kuis-2.png"],
+      images: ["projects/kuis-1.png", "projects/kuis-2.png", "projects/kuis-3.png"],
       featured: true,
       startDate: "2024-06",
       endDate: "2025-01"
