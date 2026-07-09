@@ -36,6 +36,18 @@
       "category": "DevOps"
     },
     {
+      "title": "VTAH: AG-UI Protocol",
+      "description": "Public technical presentation on the AG-UI Protocol",
+      "longDescription": "Recorded and publicly shared technical presentation on AG-UI Protocol, a key element of modern agentic systems. I presented in detail the protocol's functionality, architecture, and practical applications with CopilotKit and Microsoft Agent Framework. This presentation aims to educate the tech community about AI agent orchestration protocols and their use cases. Watch the full video via the link above to discover live demos and implementation examples.",
+      "category": "Tech Talk"
+    },
+    {
+      "title": "VTAH: Model Context Protocol",
+      "description": "Public technical presentation on the Model Context Protocol",
+      "longDescription": "Recorded and publicly shared technical presentation on the Model Context Protocol (MCP), an emerging standard for communication between AI and external tools. I explored in detail how MCP facilitates the integration of tools with modern AI models, its benefits, and practical implementations with GitHub Copilot and other AI assistants. Check out the full video via the link above to see practical demos and understand how to adopt MCP in your projects.",
+      "category": "Tech Talk"
+    },
+    {
       "title": "Personal Server on Raspberry Pi",
       "description": "Installation and management of a self-hosted multifunction server on Raspberry Pi",
       "longDescription": "Personal project involving the installation and configuration of a multifunction server on Raspberry Pi. I set up the system (Raspberry Pi OS), installed and maintained several services: web server (Apache with reverse proxy and HTTPS via Let’s Encrypt), file server (Samba), automated backup tools, network monitoring, and hosting of static/dynamic sites accessible locally and remotely.",
@@ -71,7 +83,7 @@
     {
       "company": "VISEO - VTAH",
       "position": "FullStack/DevOps Developer",
-      "description": "Public presentation on a technical topic: AG-UI Protocol. In-depth research on the AG-UI Protocol, structured preparation of a technical topic in PowerPoint, creation of CopilotKit demo projects, training and oral presentation in French.",
+      "description": "Public presentation on a technical topic: AG-UI Protocol. In-depth research on the AG-UI Protocol, structured preparation of a technical topic in PowerPoint, creation of CopilotKit demo projects, training and oral presentation in French. → Watch the full video in the PROJECTS section to see live demos!",
       "location": "Grenoble, France",
       "type": "full-time"
     },
@@ -85,7 +97,7 @@
     {
       "company": "VISEO - VTAH",
       "position": "FullStack/DevOps Developer",
-      "description": "Public presentation on a technical topic: Model Context Protocol. In-depth research on the MCP topic, structured preparation of a technical topic in PowerPoint, training and oral presentation in French.",
+      "description": "Public presentation on a technical topic: Model Context Protocol. In-depth research on the MCP topic, structured preparation of a technical topic in PowerPoint, training and oral presentation in French. → Watch the full video in the PROJECTS section for practical demos!",
       "location": "Grenoble, France",
       "type": "full-time"
     },

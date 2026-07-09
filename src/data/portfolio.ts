@@ -106,6 +106,25 @@ export const portfolioConfig = {
       startDate: "2024-06",
       endDate: "2025-01"
     },
+    
+    {
+      id: "vtah-ag-ui-presentation",
+      technologies: ["AG-UI Protocol", "CopilotKit", "Microsoft Agent Framework", "React", "Next.js", "Presentation"],
+      liveUrl: "https://www.youtube.com/watch?v=OmvfvGjngoQ",
+      images: [],
+      featured: true,
+      startDate: "2026-06",
+      endDate: "2026-07"
+    },
+    {
+      id: "vtah-mcp-presentation",
+      technologies: ["Model Context Protocol", "MCP", "GitHub Copilot", "Presentation"],
+      liveUrl: "https://www.youtube.com/watch?v=OmvfvGjngoQ",
+      images: [],
+      featured: true,
+      startDate: "2026-04",
+      endDate: "2026-04"
+    },
     {
       id: "raspberry-pi-server",
       title: "Personal Server on Raspberry Pi",

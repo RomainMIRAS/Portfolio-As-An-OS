@@ -41,6 +41,18 @@
       "category": "DevOps"
     },
     {
+      "title": "VTAH : AG-UI Protocol",
+      "description": "Présentation technique publique sur le protocole AG-UI",
+      "longDescription": "Présentation technique enregistrée et partagée publiquement sur le protocole AG-UI, un élément clé des systèmes agentiques modernes. J'y ai présenté en détail le fonctionnement du protocole, son architecture, et ses applications pratiques avec CopilotKit et Microsoft Agent Framework. Cette présentation vise à éduquer la communauté tech sur les protocoles d'orchestration d'agents IA et leurs cas d'usage. Visionnez la vidéo complète via le lien ci-dessus pour découvrir les démos en direct et les exemples d'implémentation.",
+      "category": "Présentation Tech"
+    },
+    {
+      "title": "VTAH : Model Context Protocol",
+      "description": "Présentation technique publique sur le Model Context Protocol",
+      "longDescription": "Présentation technique enregistrée et partagée publiquement sur le Model Context Protocol (MCP), un standard émergent pour la communication entre AI et outils externes. J'y ai exploré en détail comment MCP facilite l'intégration d'outils avec les modèles d'IA modernes, ses avantages, et ses implémentations pratiques avec GitHub Copilot et autres assistants IA. Consultez la vidéo complète via le lien ci-dessus pour voir des démos pratiques et comprendre comment adopter MCP dans vos projets.",
+      "category": "Présentation Tech"
+    },
+    {
       "title": "Serveur personnel sur Raspberry Pi",
       "description": "Installation et gestion d’un serveur multifonction auto-hébergé sur Raspberry Pi",
       "longDescription": "Projet personnel d’installation et de configuration d’un serveur multifonction sur Raspberry Pi. J’ai configuré le système (Raspberry Pi OS), installé et maintenu plusieurs services : serveur web (Apache avec reverse proxy et HTTPS via Let’s Encrypt), serveur de fichiers (Samba), outils de sauvegarde automatisée, monitoring réseau, et hébergement de sites statiques/dynamiques accessibles localement et à distance.",
@@ -76,7 +88,7 @@
     {
       "company": "VISEO - VTAH",
       "position": "Développeur FullStack/DevOps",
-      "description": "Présentation publique sur un sujet technique : AG-UI Protocol. Recherche approfondie sur le Protocole AG-UI, préparation structurée d'un sujet technique, création de projets démo CopilotKit, entraînement et présentation orale en français.",
+      "description": "Présentation publique sur un sujet technique : AG-UI Protocol. Recherche approfondie sur le Protocole AG-UI, préparation structurée d'un sujet technique, création de projets démo CopilotKit, entraînement et présentation orale en français. → Regardez la vidéo complète dans la section PROJETS pour découvrir les démos en direct !",
       "location": "Grenoble, France",
       "type": "full-time"
     },
@@ -90,7 +102,7 @@
     {
       "company": "VISEO - VTAH",
       "position": "Développeur FullStack/DevOps",
-      "description": "Présentation publique sur un sujet technique : Model Context Protocol. Recherche approfondie sur le sujet MCP, préparation structurée d'un sujet technique sur PowerPoint, entraînement et présentation orale en français.",
+      "description": "Présentation publique sur un sujet technique : Model Context Protocol. Recherche approfondie sur le sujet MCP, préparation structurée d'un sujet technique sur PowerPoint, entraînement et présentation orale en français. → Regardez la vidéo complète dans la section PROJETS pour les démos pratiques !",
       "location": "Grenoble, France",
       "type": "full-time"
     },
