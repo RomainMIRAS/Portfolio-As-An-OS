@@ -260,6 +260,7 @@ export const portfolioConfig = {
       skills: [
         { name: ".NET", level: 85, years: 2 },
         { name: "Spring Framework", level: 75, years: 2 },
+        { name: "Fiber (Go)", level: 70, years: 1 },
         { name: "Symfony", level: 70, years: 2 },
         { name: "Node.js", level: 60, years: 4 }
       ]
@@ -279,14 +280,26 @@ export const portfolioConfig = {
         { name: "Docker", level: 85, years: 2 },
         { name: "Azure DevOps", level: 85, years: 1 },
         { name: "GitLab CI", level: 80, years: 2 },
+        { name: "GitHub Actions", level: 80, years: 1 },
         { name: "AWS", level: 75, years: 2 },
+        { name: "Terraform", level: 70, years: 1 },
         { name: "Ansible", level: 70, years: 1 },
         { name: "AWS CDK", level: 70, years: 1 },
-        { name: "Azure", level: 60, years: 1 },
-        { name: "Kubernetes", level: 55, years: 1 },
+        { name: "Azure", level: 70, years: 1 },
+        { name: "Kubernetes", level: 65, years: 1 },
         { name: "Helm", level: 55, years: 1 },
-        { name: "Jenkins", level: 50, years: 1 },
-        { name: "Terraform", level: 50, years: 1 }
+        { name: "Jenkins", level: 50, years: 1 }
+      ]
+    },
+    {
+      categoryKey: "AI & Agent Technologies",
+      skills: [
+        { name: "Microsoft Agent Framework", level: 75, years: 1 },
+        { name: "Agent Orchestration", level: 70, years: 1 },
+        { name: "AG-UI Protocol", level: 70, years: 1 },
+        { name: "CopilotKit", level: 65, years: 1 },
+        { name: "Model Context Protocol (MCP)", level: 65, years: 1 },
+        { name: "AI Prompting", level: 70, years: 1 }
       ]
     },
     {
