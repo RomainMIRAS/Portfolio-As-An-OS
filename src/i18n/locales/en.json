@@ -78,14 +78,7 @@
     {
       "company": "VISEO",
       "position": "Architect/Developer",
-      "description": "Design of an Agentic POC aimed at facilitating the integration and use of business processes via AI. In-depth research and learning of agentic technologies, design of the software and cloud architecture, implementation of CI/CD via Azure DevOps, implementation of the solution base.",
-      "location": "Grenoble, France",
-      "type": "full-time"
-    },
-    {
-      "company": "VISEO",
-      "position": "Architect/Designer",
-      "description": "Design of an internal project aimed at improving the use of AI in application production. In-depth research on AI orchestration tools and processes, design of AI usage workflows for productivity gains, integration of MCP servers and Skills for interoperability.",
+      "description": "Design of a distributed agentic microservices solution to facilitate the integration and use of business processes via AI. Distributed backend architecture with agent orchestration and communication via AG-UI Protocol. Design of software architecture with microservices specific to each agent, cloud infrastructure on Azure, implementation of CI/CD via Azure DevOps and Terraform, complete solution implementation with Microsoft Agent Framework.",
       "location": "Grenoble, France",
       "type": "full-time"
     },

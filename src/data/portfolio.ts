@@ -165,17 +165,9 @@ export const portfolioConfig = {
     {
       id: "agentique-solution",
       company: "VISEO",
-      startDate: "2026-05",
-      endDate: "2026-08",
-      technologies: ["Microsoft Agent Framework", ".NET", "CopilotKit", "React", "Azure Cloud", "Azure DevOps", "Terraform","Next.js"],
-      type: "full-time"
-    },
-    {
-      id: "orchestrator-ia",
-      company: "VISEO",
       startDate: "2026-04",
-      endDate: "2026-04",
-      technologies: ["MCP", "AI Prompting", "AI Skills", "Agent Orchestration", "Azure DevOps", "GitHub Copilot"],
+      endDate: "2026-08",
+      technologies: ["Microsoft Agent Framework", "AG-UI Protocol", ".NET", "Microservices", "Distributed Architecture", "Agent Orchestration", "Azure Cloud", "Azure DevOps", "Terraform", "Docker"],
       type: "full-time"
     },
     {
@@ -247,6 +239,7 @@ export const portfolioConfig = {
         { name: "Java", level: 80, years: 5 },
         { name: "JavaScript", level: 80, years: 5 },
         { name: "PHP", level: 80, years: 5 },
+        { name: "Go", level: 75, years: 1 },
         { name: "TypeScript", level: 75, years: 3 },
         { name: "Python", level: 70, years: 5 },
         { name: "C/C++", level: 60, years: 3 },

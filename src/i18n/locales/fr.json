@@ -83,14 +83,7 @@
     {
       "company": "VISEO",
       "position": "Architecte/Développeur",
-      "description": "Conception d'une POC Agentique visant à faciliter l'intégration et l'utilisation de processus métiers via l'IA. Recherche approfondie et apprentissage de technologies agentiques, conception de l'architecture logicielle et cloud, mise en place de CI/CD via Azure DevOps, implémentation de la base de la solution.",
-      "location": "Grenoble, France",
-      "type": "full-time"
-    },
-    {
-      "company": "VISEO",
-      "position": "Architecte/Concepteur",
-      "description": "Conception d'un projet interne visant à améliorer l'usage de l'IA dans la production d'application. Recherche approfondie sur les outils et processus d'orchestration IA, conception de workflow d'usage IA pour le gain de productivité, intégration de serveur MCP et Skills pour l'interopérabilité.",
+      "description": "Conception d'une solution agentic distribuée en microservices pour faciliter l'intégration et l'utilisation de processus métiers via l'IA. Architecture backend distribuée avec orchestration d'agents et communication via AG-UI Protocol. Conception de l'architecture logicielle avec microservices spécifiques par agent, infrastructure cloud sur Azure, mise en place de CI/CD via Azure DevOps et Terraform, implémentation de la solution complète avec Microsoft Agent Framework.",
       "location": "Grenoble, France",
       "type": "full-time"
     },
