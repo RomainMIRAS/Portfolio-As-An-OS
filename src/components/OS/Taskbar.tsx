@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import type { AppConfig, WindowState } from '../../types/os';
+import { APP_VERSION } from '../../config/version';
 
 interface TaskbarProps {
   availableApps: AppConfig[];
@@ -99,7 +100,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
             whileTap={{ scale: 0.95 }}
             onClick={() => onAddNotification({
               title: t('ui.taskbar.startMenu'),
-              message: 'Portfolio OS v1.0 - Romain MIRAS',
+              message: `Portfolio OS v${APP_VERSION} - Romain MIRAS`,
               type: 'info',
               duration: 4000
             })}

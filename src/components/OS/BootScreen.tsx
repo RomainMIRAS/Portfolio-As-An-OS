@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, Cpu, HardDrive, Wifi, Battery } from 'lucide-react';
+import { APP_VERSION } from '../../config/version';
 
 interface BootScreenProps {
   onBootComplete: () => void;
@@ -88,7 +89,7 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
           transition={{ delay: 0.7 }}
           className="text-os-text-muted font-mono mb-12"
         >
-          Version 1.0.0 - Developer Edition
+          Version {APP_VERSION} - Developer Edition
         </motion.p>
 
         {/* Boot Messages */}

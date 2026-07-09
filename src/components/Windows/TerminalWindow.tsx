@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { usePortfolioData } from '../../hooks/usePortfolioData';
+import { APP_VERSION } from '../../config/version';
 import type { TerminalCommand } from '../../types/os';
 
 const TerminalWindow: React.FC = () => {
@@ -190,7 +191,7 @@ const TerminalWindow: React.FC = () => {
   useEffect(() => {
     const welcomeMessage = {
       command: '',
-      output: t('terminal.welcome', 'PortfolioOS Terminal v1.0.0\nWelcome! Type \'help\' to see available commands.\n'),
+      output: t('terminal.welcome', `PortfolioOS Terminal v${APP_VERSION}\nWelcome! Type 'help' to see available commands.\n`, { version: APP_VERSION }),
       timestamp: new Date()
     };
     setHistory([welcomeMessage]);

@@ -236,7 +236,7 @@
     },
     "terminal": {
       "title": "Terminal",
-      "welcome": "PortfolioOS Terminal v1.0.0\nBienvenue ! Tapez 'help' pour voir les commandes disponibles.\n",
+      "welcome": "PortfolioOS Terminal v{{version}}\nBienvenue ! Tapez 'help' pour voir les commandes disponibles.\n",
       "helpText": "Tapez 'help' pour voir les commandes disponibles.",
       "prompt": "Tapez une commande...",
       "processing": "Traitement",
