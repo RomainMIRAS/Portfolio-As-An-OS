@@ -98,6 +98,15 @@ export const portfolioConfig = {
       endDate: "2025-01"
     },
     {
+      id: "kuis",
+      technologies: ["Go", "React", "TypeScript", "Vite", "TailwindCSS", "Fiber", "xterm.js", "Monaco Editor", "Docker"],
+      githubUrl: "https://github.com/RomainMIRAS/kuis",
+      images: ["projects/kuis-1.png", "projects/kuis-2.png"],
+      featured: true,
+      startDate: "2024-06",
+      endDate: "2025-01"
+    },
+    {
       id: "raspberry-pi-server",
       title: "Personal Server on Raspberry Pi",
       technologies: ["Raspberry Pi OS", "Apache", "Let’s Encrypt", "Plex", "Networking", "Linux", "Docker"],
@@ -146,11 +155,43 @@ export const portfolioConfig = {
       type: "full-time"
     },
     {
-      id: "viseo-mission-1",
+      id: "vtah-ag-ui",
+      company: "VISEO",
+      startDate: "2026-06",
+      endDate: "2026-07",
+      technologies: ["AG-UI", "PowerPoint", "Next.js", "CopilotKit", "React", "Microsoft Agent Framework"],
+      type: "full-time"
+    },
+    {
+      id: "agentique-solution",
+      company: "VISEO",
+      startDate: "2026-05",
+      endDate: "2026-08",
+      technologies: ["Microsoft Agent Framework", ".NET", "CopilotKit", "React", "Azure Cloud", "Azure DevOps", "Terraform","Next.js"],
+      type: "full-time"
+    },
+    {
+      id: "orchestrator-ia",
+      company: "VISEO",
+      startDate: "2026-04",
+      endDate: "2026-04",
+      technologies: ["MCP", "AI Prompting", "AI Skills", "Agent Orchestration", "Azure DevOps", "GitHub Copilot"],
+      type: "full-time"
+    },
+    {
+      id: "vtah-mcp",
+      company: "VISEO",
+      startDate: "2026-04",
+      endDate: "2026-04",
+      technologies: ["MCP", "PowerPoint", "Next.js", "GitHub Copilot", "GitHub"],
+      type: "full-time"
+    },
+    {
+      id: "moodys-migration",
       company: "VISEO",
       startDate: "2026-01",
-      endDate: "2026-05",
-      technologies: ["AWS", "Kubernetes", "GitHub", "GitHub Actions", "Jenkins"],
+      endDate: "2026-04",
+      technologies: ["AWS", "Kubernetes", "GitHub", "GitHub Actions", "Jenkins", "Grafana", "Bash", "Python", "PowerShell"],
       type: "full-time"
     },
     {

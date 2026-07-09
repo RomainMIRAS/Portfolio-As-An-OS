@@ -30,6 +30,12 @@
       "category": "Frontend"
     },
     {
+      "title": "KUIS - Kubernetes Web UI",
+      "description": "Lightweight web interface for Kubernetes cluster management directly from your browser",
+      "longDescription": "KUIS (Kubernetes Web UI) is a minimalist and performant Kubernetes management interface, designed as a lightweight alternative to heavy solutions like Kubernetes Dashboard or Lens. The project delivers a complete user experience with a single ~30MB binary including the frontend, directly accessible from any browser. Built with Go and Fiber for the backend and React/TypeScript for the frontend, it enables interactive resource browsing, log streaming, interactive container shell access, real-time YAML editing, and management of multiple kubeconfig files. Positioned as 'K9s for the browser', it combines terminal tool speed with web application accessibility.",
+      "category": "DevOps"
+    },
+    {
       "title": "Personal Server on Raspberry Pi",
       "description": "Installation and management of a self-hosted multifunction server on Raspberry Pi",
       "longDescription": "Personal project involving the installation and configuration of a multifunction server on Raspberry Pi. I set up the system (Raspberry Pi OS), installed and maintained several services: web server (Apache with reverse proxy and HTTPS via Let’s Encrypt), file server (Samba), automated backup tools, network monitoring, and hosting of static/dynamic sites accessible locally and remotely.",
@@ -63,10 +69,38 @@
       "type": "full-time"
     },
     {
+      "company": "VISEO - VTAH",
+      "position": "FullStack/DevOps Developer",
+      "description": "Public presentation on a technical topic: AG-UI Protocol. In-depth research on the AG-UI Protocol, structured preparation of a technical topic in PowerPoint, creation of CopilotKit demo projects, training and oral presentation in French.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
       "company": "VISEO",
-      "position": "Mission 1 — Infrastructure Migration & Support",
-      "description": "Participation in the infrastructure migration of a client during a corporate acquisition. Support of their solution on a stack using AWS, Kubernetes, GitHub, GitHub Actions, and Jenkins.",
-      "location": "Confidential client",
+      "position": "Architect/Developer",
+      "description": "Design of an Agentic POC aimed at facilitating the integration and use of business processes via AI. In-depth research and learning of agentic technologies, design of the software and cloud architecture, implementation of CI/CD via Azure DevOps, implementation of the solution base.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO",
+      "position": "Architect/Designer",
+      "description": "Design of an internal project aimed at improving the use of AI in application production. In-depth research on AI orchestration tools and processes, design of AI usage workflows for productivity gains, integration of MCP servers and Skills for interoperability.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO - VTAH",
+      "position": "FullStack/DevOps Developer",
+      "description": "Public presentation on a technical topic: Model Context Protocol. In-depth research on the MCP topic, structured preparation of a technical topic in PowerPoint, training and oral presentation in French.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO - Moodys",
+      "position": "DevOps Developer",
+      "description": "Assistance with infrastructure migration and maintenance of over 1500 servers hosted on AWS cloud. Setting up Unix/Windows machines, evolution of AWS/Kubernetes infrastructure, Bash/Python scripting for deployment, maintenance of Jenkins tasks and GitHub actions, monitoring using Grafana Loki/Kubernetes logs.",
+      "location": "Grenoble, France",
       "type": "full-time"
     },
     {

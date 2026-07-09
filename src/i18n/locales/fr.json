@@ -35,6 +35,12 @@
       "category": "Frontend"
     },
     {
+      "title": "KUIS - Kubernetes Web UI",
+      "description": "Interface web légère pour la gestion Kubernetes directement depuis le navigateur",
+      "longDescription": "KUIS (Kubernetes Web UI) est une interface de gestion Kubernetes minimaliste et performante, conçue comme une alternative légère aux solutions lourdes comme Kubernetes Dashboard ou Lens. Le projet offre une expérience utilisateur complète avec un binaire unique d'environ 30MB incluant le frontend, accessible directement depuis le navigateur. Développé en Go avec Fiber pour le backend et React/TypeScript pour le frontend, il permet la navigation interactive des ressources Kubernetes, le streaming de logs, l'accès au shell des conteneurs, l'édition YAML en temps réel, et la gestion de multiples fichiers kubeconfig.",
+      "category": "DevOps"
+    },
+    {
       "title": "Serveur personnel sur Raspberry Pi",
       "description": "Installation et gestion d’un serveur multifonction auto-hébergé sur Raspberry Pi",
       "longDescription": "Projet personnel d’installation et de configuration d’un serveur multifonction sur Raspberry Pi. J’ai configuré le système (Raspberry Pi OS), installé et maintenu plusieurs services : serveur web (Apache avec reverse proxy et HTTPS via Let’s Encrypt), serveur de fichiers (Samba), outils de sauvegarde automatisée, monitoring réseau, et hébergement de sites statiques/dynamiques accessibles localement et à distance.",
@@ -68,10 +74,38 @@
       "type": "full-time"
     },
     {
+      "company": "VISEO - VTAH",
+      "position": "Développeur FullStack/DevOps",
+      "description": "Présentation publique sur un sujet technique : AG-UI Protocol. Recherche approfondie sur le Protocole AG-UI, préparation structurée d'un sujet technique, création de projets démo CopilotKit, entraînement et présentation orale en français.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
       "company": "VISEO",
-      "position": "Mission 1 — Migration d'infrastructure & Support",
-      "description": "Participation à la migration de l'infrastructure d'un client lors d'un rachat d'entreprise. Support de leur solution sur une stack AWS, Kubernetes, GitHub, GitHub Actions et Jenkins.",
-      "location": "Client confidentiel",
+      "position": "Architecte/Développeur",
+      "description": "Conception d'une POC Agentique visant à faciliter l'intégration et l'utilisation de processus métiers via l'IA. Recherche approfondie et apprentissage de technologies agentiques, conception de l'architecture logicielle et cloud, mise en place de CI/CD via Azure DevOps, implémentation de la base de la solution.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO",
+      "position": "Architecte/Concepteur",
+      "description": "Conception d'un projet interne visant à améliorer l'usage de l'IA dans la production d'application. Recherche approfondie sur les outils et processus d'orchestration IA, conception de workflow d'usage IA pour le gain de productivité, intégration de serveur MCP et Skills pour l'interopérabilité.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO - VTAH",
+      "position": "Développeur FullStack/DevOps",
+      "description": "Présentation publique sur un sujet technique : Model Context Protocol. Recherche approfondie sur le sujet MCP, préparation structurée d'un sujet technique sur PowerPoint, entraînement et présentation orale en français.",
+      "location": "Grenoble, France",
+      "type": "full-time"
+    },
+    {
+      "company": "VISEO - Moodys",
+      "position": "Développeur DevOps",
+      "description": "Aide à la migration d'infrastructure et sa maintenance sur plus de 1500 serveurs hébergés sur le cloud AWS. Mise en place de machine Unix/Windows, évolution de l'infrastructure AWS/Kubernetes, scripting Bash/Python pour le déploiement, maintenance de tasks Jenkins et d'actions GitHub, monitoring avec Grafana Loki/logs Kubernetes.",
+      "location": "Grenoble, France",
       "type": "full-time"
     },
     {
