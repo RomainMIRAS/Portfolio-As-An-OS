@@ -363,7 +363,7 @@
     "desktop": {
       "showIcons": "Afficher les icônes du bureau",
       "hideIcons": "Masquer les icônes du bureau",
-      "doubleClickToOpen": "Double-clic pour ouvrir {{appName}}"
+      "clickToOpen": "Clic pour ouvrir {{appName}}"
     },
     "comingSoon": "Bientôt disponible"
   }
