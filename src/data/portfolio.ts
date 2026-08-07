@@ -110,7 +110,7 @@ export const portfolioConfig = {
     {
       id: "vtah-ag-ui-presentation",
       technologies: ["AG-UI Protocol", "CopilotKit", "Microsoft Agent Framework", "React", "Next.js", "Presentation"],
-      liveUrl: "https://www.youtube.com/watch?v=OmvfvGjngoQ",
+      liveUrl: "https://www.youtube.com/watch?v=yp37m-NDyh4",
       images: [],
       featured: true,
       startDate: "2026-06",
