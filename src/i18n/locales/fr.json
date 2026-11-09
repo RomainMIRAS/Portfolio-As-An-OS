@@ -213,7 +213,9 @@
       "period": "Période",
       "viewSourceCode": "Voir le code source",
       "viewOnline": "Voir le projet en ligne",
-      "screenshots": "Captures d'écran"
+      "screenshots": "Captures d'écran",
+      "back": "Retour",
+      "searchLabel": "Rechercher un projet"
     },
     "experience": {
       "title": "Expérience",
@@ -365,7 +367,7 @@
     },
     "windowControls": {
       "minimize": "Minimiser",
-      "maximize": "Maximiser", 
+      "maximize": "Maximiser",
       "restore": "Restaurer",
       "close": "Fermer"
     },

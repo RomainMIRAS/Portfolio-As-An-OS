@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Calendar, Tag, Filter, Search } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Github, ExternalLink, Calendar, Tag, Filter, Search, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { usePortfolioData } from '../../hooks/usePortfolioData';
+
+// Largeur (px) sous laquelle on empile liste/détail au lieu de deux colonnes
+const NARROW_BREAKPOINT = 640;
+const EASE = [0.23, 1, 0.32, 1] as const;
 
 const ProjectsWindow: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -21,6 +25,29 @@ const ProjectsWindow: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const prefersReducedMotion = useReducedMotion();
+
+  // Mesure la largeur de la fenêtre (pas du viewport) pour le responsive
+  const rootRef = useRef<HTMLDivElement>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
+  const [isNarrow, setIsNarrow] = useState(false);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    setIsNarrow(el.clientWidth < NARROW_BREAKPOINT);
+    const observer = new ResizeObserver((entries) => {
+      const width = entries[0]?.contentRect.width ?? el.clientWidth;
+      setIsNarrow(width < NARROW_BREAKPOINT);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Remonte le détail en haut quand on change de projet
+  useEffect(() => {
+    detailRef.current?.scrollTo({ top: 0 });
+  }, [selectedProject]);
 
   const categories = ['all', ...new Set(projects.map(p => p.category))];
   
@@ -36,7 +63,7 @@ const ProjectsWindow: React.FC = () => {
     projects.find(p => p.id === selectedProject) : null;
 
   return (
-    <div className="h-full flex flex-col">
+    <div ref={rootRef} className="h-full flex flex-col">
       {/* En-tête avec filtres */}
       <div className="p-4 border-b border-os-border space-y-4">
         <h2 className="text-xl font-semibold text-os-text flex items-center space-x-2">
@@ -49,6 +76,7 @@ const ProjectsWindow: React.FC = () => {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-os-text-muted w-4 h-4" />
           <input
             type="text"
+            aria-label={t('ui.projects.searchLabel')}
             placeholder={t('ui.projects.searchProject')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -65,10 +93,10 @@ const ProjectsWindow: React.FC = () => {
               type="button"
               aria-pressed={filter === category}
               onClick={() => setFilter(category)}
-              className={`px-3 py-1 rounded-full text-sm transition-[background-color,color,transform] duration-150 active:scale-95 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent ${
+              className={`px-3 py-1 rounded-full text-sm transition-[background-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent ${
                 filter === category
                   ? 'bg-os-accent text-white'
-                  : 'bg-os-lighter text-os-text-muted hover:bg-os-border'
+                  : 'bg-os-lighter text-os-text-muted [@media(hover:hover)_and_(pointer:fine)]:hover:bg-os-border'
               }`}
             >
               {category === 'all' ? t('ui.projects.all') : category}
@@ -78,8 +106,8 @@ const ProjectsWindow: React.FC = () => {
       </div>
 
       <div className="flex-1 flex overflow-hidden">
-        {/* Liste des projets */}
-        <div className="w-1/2 border-r border-os-border overflow-auto">
+        {/* Liste des projets (masquée en mode étroit quand un détail est ouvert) */}
+        <div className={`${isNarrow ? (selectedProjectData ? 'hidden' : 'w-full') : 'w-1/2 border-r border-os-border'} overflow-auto`}>
           <div className="space-y-2 p-4">
             {filteredProjects.map((project) => (
               <button
@@ -87,12 +115,21 @@ const ProjectsWindow: React.FC = () => {
                 type="button"
                 aria-pressed={selectedProject === project.id}
                 onClick={() => setSelectedProject(project.id)}
-                className={`block w-full text-left p-4 rounded-lg border cursor-pointer transition-[transform,background-color,border-color] duration-150 ease-out active:scale-[0.985] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent ${
+                className={`block w-full text-left p-4 rounded-lg border cursor-pointer transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.985] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent ${
                   selectedProject === project.id
                     ? 'bg-os-accent/20 border-os-accent'
-                    : 'bg-os-darker/30 border-os-border hover:border-os-accent/50'
+                    : 'bg-os-darker/30 border-os-border [@media(hover:hover)_and_(pointer:fine)]:hover:border-os-accent/50'
                 }`}
               >
+                {project.images[0] && (
+                  <img
+                    src={project.images[0]}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full aspect-video object-cover rounded-md mb-3 bg-os-darker/30"
+                  />
+                )}
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="font-semibold text-os-text">{project.title}</h3>
                   {project.featured && (
@@ -129,16 +166,41 @@ const ProjectsWindow: React.FC = () => {
         </div>
 
         {/* Détail du projet sélectionné */}
-        <div className="w-1/2 overflow-auto">
-          <AnimatePresence initial={false}>
+        <div
+          ref={detailRef}
+          className={`relative overflow-auto ${isNarrow ? (selectedProjectData ? 'w-full' : 'hidden') : 'w-1/2'}`}
+        >
+          <AnimatePresence initial={false} mode="popLayout">
             {selectedProjectData ? (
               <motion.div
                 key={selectedProjectData.id}
-                initial={{ opacity: 0, x: 8 }}
-                animate={{ opacity: 1, x: 0, transition: { duration: 0.18, ease: [0.23, 1, 0.32, 1] } }}
+                initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 8 }}
+                animate={{ opacity: 1, x: 0, transition: { duration: 0.18, ease: EASE } }}
                 exit={{ opacity: 0, transition: { duration: 0.1 } }}
                 className="p-6 space-y-6 w-full"
               >
+                {/* Retour à la liste (mode étroit) */}
+                {isNarrow && (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(null)}
+                    className="flex items-center space-x-2 text-sm text-os-text-muted transition-[color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-os-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent rounded"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    <span>{t('ui.projects.back')}</span>
+                  </button>
+                )}
+
+                {/* Capture principale */}
+                {selectedProjectData.images[0] && (
+                  <img
+                    src={selectedProjectData.images[0]}
+                    alt={`${selectedProjectData.title} - ${t('ui.projects.screenshots')} 1`}
+                    decoding="async"
+                    className="w-full aspect-video object-contain rounded-lg border border-os-border bg-os-darker/30 p-1"
+                  />
+                )}
+
                 {/* En-tête du projet */}
                 <div>
                   <h3 className="text-2xl font-bold text-os-text mb-2">
@@ -203,18 +265,19 @@ const ProjectsWindow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Images du projet */}
+                {/* Autres captures */}
+                {selectedProjectData.images.length > 1 && (
                 <div className="space-y-3">
                   <h4 className="text-sm font-medium text-os-text">{t('ui.projects.screenshots')}</h4>
                   <div className="grid grid-cols-1 gap-3">
-                    {selectedProjectData.images.map((image: string, index: number) => (
+                    {selectedProjectData.images.slice(1).map((image: string, index: number) => (
                       <div
                         key={image}
                         className="rounded-lg border border-os-border overflow-hidden bg-os-darker/30 p-1"
                       >
                         <img 
                           src={image} 
-                          alt={`${selectedProjectData.title} - ${t('ui.projects.screenshots')} ${index + 1}`}
+                          alt={`${selectedProjectData.title} - ${t('ui.projects.screenshots')} ${index + 2}`}
                           loading="lazy"
                           decoding="async"
                           className="w-full aspect-video object-contain rounded-md"
@@ -223,9 +286,10 @@ const ProjectsWindow: React.FC = () => {
                     ))}
                   </div>
                 </div>
+                )}
               </motion.div>
             ) : (
-              <div className="flex items-center justify-center h-full text-os-text-muted">
+              <div key="empty" className="flex items-center justify-center h-full text-os-text-muted">
                 <p>{t('ui.projects.selectProject')}</p>
               </div>
             )}

@@ -208,7 +208,9 @@
       "period": "Period",
       "viewSourceCode": "View source code",
       "viewOnline": "View project online",
-      "screenshots": "Screenshots"
+      "screenshots": "Screenshots",
+      "back": "Back",
+      "searchLabel": "Search projects"
     },
     "experience": {
       "title": "Experience",
@@ -360,7 +362,7 @@
     },
     "windowControls": {
       "minimize": "Minimize",
-      "maximize": "Maximize", 
+      "maximize": "Maximize",
       "restore": "Restore",
       "close": "Close"
     },
