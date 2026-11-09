@@ -106,7 +106,14 @@ export const portfolioConfig = {
       startDate: "2024-06",
       endDate: "2025-01"
     },
-    
+    {
+      id: "industrial-commissioning-tool",
+      technologies: ["Electron", "Angular", "TypeScript", "Tailwind CSS", ".NET 10", "C#", "CoAP", "HTTPS", "Modbus TCP", "Vitest"],
+      category: "Industrial Software",
+      images: [],
+      featured: true,
+      startDate: "2026-09"
+    },
     {
       id: "vtah-ag-ui-presentation",
       technologies: ["AG-UI Protocol", "CopilotKit", "Microsoft Agent Framework", "React", "Next.js", "Presentation"],
@@ -185,7 +192,7 @@ export const portfolioConfig = {
       id: "agentique-solution",
       company: "VISEO",
       startDate: "2026-04",
-      endDate: "2026-08",
+      endDate: "2026-09",
       technologies: ["Microsoft Agent Framework", "AG-UI Protocol", ".NET", "Microservices", "Distributed Architecture", "Agent Orchestration", "Azure Cloud", "Azure DevOps", "Terraform", "Docker"],
       type: "full-time"
     },

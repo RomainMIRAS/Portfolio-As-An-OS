@@ -36,6 +36,12 @@
       "category": "DevOps"
     },
     {
+      "title": "Electrical Equipment Commissioning Tool",
+      "description": "Offline Windows desktop application for commissioning and diagnosing electrical equipment",
+      "longDescription": "Project delivered for Schneider Electric: a Windows desktop tool for engineers commissioning and diagnosing circuit breakers, metering systems, and panel servers. It connects over USB (CoAP), local network (HTTPS), or Modbus TCP; after authentication, it checks device availability, reads its identity, and displays supported functions while unavailable features remain disabled. Built with Electron, Angular, and a local .NET 10/C# REST API, it runs offline without administrator rights or prior installation. Product-log downloads and firmware updates are planned, with their server-side support already in place.",
+      "category": "Industrial Software"
+    },
+    {
       "title": "VTAH: AG-UI Protocol",
       "description": "Public technical presentation on the AG-UI Protocol",
       "longDescription": "Recorded and publicly shared technical presentation on AG-UI Protocol, a key element of modern agentic systems. I presented in detail the protocol's functionality, architecture, and practical applications with CopilotKit and Microsoft Agent Framework. This presentation aims to educate the tech community about AI agent orchestration protocols and their use cases. Watch the full video via the link above to discover live demos and implementation examples.",

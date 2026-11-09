@@ -41,6 +41,12 @@
       "category": "DevOps"
     },
     {
+      "title": "Outil de mise en service d’équipements électriques",
+      "description": "Application de bureau Windows hors ligne pour mettre en service et diagnostiquer des équipements électriques",
+      "longDescription": "Projet réalisé pour Schneider Electric : un outil Windows destiné aux ingénieurs qui mettent en service et diagnostiquent des disjoncteurs, des systèmes de mesure et des panel servers. La connexion s’effectue par USB (CoAP), réseau local (HTTPS) ou Modbus TCP ; après authentification, l’outil vérifie que l’appareil est joignable, lit son identité et affiche les fonctions prises en charge, les autres restant désactivées. Développé avec Electron, Angular et une API REST locale en .NET 10/C#, il fonctionne hors ligne, sans droits administrateur ni installation préalable. Le téléchargement des journaux produit et la mise à jour du firmware sont prévus ; leur prise en charge côté serveur est déjà prête.",
+      "category": "Logiciel industriel"
+    },
+    {
       "title": "VTAH : AG-UI Protocol",
       "description": "Présentation technique publique sur le protocole AG-UI",
       "longDescription": "Présentation technique enregistrée et partagée publiquement sur le protocole AG-UI, un élément clé des systèmes agentiques modernes. J'y ai présenté en détail le fonctionnement du protocole, son architecture, et ses applications pratiques avec CopilotKit et Microsoft Agent Framework. Cette présentation vise à éduquer la communauté tech sur les protocoles d'orchestration d'agents IA et leurs cas d'usage. Visionnez la vidéo complète via le lien ci-dessus pour découvrir les démos en direct et les exemples d'implémentation.",
