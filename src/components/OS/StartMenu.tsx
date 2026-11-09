@@ -76,7 +76,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ apps, onOpenApp }) => {
           ref={triggerRef}
           type="button"
           onClick={() => setIsOpen((v) => !v)}
-          className="dock-item group max-md:w-11 max-md:h-11"
+          className="dock-item group max-[767px]:w-11 max-[767px]:h-11"
           aria-label={label}
           aria-haspopup="menu"
           aria-expanded={isOpen}
