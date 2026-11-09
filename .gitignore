@@ -34,3 +34,8 @@ scripts/*.pem
 
 # Environment files
 .env
+
+# Agents directory for local development
+.agents/
+.claude/
+skills-lock.json
