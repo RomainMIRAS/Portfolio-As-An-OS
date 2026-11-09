@@ -7,6 +7,7 @@ import Taskbar from './components/OS/Taskbar';
 import WindowManager from './components/OS/WindowManager';
 import NotificationCenter from './components/OS/NotificationCenter';
 import DesktopIcons from './components/OS/DesktopIcons';
+import WelcomeCard from './components/OS/WelcomeCard';
 import useOSState from './hooks/useOSState';
 import { useLocalizedApps } from './hooks/useLocalizedApps';
 
@@ -54,6 +55,13 @@ const App: React.FC = () => {
               onOpenApp={openApp}
               visible={osState.desktopIconsVisible}
               onToggleDesktopIcons={toggleDesktopIcons}
+            />
+
+            {/* Carte d'accueil */}
+            <WelcomeCard
+              availableApps={availableApps}
+              windows={osState.windows}
+              onOpenApp={openApp}
             />
 
             {/* Window Manager */}

@@ -341,7 +341,8 @@
       "systemCheck": "System check in progress...",
       "loadingComponents": "Loading components...",
       "initializingSystem": "Initializing system...",
-      "welcome": "Welcome to Portfolio OS"
+      "welcome": "Welcome to Portfolio OS",
+      "skip": "Click or press Enter to skip"
     },
     "shutdown": {
       "shuttingDown": "Shutting down...",
@@ -374,6 +375,12 @@
       "hideIcons": "Hide desktop icons",
       "clickToOpen": "Click to open {{appName}}"
     },
-    "comingSoon": "Coming soon"
+    "comingSoon": "Coming soon",
+    "welcome": {
+      "label": "Welcome",
+      "greeting": "Welcome",
+      "viewProjects": "View my projects",
+      "contactMe": "Contact me"
+    }
   }
 }

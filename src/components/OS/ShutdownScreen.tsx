@@ -16,7 +16,15 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
     const timer1 = setTimeout(() => setStep('shutting-down'), 1000);
     const timer2 = setTimeout(() => setStep('goodbye'), 3000);
     const timer3 = setTimeout(() => setStep('complete'), 5000);
-    const timer4 = setTimeout(() => onComplete(), 6000);
+    const timer4 = setTimeout(() => {
+      // Efface le flag de session pour que le boot complet rejoue au redémarrage
+      try {
+        sessionStorage.removeItem('portfolio-os-booted');
+      } catch {
+        // sessionStorage indisponible : on ignore
+      }
+      onComplete();
+    }, 6000);
 
     // Animation du progrès
     const progressInterval = setInterval(() => {

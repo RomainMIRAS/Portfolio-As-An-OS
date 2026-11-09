@@ -148,7 +148,6 @@ interface DesktopIconItemProps {
 }
 
 const DesktopIconItem: React.FC<DesktopIconItemProps> = React.memo(({ app, index, top, left, onClick }) => {
-  const { t } = useTranslation();
   const IconComponent = appIcons[app.icon];
 
   if (!IconComponent) return null;
@@ -169,6 +168,7 @@ const DesktopIconItem: React.FC<DesktopIconItemProps> = React.memo(({ app, index
       <button
         type="button"
         aria-label={app.name}
+        data-desktop-icon-id={app.id}
         onClick={(e) => onClick(e, app)}
         className="group relative cursor-pointer select-none rounded-xl p-1 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
       >
@@ -182,10 +182,13 @@ const DesktopIconItem: React.FC<DesktopIconItemProps> = React.memo(({ app, index
 
             {/* Container de l'icône */}
             <div
-              className="relative w-16 h-16 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 shadow-lg"
-              style={{ background: `linear-gradient(135deg, ${color}40, ${color}20)` }}
+              className="relative w-16 h-16 rounded-2xl flex items-center justify-center border border-white/15 shadow-lg"
+              style={{
+                background: `linear-gradient(145deg, ${color}66 0%, ${color}26 55%, #0d1117E6 100%)`,
+                boxShadow: `inset 0 1px 0 rgba(255,255,255,0.18), 0 6px 14px -6px ${color}99`
+              }}
             >
-              <IconComponent size={28} className="text-white drop-shadow-sm" aria-hidden="true" />
+              <IconComponent size={32} strokeWidth={1.75} className="drop-shadow-sm" style={{ color }} aria-hidden="true" />
             </div>
 
             {/* Surbrillance au hover / focus */}
@@ -195,28 +198,13 @@ const DesktopIconItem: React.FC<DesktopIconItemProps> = React.memo(({ app, index
           {/* Label */}
           <div className="w-28 flex justify-center opacity-80 transition-opacity duration-200 [@media(hover:hover)_and_(pointer:fine)]:group-hover:opacity-100 group-focus-visible:opacity-100">
             <span
-              className="text-white text-sm font-medium px-2 py-1 rounded-md bg-black/30 backdrop-blur-sm border border-white/20 text-center leading-tight break-words hyphens-auto"
-              style={{
-                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                fontSize: '11px',
-                wordBreak: 'break-word',
-                overflowWrap: 'break-word',
-                maxWidth: '105px'
-              }}
+              className="text-white text-xs font-medium px-2 py-1 rounded-md bg-os-darker/70 border border-white/15 text-center leading-tight break-words hyphens-auto max-w-[105px]"
+              style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
               title={app.name}
             >
               {displayName}
             </span>
           </div>
-        </div>
-
-        {/* Tooltip (hover précis ou focus clavier) */}
-        <div
-          aria-hidden="true"
-          className="absolute -top-12 left-1/2 -translate-x-1/2 translate-y-1 bg-os-darker/90 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-md border border-os-light/20 whitespace-nowrap opacity-0 pointer-events-none z-50 transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:opacity-100 [@media(hover:hover)_and_(pointer:fine)]:group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0"
-        >
-          {t('ui.desktop.clickToOpen', { appName: app.name })}
-          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-os-darker/90" />
         </div>
       </button>
     </motion.div>

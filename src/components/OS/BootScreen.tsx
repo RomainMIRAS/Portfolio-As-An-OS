@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Terminal, Cpu, HardDrive, Wifi, Battery } from 'lucide-react';
 import { APP_VERSION } from '../../config/version';
 
@@ -18,32 +19,77 @@ const bootMessages = [
   'System ready!'
 ];
 
+// Flag de session : le boot complet ne joue qu'à la première visite (effacé par ShutdownScreen)
+const BOOT_FLAG = 'portfolio-os-booted';
+const FULL_STEP_MS = 450;
+const QUICK_BOOT_MS = 900;
+
+const readBootFlag = (): boolean => {
+  try {
+    return sessionStorage.getItem(BOOT_FLAG) === '1';
+  } catch {
+    return false;
+  }
+};
+
+const writeBootFlag = (): void => {
+  try {
+    sessionStorage.setItem(BOOT_FLAG, '1');
+  } catch {
+    // sessionStorage indisponible : on ignore
+  }
+};
+
 const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
+  const { t } = useTranslation();
+  const reducedMotion = useReducedMotion();
+  // Boot court si déjà vu pendant la session ou si l'utilisateur préfère moins de mouvement
+  const [quick] = useState(() => readBootFlag() || !!reducedMotion);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
   const [progress, setProgress] = useState(0);
+  const doneRef = useRef(false);
+  const onBootCompleteRef = useRef(onBootComplete);
+  onBootCompleteRef.current = onBootComplete;
+
+  const finish = useCallback(() => {
+    if (doneRef.current) return;
+    doneRef.current = true;
+    writeBootFlag();
+    onBootCompleteRef.current();
+  }, []);
+
+  const isComplete = progress >= 100;
 
   useEffect(() => {
+    if (quick) {
+      const timer = setTimeout(finish, QUICK_BOOT_MS);
+      return () => clearTimeout(timer);
+    }
     const interval = setInterval(() => {
-      setCurrentMessageIndex(prev => {
-        const nextIndex = prev + 1;
-        setProgress(nextIndex / bootMessages.length * 100);
-        
-        if (nextIndex >= bootMessages.length) {
-          setIsComplete(true);
-          setTimeout(() => {
-            onBootComplete();
-          }, 1000);
-          clearInterval(interval);
-          return prev;
-        }
-        
-        return nextIndex;
-      });
-    }, 800);
-
+      setCurrentMessageIndex(prev => Math.min(prev + 1, bootMessages.length - 1));
+      setProgress(prev => Math.min(prev + 100 / bootMessages.length, 100));
+    }, FULL_STEP_MS);
     return () => clearInterval(interval);
-  }, [onBootComplete]);
+  }, [quick, finish]);
+
+  // Fin du boot complet une fois la barre pleine
+  useEffect(() => {
+    if (quick || !isComplete) return;
+    const timer = setTimeout(finish, 700);
+    return () => clearTimeout(timer);
+  }, [quick, isComplete, finish]);
+
+  // Skip au clavier : Enter, Espace, Escape
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+        e.preventDefault();
+        finish();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [finish]);
 
   return (
     <AnimatePresence>
@@ -51,7 +97,8 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-os-darker flex flex-col items-center justify-center crt-effect"
+        onClick={finish}
+        className="fixed inset-0 bg-os-darker flex flex-col items-center justify-center crt-effect cursor-pointer"
       >
         {/* Logo/Brand */}
         <motion.div
@@ -189,6 +236,11 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
             <div className="w-8 h-8 border-2 border-os-accent/30 border-t-os-accent rounded-full animate-spin" />
           </motion.div>
         )}
+
+        {/* Skip */}
+        <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-os-text-subtle font-mono">
+          {t('ui.boot.skip')}
+        </p>
 
         {/* Complete Message */}
         {isComplete && (

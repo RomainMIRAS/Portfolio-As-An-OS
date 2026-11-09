@@ -1,101 +1,58 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 interface WallpaperProps {
   theme: 'light' | 'dark';
   wallpaper: string;
 }
 
-interface Particle {
-  left: number; // %
-  top: number;  // %
-  dx: number;   // vw
-  dy: number;   // vh
-  duration: number;
-  delay: number;
-}
-
-const PARTICLE_COUNT = 18;
-
-// Générées une seule fois (module-level) : pas de re-randomisation au re-render
-const PARTICLES: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
-  left: Math.random() * 100,
-  top: Math.random() * 100,
-  dx: (Math.random() - 0.5) * 40,
-  dy: (Math.random() - 0.5) * 40,
-  duration: Math.random() * 20 + 20,
-  delay: -Math.random() * 20
-}));
-
-const WALLPAPER_CSS = `
-@keyframes wallpaper-drift {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(var(--dx), var(--dy), 0); }
-}
-.wallpaper-particle {
-  animation: wallpaper-drift var(--dur) linear var(--delay) infinite alternate;
-  will-change: transform;
-}
-@media (prefers-reduced-motion: reduce) {
-  .wallpaper-particle { animation: none; }
-}
-`;
-
-const Wallpaper: React.FC<WallpaperProps> = ({ theme }) => {
-  const particles = useMemo(
-    () =>
-      PARTICLES.map((p, i) => (
-        <div
-          key={i}
-          className="wallpaper-particle absolute w-1 h-1 bg-os-accent/20 rounded-full"
-          style={
-            {
-              left: `${p.left}%`,
-              top: `${p.top}%`,
-              '--dx': `${p.dx}vw`,
-              '--dy': `${p.dy}vh`,
-              '--dur': `${p.duration}s`,
-              '--delay': `${p.delay}s`
-            } as React.CSSProperties
-          }
-        />
-      )),
-    []
+// Grain statique (SVG feTurbulence en data URI), aucune animation
+const GRAIN_SVG =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    "<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'>" +
+      "<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/>" +
+      "<feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/></filter>" +
+      "<rect width='100%' height='100%' filter='url(#n)'/></svg>"
   );
 
+// Fond entièrement statique : dégradés radiaux doux dans les tons os-*
+const DARK_BACKGROUND = [
+  'radial-gradient(ellipse 70% 60% at 85% 10%, rgba(88, 166, 255, 0.14), transparent 60%)',
+  'radial-gradient(ellipse 60% 55% at 10% 95%, rgba(63, 185, 80, 0.07), transparent 65%)',
+  'radial-gradient(ellipse 90% 70% at 50% 120%, rgba(33, 38, 45, 0.9), transparent 70%)',
+  'linear-gradient(160deg, #010409 0%, #0d1117 55%, #161b22 100%)'
+].join(', ');
+
+const LIGHT_BACKGROUND =
+  'linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 50%, #d1d5db 100%)';
+
+const Wallpaper: React.FC<WallpaperProps> = ({ theme }) => {
+  const isDark = theme === 'dark';
+
   return (
-    <div className="fixed inset-0 overflow-hidden">
-      <style>{WALLPAPER_CSS}</style>
-
-      {/* Gradient de fond */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${
-        theme === 'dark'
-          ? 'from-os-darker via-os-dark to-os-light'
-          : 'from-gray-100 via-gray-200 to-gray-300'
-      }`} />
-
-      {/* Particules (CSS transform uniquement) */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {particles}
-      </div>
+    <div className="fixed inset-0 overflow-hidden" aria-hidden="true">
+      <div
+        className="absolute inset-0"
+        style={{ background: isDark ? DARK_BACKGROUND : LIGHT_BACKGROUND }}
+      />
 
       {/* Grille subtile */}
       <div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(88, 166, 255, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(88, 166, 255, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(88, 166, 255, 0.5) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(88, 166, 255, 0.5) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px'
+          backgroundSize: '56px 56px'
         }}
       />
 
-      {/* Logo en arrière-plan */}
-      <div className="absolute bottom-10 right-10 opacity-5" aria-hidden="true">
-        <div className="text-9xl font-mono font-bold text-os-accent">
-          &lt;/&gt;
-        </div>
-      </div>
+      {/* Grain discret */}
+      <div
+        className="absolute inset-0 opacity-[0.05] mix-blend-soft-light"
+        style={{ backgroundImage: `url("${GRAIN_SVG}")`, backgroundSize: '160px 160px' }}
+      />
     </div>
   );
 };

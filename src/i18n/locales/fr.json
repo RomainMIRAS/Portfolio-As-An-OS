@@ -346,7 +346,8 @@
       "systemCheck": "Vérification du système en cours...",
       "loadingComponents": "Chargement des composants...",
       "initializingSystem": "Initialisation du système...",
-      "welcome": "Bienvenue dans Portfolio OS"
+      "welcome": "Bienvenue dans Portfolio OS",
+      "skip": "Cliquez ou appuyez sur Entrée pour passer"
     },
     "shutdown": {
       "shuttingDown": "Arrêt en cours...",
@@ -379,6 +380,12 @@
       "hideIcons": "Masquer les icônes du bureau",
       "clickToOpen": "Clic pour ouvrir {{appName}}"
     },
-    "comingSoon": "Bientôt disponible"
+    "comingSoon": "Bientôt disponible",
+    "welcome": {
+      "label": "Bienvenue",
+      "greeting": "Bienvenue",
+      "viewProjects": "Voir mes projets",
+      "contactMe": "Me contacter"
+    }
   }
 }
