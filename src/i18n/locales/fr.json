@@ -366,6 +366,9 @@
       "restore": "Restaurer",
       "close": "Fermer"
     },
+    "a11y": {
+      "dismissNotification": "Fermer la notification"
+    },
     "desktop": {
       "showIcons": "Afficher les icônes du bureau",
       "hideIcons": "Masquer les icônes du bureau",

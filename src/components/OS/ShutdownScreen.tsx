@@ -64,12 +64,13 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
       <div className="text-center space-y-8 max-w-lg px-8">
         {/* Icône principale */}
         <motion.div
-          initial={{ scale: 0, rotate: 180 }}
-          animate={{ 
-            scale: step === 'complete' ? 0 : 1, 
-            rotate: step === 'complete' ? 360 : 0 
+          initial={{ scale: 0.9, opacity: 0, rotate: 90 }}
+          animate={{
+            scale: step === 'complete' ? 0.9 : 1,
+            opacity: step === 'complete' ? 0 : 1,
+            rotate: step === 'complete' ? 180 : 0
           }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.8, ease: [0.77, 0, 0.175, 1] }}
           className="mx-auto w-24 h-24 rounded-full bg-os-error/20 border-2 border-os-error flex items-center justify-center"
         >
           <Power className="w-12 h-12 text-os-error" />
@@ -80,15 +81,15 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
           key={step}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
           className="space-y-4"
         >
           <h1 className="text-3xl font-bold text-white">
             {step === 'goodbye' ? (
               <motion.span
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
                 className="flex items-center justify-center gap-2"
               >
                 {t('ui.shutdown.thankYouMessage')} 
@@ -176,9 +177,9 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
           {/* Effet d'onde circulaire lors de l'extinction */}
           {step === 'complete' && (
             <motion.div
-              initial={{ scale: 0, opacity: 1 }}
+              initial={{ scale: 0.9, opacity: 1 }}
               animate={{ scale: 10, opacity: 0 }}
-              transition={{ duration: 3, ease: "easeOut" }}
+              transition={{ duration: 3, ease: [0.23, 1, 0.32, 1] }}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 border-2 border-white rounded-full"
             />
           )}
@@ -187,8 +188,9 @@ const ShutdownScreen: React.FC<ShutdownScreenProps> = ({ onComplete }) => {
         {/* Message final */}
         {step === 'complete' && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
             className="text-2xl font-bold text-white"
           >
             {t('ui.shutdown.portfolioOSClosed')}

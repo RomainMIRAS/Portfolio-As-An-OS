@@ -49,36 +49,39 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange })
   return (
     <div className="relative">
       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 bg-os-lighter/50 hover:bg-os-lighter text-os-text rounded-lg border border-os-border/50 backdrop-blur-sm transition-colors min-w-[120px]"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        className="flex items-center space-x-2 px-3 py-2 bg-os-lighter/50 text-os-text rounded-lg border border-os-border/50 backdrop-blur-sm transition-colors duration-150 min-w-[120px] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-os-lighter"
         title={t('ui.languageSelector.selectLanguage')}
       >
         <Globe className="w-4 h-4" />
         <div className="flex items-center justify-center">{currentLanguage?.flag}</div>
         <span className="text-sm font-medium">{currentLanguage?.code.toUpperCase()}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 transition-transform duration-150 ease-out-strong ${isOpen ? 'rotate-180' : ''}`} />
       </motion.button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.18, ease: [0.23, 1, 0.32, 1] } }}
+            exit={{ opacity: 0, y: 8, scale: 0.95, transition: { duration: 0.12, ease: [0.23, 1, 0.32, 1] } }}
+            style={{ transformOrigin: 'bottom right' }}
             className="absolute bottom-full mb-2 right-0 bg-os-light/95 backdrop-blur-sm border border-os-border/50 rounded-lg shadow-lg overflow-hidden z-[100] min-w-[160px]"
           >
             {languages.map((language) => (
               <motion.button
                 key={language.code}
-                whileHover={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
                 onClick={() => handleLanguageChange(language.code)}
-                className={`w-full px-4 py-3 flex items-center space-x-3 text-left transition-colors ${
-                  i18n.language === language.code 
-                    ? 'bg-os-accent/20 text-os-accent' 
-                    : 'text-os-text hover:text-os-accent hover:bg-os-accent/10'
+                className={`w-full px-4 py-3 flex items-center space-x-3 text-left transition-colors duration-150 ${
+                  i18n.language === language.code
+                    ? 'bg-os-accent/20 text-os-accent'
+                    : 'text-os-text [@media(hover:hover)_and_(pointer:fine)]:hover:text-os-accent [@media(hover:hover)_and_(pointer:fine)]:hover:bg-os-accent/10'
                 }`}
               >
                 <div className="flex items-center justify-center">{language.flag}</div>

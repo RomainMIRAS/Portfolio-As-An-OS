@@ -361,6 +361,9 @@
       "restore": "Restore",
       "close": "Close"
     },
+    "a11y": {
+      "dismissNotification": "Dismiss notification"
+    },
     "desktop": {
       "showIcons": "Show desktop icons",
       "hideIcons": "Hide desktop icons",

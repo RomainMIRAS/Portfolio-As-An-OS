@@ -55,9 +55,9 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
       >
         {/* Logo/Brand */}
         <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 1, type: "spring", stiffness: 200 }}
+          initial={{ scale: 0.9, opacity: 0, rotate: -90 }}
+          animate={{ scale: 1, opacity: 1, rotate: 0 }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
           className="mb-12"
         >
           <div className="relative">
@@ -144,7 +144,7 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
               className="h-full bg-gradient-to-r from-os-accent to-os-accent-hover"
             />
           </div>
@@ -193,8 +193,9 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
         {/* Complete Message */}
         {isComplete && (
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
             className="mt-8 text-os-success font-mono text-lg"
           >
             Boot Complete - Welcome!

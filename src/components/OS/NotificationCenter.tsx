@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, AlertCircle, CheckCircle, Info, AlertTriangle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import type { NotificationState } from '../../types/os';
 
 interface NotificationCenterProps {
@@ -9,6 +10,7 @@ interface NotificationCenterProps {
 }
 
 const NotificationCenter: React.FC<NotificationCenterProps> = ({ notifications, onRemove }) => {
+  const { t } = useTranslation();
   const getIcon = (type: NotificationState['type']) => {
     switch (type) {
       case 'success':
@@ -43,10 +45,9 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ notifications, 
         {notifications.map((notification) => (
           <motion.div
             key={notification.id}
-            initial={{ opacity: 0, x: 300, scale: 0.8 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 300, scale: 0.8 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            initial={{ opacity: 0, x: 24, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1, transition: { duration: 0.25, ease: [0.23, 1, 0.32, 1] } }}
+            exit={{ opacity: 0, x: 24, scale: 0.95, transition: { duration: 0.15, ease: [0.23, 1, 0.32, 1] } }}
             className={`bg-os-light/90 backdrop-blur-md border border-os-border ${getBorderColor(notification.type)} border-l-4 rounded-lg shadow-2xl p-4 min-w-80`}
           >
             <div className="flex items-start space-x-3">
@@ -68,7 +69,8 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ notifications, 
 
               <button
                 onClick={() => onRemove(notification.id)}
-                className="flex-shrink-0 text-os-text-muted hover:text-os-text transition-colors p-1 rounded-md hover:bg-os-border/50"
+                aria-label={t('ui.a11y.dismissNotification')}
+                className="flex-shrink-0 text-os-text-muted p-1 rounded-md transition-[background-color,color,transform] duration-150 ease-out-strong active:scale-95 [@media(hover:hover)_and_(pointer:fine)]:hover:text-os-text [@media(hover:hover)_and_(pointer:fine)]:hover:bg-os-border/50"
               >
                 <X className="w-4 h-4" />
               </button>
