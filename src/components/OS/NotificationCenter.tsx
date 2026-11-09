@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion, type PanInfo } from 'framer-motion';
 import { X, AlertCircle, CheckCircle, Info, AlertTriangle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { NotificationState } from '../../types/os';
@@ -10,7 +10,14 @@ interface NotificationCenterProps {
 }
 
 const NotificationCenter: React.FC<NotificationCenterProps> = ({ notifications, onRemove }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const reduceMotion = useReducedMotion();
+
+  // Swipe horizontal : fermeture si déplacement > 80px ou vélocité > 500
+  const handleDragEnd = (id: string, info: PanInfo) => {
+    if (Math.abs(info.offset.x) > 80 || Math.abs(info.velocity.x) > 500) onRemove(id);
+  };
+
   const getIcon = (type: NotificationState['type']) => {
     switch (type) {
       case 'success':
@@ -40,15 +47,21 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ notifications, 
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50 space-y-3 max-w-sm">
-      <AnimatePresence>
+    <div className="fixed top-4 right-4 z-50 max-w-sm">
+      <AnimatePresence mode="popLayout">
         {notifications.map((notification) => (
           <motion.div
             key={notification.id}
-            initial={{ opacity: 0, x: 24, scale: 0.95 }}
+            layout={!reduceMotion}
+            drag="x"
+            dragSnapToOrigin
+            dragElastic={0.6}
+            onDragEnd={(_, info) => handleDragEnd(notification.id, info)}
+            initial={{ opacity: 0, x: reduceMotion ? 0 : 24, scale: reduceMotion ? 1 : 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1, transition: { duration: 0.25, ease: [0.23, 1, 0.32, 1] } }}
-            exit={{ opacity: 0, x: 24, scale: 0.95, transition: { duration: 0.15, ease: [0.23, 1, 0.32, 1] } }}
-            className={`bg-os-light/90 backdrop-blur-md border border-os-border ${getBorderColor(notification.type)} border-l-4 rounded-lg shadow-2xl p-4 min-w-80`}
+            exit={{ opacity: 0, x: reduceMotion ? 0 : 24, scale: reduceMotion ? 1 : 0.95, transition: { duration: 0.15, ease: [0.23, 1, 0.32, 1] } }}
+            style={{ touchAction: 'pan-y' }}
+            className={`mb-3 bg-os-light/90 backdrop-blur-md border border-os-border ${getBorderColor(notification.type)} border-l-4 rounded-lg shadow-2xl p-4 min-w-[min(20rem,calc(100vw-2rem))]`}
           >
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0 mt-0.5">
@@ -63,7 +76,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ notifications, 
                   {notification.message}
                 </p>
                 <p className="text-xs text-os-text-subtle mt-2">
-                  {new Date(notification.timestamp).toLocaleTimeString()}
+                  {new Date(notification.timestamp).toLocaleTimeString(i18n.language === 'fr' ? 'fr-FR' : 'en-US')}
                 </p>
               </div>
 

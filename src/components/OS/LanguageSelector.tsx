@@ -54,13 +54,13 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageChange })
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        className="flex items-center space-x-2 px-3 py-2 bg-os-lighter/50 text-os-text rounded-lg border border-os-border/50 backdrop-blur-sm transition-colors duration-150 min-w-[120px] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-os-lighter"
-        title={t('ui.languageSelector.selectLanguage')}
+        className="flex items-center justify-center md:space-x-2 px-2 md:px-3 py-2 min-h-11 min-w-11 bg-os-lighter/50 text-os-text rounded-lg border border-os-border/50 backdrop-blur-sm transition-colors duration-150 md:min-w-[120px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent [@media(hover:hover)_and_(pointer:fine)]:hover:bg-os-lighter"
+        aria-label={t('ui.languageSelector.selectLanguage')}
       >
-        <Globe className="w-4 h-4" />
+        <Globe className="w-4 h-4 hidden md:block" aria-hidden="true" />
         <div className="flex items-center justify-center">{currentLanguage?.flag}</div>
-        <span className="text-sm font-medium">{currentLanguage?.code.toUpperCase()}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform duration-150 ease-out-strong ${isOpen ? 'rotate-180' : ''}`} />
+        <span className="hidden md:inline text-sm font-medium">{currentLanguage?.code.toUpperCase()}</span>
+        <ChevronDown aria-hidden="true" className={`hidden md:block w-4 h-4 transition-transform duration-150 ease-out-strong ${isOpen ? 'rotate-180' : ''}`} />
       </motion.button>
 
       <AnimatePresence>
