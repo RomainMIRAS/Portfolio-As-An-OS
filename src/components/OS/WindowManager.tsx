@@ -1,6 +1,6 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import DraggableWindow from './DraggableWindow.tsx';
+import DraggableWindow, { type ExitContext } from './DraggableWindow.tsx';
 import type { WindowState } from '../../types/os';
 
 // Fenêtres chargées à la demande (code splitting)
@@ -74,16 +74,32 @@ const WindowManager: React.FC<WindowManagerProps> = ({
     );
   };
 
+  const visible = windows
+    .filter(window => window.isOpen && !window.isMinimized)
+    .sort((a, b) => a.zIndex - b.zIndex);
+  // La fenêtre visible au zIndex le plus élevé est la fenêtre active
+  const focusedId = visible.length ? visible[visible.length - 1].id : null;
+
+  // Contexte d'exit : permet à une fenêtre qui part de savoir si elle est minimisée ou fermée
+  const exitContext: ExitContext = {};
+  windows.forEach(w => { exitContext[w.id] = w.isOpen && w.isMinimized; });
+
+  // Ids minimisés au commit précédent : un montage qui en fait partie est une restauration
+  const minimizedRef = useRef<Set<string>>(new Set());
+  useEffect(() => {
+    minimizedRef.current = new Set(windows.filter(w => w.isMinimized).map(w => w.id));
+  });
+
   return (
     <div className="fixed inset-0 pointer-events-none">
-      <AnimatePresence>
-        {windows
-          .filter(window => window.isOpen && !window.isMinimized)
-          .sort((a, b) => a.zIndex - b.zIndex)
+      <AnimatePresence custom={exitContext}>
+        {visible
           .map((window) => (
             <DraggableWindow
               key={window.id}
               window={window}
+              isFocused={window.id === focusedId}
+              fromMinimized={minimizedRef.current.has(window.id)}
               onClose={() => onClose(window.id)}
               onFocus={() => onFocus(window.id)}
               onMinimize={() => onMinimize(window.id)}

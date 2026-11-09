@@ -33,11 +33,34 @@
 @layer components {
   .window {
     @apply bg-os-light/80 backdrop-blur-os border border-os-border rounded-lg shadow-2xl;
+    transition-property: box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Fenêtre inactive : ombre réduite et en-tête estompé */
+  [data-focused='false'] > .window {
+    @apply shadow-md;
   }
 
   .window-header {
     @apply bg-os-lighter/50 border-b border-os-border px-4 py-3 rounded-t-lg;
     @apply flex items-center justify-between;
+    transition-property: background-color;
+    transition-duration: 200ms;
+  }
+
+  .window-header > * {
+    transition-property: opacity;
+    transition-duration: 200ms;
+  }
+
+  [data-focused='false'] > .window > .window-header {
+    @apply bg-os-lighter/25;
+  }
+
+  [data-focused='false'] > .window > .window-header > * {
+    opacity: 0.6;
   }
 
   .window-content {
@@ -92,12 +115,18 @@
     @apply flex items-center justify-center px-4 py-2 h-16;
   }
 
+  @media (max-width: 767px) {
+    .taskbar {
+      @apply px-2;
+    }
+  }
+
   .dock-item {
     @apply relative bg-os-lighter/50 border border-os-border rounded-lg;
     @apply w-12 h-12 flex items-center justify-center cursor-pointer;
-    @apply transition-[transform,background-color,border-color,box-shadow] duration-150 ease-out-strong;
+    @apply transition-[transform,background-color,border-color,box-shadow,color,opacity] duration-150 ease-out-strong;
     @apply active:scale-[0.97];
-    @apply focus:outline-none focus:ring-2 focus:ring-os-accent;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-os-accent;
   }
 
   @media (hover: hover) and (pointer: fine) {

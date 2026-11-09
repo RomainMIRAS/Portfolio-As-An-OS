@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { X, Minus, Square, Maximize } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { WindowState } from '../../types/os';
 
 interface DraggableWindowProps {
   window: WindowState;
+  isFocused: boolean;
+  fromMinimized: boolean;
   children: React.ReactNode;
   onClose: () => void;
   onFocus: () => void;
@@ -15,9 +17,13 @@ interface DraggableWindowProps {
   onUpdateSize: (size: { width: number; height: number }) => void;
 }
 
+// Contexte d'exit transmis par AnimatePresence (id -> fenêtre minimisée)
+export type ExitContext = Record<string, boolean>;
+
 const MOBILE_QUERY = '(max-width: 767px)';
 const TASKBAR_HEIGHT = 64;
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
+const MIN_SCALE = 0.3;
 
 // Gating du hover : uniquement pour les pointeurs précis avec survol
 const HOVER = '[@media(hover:hover)_and_(pointer:fine)]:hover';
@@ -27,12 +33,26 @@ const CONTROL_BASE =
   'before:content-[""] before:absolute before:-inset-1 ' +
   'pointer-coarse:w-8 pointer-coarse:h-8';
 
+// Centre du lanceur (dock d'abord, sinon icône du bureau) ; null si absent
+const getLauncherCenter = (id: string): { x: number; y: number } | null => {
+  const selectors = [`[data-dock-id="${id}"]`, `[data-desktop-icon-id="${id}"]`];
+  for (const sel of selectors) {
+    const el = document.querySelector(sel);
+    if (!el) continue;
+    const r = el.getBoundingClientRect();
+    if (r.width > 0 && r.height > 0) return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+  return null;
+};
+
 type Gesture =
   | { mode: 'drag'; pointerId: number; startX: number; startY: number; originX: number; originY: number; x: number; y: number }
   | { mode: 'resize'; pointerId: number; startX: number; startY: number; width: number; height: number; w: number; h: number };
 
 const DraggableWindow: React.FC<DraggableWindowProps> = ({
   window,
+  isFocused,
+  fromMinimized,
   children,
   onClose,
   onFocus,
@@ -42,6 +62,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   onUpdateSize
 }) => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(() => globalThis.window.matchMedia(MOBILE_QUERY).matches);
 
   const windowRef = useRef<HTMLDivElement>(null);
@@ -61,6 +82,67 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
 
   const fullscreen = window.isMaximized || isMobile;
   const canMove = !fullscreen;
+
+  // Entrée calculée une seule fois au montage : depuis le dock (restauration) ou le lanceur (ouverture)
+  const [enter] = useState(() => {
+    const rect = fullscreen
+      ? { left: 0, top: 0, width: globalThis.window.innerWidth, height: globalThis.window.innerHeight - TASKBAR_HEIGHT }
+      : { left: window.position.x, top: window.position.y, width: window.size.width, height: window.size.height };
+    const launcher = getLauncherCenter(window.id);
+    if (reduceMotion || !launcher) {
+      return { initial: { opacity: 0, scale: reduceMotion ? 1 : 0.96 }, origin: '50% 50%' };
+    }
+    if (fromMinimized) {
+      return {
+        initial: {
+          opacity: 0,
+          scale: MIN_SCALE,
+          x: launcher.x - (rect.left + rect.width / 2),
+          y: launcher.y - (rect.top + rect.height / 2)
+        },
+        origin: '50% 50%'
+      };
+    }
+    return {
+      initial: { opacity: 0, scale: 0.9 },
+      origin: `${launcher.x - rect.left}px ${launcher.y - rect.top}px`
+    };
+  });
+
+  // Transition courte lors du basculement maximiser/restaurer (hors drag/resize)
+  const [morphing, setMorphing] = useState(false);
+  const prevMaxRef = useRef(window.isMaximized);
+  useEffect(() => {
+    if (prevMaxRef.current === window.isMaximized) return;
+    prevMaxRef.current = window.isMaximized;
+    if (reduceMotion) return;
+    setMorphing(true);
+    const timer = globalThis.setTimeout(() => setMorphing(false), 220);
+    return () => globalThis.clearTimeout(timer);
+  }, [window.isMaximized, reduceMotion]);
+
+  // Sortie : minimiser = vol vers le dock, fermer = fondu court
+  const buildExit = (ctx?: ExitContext) => {
+    const closeExit = { opacity: 0, scale: reduceMotion ? 1 : 0.96, transition: { duration: 0.12, ease: EASE_OUT } };
+    if (!ctx?.[window.id]) return closeExit;
+    const minimizeFade = { opacity: 0, scale: 1, transition: { duration: 0.2, ease: 'easeOut' as const } };
+    const dock = getLauncherCenter(window.id);
+    const el = windowRef.current;
+    if (reduceMotion || !dock || !el) return minimizeFade;
+    const r = el.getBoundingClientRect();
+    // Compense l'origine de transformation pour que le centre atterrisse sur le lanceur
+    const [oxs, oys] = enter.origin.split(' ');
+    const ox = oxs.endsWith('%') ? (parseFloat(oxs) / 100) * r.width : parseFloat(oxs);
+    const oy = oys.endsWith('%') ? (parseFloat(oys) / 100) * r.height : parseFloat(oys);
+    const k = 1 - MIN_SCALE;
+    return {
+      opacity: 0,
+      scale: MIN_SCALE,
+      x: dock.x - (r.left + r.width / 2) + k * (r.width / 2 - ox),
+      y: dock.y - (r.top + r.height / 2) + k * (r.height / 2 - oy),
+      transition: { duration: 0.2, ease: 'easeOut' as const }
+    };
+  };
 
   const handleHeaderPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0)) return;
@@ -135,9 +217,18 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Escape' && !e.defaultPrevented) {
+      // Ne pas fermer pendant la saisie (évite la perte d'un brouillon)
+      const target = e.target as HTMLElement;
+      if (target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')) return;
       e.stopPropagation();
       onClose();
     }
+  };
+
+  // Double-clic sur la barre de titre : maximiser/restaurer (desktop uniquement)
+  const handleHeaderDoubleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile || (e.target as HTMLElement).closest('button')) return;
+    onMaximize();
   };
 
   const windowStyle = fullscreen
@@ -160,13 +251,22 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       role="dialog"
       aria-label={window.title}
       tabIndex={-1}
-      initial={{ opacity: 0, scale: 0.96 }}
-      animate={{ opacity: 1, scale: 1, transition: { duration: 0.2, ease: EASE_OUT } }}
-      exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.12, ease: EASE_OUT } }}
-      className="fixed pointer-events-auto outline-none"
+      data-focused={isFocused}
+      variants={{
+        initial: enter.initial,
+        animate: { opacity: 1, scale: 1, x: 0, y: 0, transition: { duration: 0.2, ease: EASE_OUT } },
+        exit: (ctx?: ExitContext) => buildExit(ctx)
+      }}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className={`fixed pointer-events-auto outline-none ${
+        morphing ? 'transition-[left,top,width,height] duration-200 ease-out-strong' : ''
+      }`}
       style={{
         ...windowStyle,
-        zIndex: window.zIndex
+        zIndex: window.zIndex,
+        transformOrigin: enter.origin
       }}
       onPointerDown={() => onFocus()}
       onKeyDown={handleKeyDown}
@@ -176,6 +276,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         <div
           className={`window-header select-none touch-none ${canMove ? 'cursor-move' : ''}`}
           onPointerDown={handleHeaderPointerDown}
+          onDoubleClick={handleHeaderDoubleClick}
           onPointerMove={handlePointerMove}
           onPointerUp={endGesture}
           onPointerCancel={endGesture}
