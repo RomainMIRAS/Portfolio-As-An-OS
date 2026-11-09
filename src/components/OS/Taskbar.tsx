@@ -19,7 +19,7 @@ interface TaskbarProps {
 }
 
 // Style de base du dock : tout le reste vit dans .dock-item (index.css)
-const DOCK_BTN = 'dock-item group max-[767px]:w-11 max-[767px]:h-11';
+const DOCK_BTN = 'dock-item group [@media(max-width:767px)]:w-11 [@media(max-width:767px)]:h-11';
 
 const Taskbar: React.FC<TaskbarProps> = ({ 
   availableApps, 
@@ -95,7 +95,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
         </div>
 
         {/* Section centrale - Applications (sous md : seulement les fenêtres ouvertes) */}
-        <div className="flex items-center gap-2 flex-1 min-w-0 justify-center max-[767px]:justify-start max-[767px]:overflow-x-auto max-[767px]:py-1.5 max-[767px]:[scrollbar-width:none] max-[767px]:[&::-webkit-scrollbar]:hidden">
+        <div className="flex items-center gap-2 flex-1 min-w-0 justify-center [@media(max-width:767px)]:justify-start [@media(max-width:767px)]:overflow-x-auto [@media(max-width:767px)]:py-1.5 [@media(max-width:767px)]:[scrollbar-width:none] [@media(max-width:767px)]:[&::-webkit-scrollbar]:hidden">
           {availableApps.map((app) => {
             const win = openWindows.find(w => w.id === app.id);
             const isOpen = !!win;
@@ -108,7 +108,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
                 ? 'opacity-60'
                 : isOpen
                   ? 'border-os-accent/40'
-                  : 'max-[767px]:hidden';
+                  : '[@media(max-width:767px)]:hidden';
             const dotClass = isFocused
               ? 'bg-os-accent'
               : isMinimized
