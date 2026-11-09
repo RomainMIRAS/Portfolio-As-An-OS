@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import DraggableWindow from './DraggableWindow.tsx';
 import type { WindowState } from '../../types/os';
 
-// Import des composants de fenêtres
-import AboutWindow from '../Windows/AboutWindow.tsx';
-import ProjectsWindow from '../Windows/ProjectsWindow.tsx';
-import ExperienceWindow from '../Windows/ExperienceWindow.tsx';
-import SkillsWindow from '../Windows/SkillsWindow.tsx';
-import TerminalWindow from '../Windows/TerminalWindow.tsx';
-import ContactWindow from '../Windows/ContactWindow.tsx';
+// Fenêtres chargées à la demande (code splitting)
+const AboutWindow = lazy(() => import('../Windows/AboutWindow.tsx'));
+const ProjectsWindow = lazy(() => import('../Windows/ProjectsWindow.tsx'));
+const ExperienceWindow = lazy(() => import('../Windows/ExperienceWindow.tsx'));
+const SkillsWindow = lazy(() => import('../Windows/SkillsWindow.tsx'));
+const TerminalWindow = lazy(() => import('../Windows/TerminalWindow.tsx'));
+const ContactWindow = lazy(() => import('../Windows/ContactWindow.tsx'));
+
+const WindowFallback: React.FC = () => (
+  <div className="flex h-full min-h-32 items-center justify-center" role="status" aria-busy="true">
+    <div className="h-5 w-5 rounded-full border-2 border-os-accent/30 border-t-os-accent animate-spin" />
+  </div>
+);
 
 interface WindowManagerProps {
   windows: WindowState[];
@@ -55,9 +61,17 @@ const WindowManager: React.FC<WindowManagerProps> = ({
 
     // Inject props conditionnellement pour certaines fenêtres (ex: Contact)
     if (window.component === 'ContactWindow' && onAddNotification) {
-      return <Component onAddNotification={onAddNotification} />;
+      return (
+        <Suspense fallback={<WindowFallback />}>
+          <Component onAddNotification={onAddNotification} />
+        </Suspense>
+      );
     }
-    return <Component />;
+    return (
+      <Suspense fallback={<WindowFallback />}>
+        <Component />
+      </Suspense>
+    );
   };
 
   return (

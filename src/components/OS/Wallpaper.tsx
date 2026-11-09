@@ -1,51 +1,85 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useMemo } from 'react';
 
 interface WallpaperProps {
   theme: 'light' | 'dark';
   wallpaper: string;
 }
 
+interface Particle {
+  left: number; // %
+  top: number;  // %
+  dx: number;   // vw
+  dy: number;   // vh
+  duration: number;
+  delay: number;
+}
+
+const PARTICLE_COUNT = 18;
+
+// Générées une seule fois (module-level) : pas de re-randomisation au re-render
+const PARTICLES: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
+  left: Math.random() * 100,
+  top: Math.random() * 100,
+  dx: (Math.random() - 0.5) * 40,
+  dy: (Math.random() - 0.5) * 40,
+  duration: Math.random() * 20 + 20,
+  delay: -Math.random() * 20
+}));
+
+const WALLPAPER_CSS = `
+@keyframes wallpaper-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(var(--dx), var(--dy), 0); }
+}
+.wallpaper-particle {
+  animation: wallpaper-drift var(--dur) linear var(--delay) infinite alternate;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wallpaper-particle { animation: none; }
+}
+`;
+
 const Wallpaper: React.FC<WallpaperProps> = ({ theme }) => {
-  const generateParticles = () => {
-    return Array.from({ length: 50 }, (_, i) => (
-      <motion.div
-        key={i}
-        className="absolute w-1 h-1 bg-os-accent/20 rounded-full"
-        initial={{
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-        }}
-        animate={{
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-        }}
-        transition={{
-          duration: Math.random() * 20 + 10,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear"
-        }}
-      />
-    ));
-  };
+  const particles = useMemo(
+    () =>
+      PARTICLES.map((p, i) => (
+        <div
+          key={i}
+          className="wallpaper-particle absolute w-1 h-1 bg-os-accent/20 rounded-full"
+          style={
+            {
+              left: `${p.left}%`,
+              top: `${p.top}%`,
+              '--dx': `${p.dx}vw`,
+              '--dy': `${p.dy}vh`,
+              '--dur': `${p.duration}s`,
+              '--delay': `${p.delay}s`
+            } as React.CSSProperties
+          }
+        />
+      )),
+    []
+  );
 
   return (
     <div className="fixed inset-0 overflow-hidden">
+      <style>{WALLPAPER_CSS}</style>
+
       {/* Gradient de fond */}
       <div className={`absolute inset-0 bg-gradient-to-br ${
-        theme === 'dark' 
-          ? 'from-os-darker via-os-dark to-os-light' 
+        theme === 'dark'
+          ? 'from-os-darker via-os-dark to-os-light'
           : 'from-gray-100 via-gray-200 to-gray-300'
       }`} />
 
-      {/* Particules animées */}
-      <div className="absolute inset-0">
-        {generateParticles()}
+      {/* Particules (CSS transform uniquement) */}
+      <div className="absolute inset-0" aria-hidden="true">
+        {particles}
       </div>
 
       {/* Grille subtile */}
-      <div 
+      <div
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage: `
@@ -56,11 +90,8 @@ const Wallpaper: React.FC<WallpaperProps> = ({ theme }) => {
         }}
       />
 
-      {/* Overlay avec effet de scan lines */}
-      <div className="absolute inset-0 scan-lines pointer-events-none" />
-
       {/* Logo en arrière-plan */}
-      <div className="absolute bottom-10 right-10 opacity-5">
+      <div className="absolute bottom-10 right-10 opacity-5" aria-hidden="true">
         <div className="text-9xl font-mono font-bold text-os-accent">
           &lt;/&gt;
         </div>

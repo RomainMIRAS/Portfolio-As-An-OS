@@ -1,10 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { 
-  User, FolderOpen, Briefcase, Code, Terminal, Mail, 
-  Settings, Power 
-} from 'lucide-react';
+import { Terminal, Settings, Power } from 'lucide-react';
+import { getAppIcon } from './appIcons';
 import LanguageSelector from './LanguageSelector';
 import type { AppConfig, WindowState } from '../../types/os';
 import { APP_VERSION } from '../../config/version';
@@ -19,16 +17,8 @@ interface TaskbarProps {
   onShutdown: () => void;
 }
 
-const iconMap = {
-  User,
-  FolderOpen,
-  Briefcase,
-  Code,
-  Terminal,
-  Mail,
-  Settings,
-  Power
-};
+const DOCK_BTN =
+  'dock-item group relative transition-[transform,background-color,border-color,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 [@media(hover:hover)_and_(pointer:fine)]:hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent';
 
 const Taskbar: React.FC<TaskbarProps> = ({ 
   availableApps, 
@@ -41,8 +31,8 @@ const Taskbar: React.FC<TaskbarProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
   const getIcon = (iconName: string) => {
-    const IconComponent = iconMap[iconName as keyof typeof iconMap];
-    return IconComponent ? <IconComponent className="w-6 h-6" /> : <Code className="w-6 h-6" />;
+    const IconComponent = getAppIcon(iconName);
+    return <IconComponent className="w-6 h-6" aria-hidden="true" />;
   };
 
   const formatTime = (date: Date) => {
@@ -89,26 +79,25 @@ const Taskbar: React.FC<TaskbarProps> = ({
     <motion.div
       initial={{ y: 100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
       className="taskbar"
     >
       <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto">
         {/* Section gauche - Logo et menu */}
         <div className="flex items-center space-x-4">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             onClick={() => onAddNotification({
               title: t('ui.taskbar.startMenu'),
               message: `Portfolio OS v${APP_VERSION} - Romain MIRAS`,
               type: 'info',
               duration: 4000
             })}
-            className="dock-item group"
+            className={DOCK_BTN}
             title={t('ui.taskbar.startMenu')}
+            aria-label={t('ui.taskbar.startMenu')}
           >
-            <Terminal className="w-6 h-6 text-os-accent" />
-          </motion.button>
+            <Terminal className="w-6 h-6 text-os-accent" aria-hidden="true" />
+          </button>
         </div>
 
         {/* Section centrale - Applications */}
@@ -118,10 +107,8 @@ const Taskbar: React.FC<TaskbarProps> = ({
             const window = openWindows.find(w => w.id === app.id);
             
             return (
-              <motion.button
+              <button
                 key={app.id}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
                 onClick={() => {
                   if (isOpen && window) {
                     onToggleMinimize(window.id);
@@ -129,18 +116,22 @@ const Taskbar: React.FC<TaskbarProps> = ({
                     onOpenApp(app);
                   }
                 }}
-                className={`dock-item group ${isOpen ? 'bg-os-accent/30 border-os-accent' : ''}`}
+                className={`${DOCK_BTN} ${isOpen ? 'bg-os-accent/30 border-os-accent' : ''}`}
                 title={app.name}
+                aria-label={app.name}
+                aria-pressed={isOpen}
               >
                 {getIcon(app.icon)}
                 {isOpen && (
                   <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-os-accent rounded-full"
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                    aria-hidden="true"
+                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-os-accent rounded-full"
                   />
                 )}
-              </motion.button>
+              </button>
             );
           })}
         </div>
@@ -148,11 +139,10 @@ const Taskbar: React.FC<TaskbarProps> = ({
         {/* Section droite - Contrôles système */}
         <div className="flex items-center space-x-4">
           {/* Bouton paramètres */}
-          <motion.button
-            whileHover={{ scale: 1.1, rotate: 90 }}
-            whileTap={{ scale: 0.95 }}
-            className="dock-item group"
+          <button
+            className={DOCK_BTN}
             title={t('ui.taskbar.settings')}
+            aria-label={t('ui.taskbar.settings')}
             onClick={() => onAddNotification({
               title: t('ui.taskbar.settings'),
               message: t('ui.comingSoon'),
@@ -160,8 +150,8 @@ const Taskbar: React.FC<TaskbarProps> = ({
               duration: 3000
             })}
           >
-            <Settings className="w-6 h-6" />
-          </motion.button>
+            <Settings className="w-6 h-6 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:rotate-90" aria-hidden="true" />
+          </button>
 
           {/* Language Selector */}
           <LanguageSelector onLanguageChange={handleLanguageChange} />
@@ -177,15 +167,14 @@ const Taskbar: React.FC<TaskbarProps> = ({
           </div>
 
           {/* Bouton power */}
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="dock-item group text-os-error"
+          <button
+            className={`${DOCK_BTN} text-os-error`}
             title={t('ui.taskbar.shutdown')}
+            aria-label={t('ui.taskbar.shutdown')}
             onClick={handleShutdown}
           >
-            <Power className="w-6 h-6" />
-          </motion.button>
+            <Power className="w-6 h-6" aria-hidden="true" />
+          </button>
         </div>
       </div>
     </motion.div>
