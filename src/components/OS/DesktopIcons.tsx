@@ -161,7 +161,7 @@ const DesktopIconItem: React.FC<DesktopIconItemProps> = React.memo(({ app, index
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: index * 0.035, duration: 0.2, ease: EASE_OUT }}
+      transition={{ delay: index * 0.025, duration: 0.2, ease: EASE_OUT }}
       className="absolute"
       style={{ top: `${top}px`, left: `${left}px` }}
     >
