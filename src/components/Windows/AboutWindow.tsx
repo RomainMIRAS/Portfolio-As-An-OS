@@ -188,7 +188,7 @@ const AboutWindow: React.FC = () => {
             }`}
             onClick={downloadCV}
             disabled={!portfolioData.personal.cvUrl}
-            title={!portfolioData.personal.cvUrl ? 'CV non disponible' : 'Télécharger le CV'}
+            title={!portfolioData.personal.cvUrl ? t('ui.about.cvUnavailable') : t('ui.about.downloadCv')}
           >
             <Download className="w-4 h-4" />
             <span>{t('ui.about.downloadCv')}</span>

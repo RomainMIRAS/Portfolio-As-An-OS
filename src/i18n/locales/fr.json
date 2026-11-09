@@ -185,6 +185,7 @@
     "about": {
       "title": "À propos",
       "downloadCv": "Télécharger CV",
+      "cvUnavailable": "CV non disponible",
       "personalInfo": "Informations Personnelles",
       "overview": "À propos de moi",
       "projects": "Projets",
@@ -291,6 +292,8 @@
       "message": "Message",
       "send": "Envoyer",
       "sending": "Envoi en cours...",
+      "sendEmail": "Envoyer un email",
+      "call": "Appeler",
       "copy": "Copier",
       "copied": "Copié !",
       "messageSent": "Message envoyé avec succès !",

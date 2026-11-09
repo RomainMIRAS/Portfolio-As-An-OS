@@ -180,6 +180,7 @@
     "about": {
       "title": "About",
       "downloadCv": "Download CV",
+      "cvUnavailable": "CV not available",
       "personalInfo": "Personal Information",
       "overview": "About me",
       "projects": "Projects",
@@ -286,6 +287,8 @@
       "message": "Message",
       "send": "Send",
       "sending": "Sending...",
+      "sendEmail": "Send an email",
+      "call": "Call",
       "copy": "Copy",
       "copied": "Copied!",
       "messageSent": "Message sent successfully!",

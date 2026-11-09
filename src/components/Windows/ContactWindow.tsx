@@ -144,7 +144,7 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                       <button
                         onClick={() => window.open(`mailto:${contact.email}`, '_blank')}
                         className="inline-flex items-center justify-center min-w-8 min-h-8 p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-[color,background-color,transform] duration-150 active:scale-95 rounded-md hover:bg-os-lighter/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent"
-                        title="Envoyer un email"
+                        title={t('ui.contact.sendEmail')}
                         aria-label={t('ui.contact.email')}
                       >
                         <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -180,7 +180,7 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                         <button
                           onClick={() => window.open(`tel:${contact.phone}`, '_blank')}
                           className="inline-flex items-center justify-center min-w-8 min-h-8 p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-[color,background-color,transform] duration-150 active:scale-95 rounded-md hover:bg-os-lighter/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent"
-                          title="Appeler"
+                          title={t('ui.contact.call')}
                           aria-label={t('ui.contact.phone')}
                         >
                           <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
