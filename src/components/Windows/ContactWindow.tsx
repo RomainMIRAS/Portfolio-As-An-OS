@@ -62,8 +62,7 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
           duration: 5000
         });
       }
-    } catch (error) {
-      console.error('Erreur lors de l\'envoi:', error);
+    } catch {
       setSubmitStatus('error');
       onAddNotification?.({
         title: t('ui.contact.messageError'),
@@ -97,14 +96,14 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
           document.execCommand('copy');
           setCopiedField(field);
           setTimeout(() => setCopiedField(null), 2000);
-        } catch (err) {
-          console.error('Erreur lors de la copie:', err);
+        } catch {
+          // copie impossible : pas de retour visuel "copié"
         } finally {
           document.body.removeChild(textArea);
         }
       }
-    } catch (err) {
-      console.error('Erreur lors de la copie:', err);
+    } catch {
+      // copie impossible : pas de retour visuel "copié"
     }
   };
 
@@ -144,15 +143,17 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                     <div className="flex space-x-1 sm:space-x-2 flex-shrink-0">
                       <button
                         onClick={() => window.open(`mailto:${contact.email}`, '_blank')}
-                        className="p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-colors rounded-md hover:bg-os-lighter/30"
+                        className="inline-flex items-center justify-center min-w-8 min-h-8 p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-[color,background-color,transform] duration-150 active:scale-95 rounded-md hover:bg-os-lighter/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent"
                         title="Envoyer un email"
+                        aria-label={t('ui.contact.email')}
                       >
                         <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
                       <button
                         onClick={() => copyToClipboard(contact.email, 'email')}
-                        className="p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-colors rounded-md hover:bg-os-lighter/30"
+                        className="inline-flex items-center justify-center min-w-8 min-h-8 p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-[color,background-color,transform] duration-150 active:scale-95 rounded-md hover:bg-os-lighter/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent"
                         title={t('ui.contact.copy')}
+                        aria-label={`${t('ui.contact.copy')} - ${t('ui.contact.email')}`}
                       >
                         {copiedField === 'email' ? (
                           <Check className="w-3 h-3 sm:w-4 sm:h-4 text-os-success" />
@@ -178,15 +179,17 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                       <div className="flex space-x-1 sm:space-x-2 flex-shrink-0">
                         <button
                           onClick={() => window.open(`tel:${contact.phone}`, '_blank')}
-                          className="p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-colors rounded-md hover:bg-os-lighter/30"
+                          className="inline-flex items-center justify-center min-w-8 min-h-8 p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-[color,background-color,transform] duration-150 active:scale-95 rounded-md hover:bg-os-lighter/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent"
                           title="Appeler"
+                          aria-label={t('ui.contact.phone')}
                         >
                           <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                         </button>
                         <button
                           onClick={() => copyToClipboard(contact.phone || '', 'phone')}
-                          className="p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-colors rounded-md hover:bg-os-lighter/30"
+                          className="inline-flex items-center justify-center min-w-8 min-h-8 p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-[color,background-color,transform] duration-150 active:scale-95 rounded-md hover:bg-os-lighter/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent"
                           title={t('ui.contact.copy')}
+                        aria-label={`${t('ui.contact.copy')} - ${t('ui.contact.phone')}`}
                         >
                           {copiedField === 'phone' ? (
                             <Check className="w-3 h-3 sm:w-4 sm:h-4 text-os-success" />
@@ -211,8 +214,9 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                     </div>
                     <button
                       onClick={() => copyToClipboard(contact.location || portfolioData.personal.location, 'location')}
-                      className="p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-colors rounded-md hover:bg-os-lighter/30 flex-shrink-0"
+                      className="inline-flex items-center justify-center min-w-8 min-h-8 p-1.5 sm:p-2 text-os-text-muted hover:text-os-accent transition-[color,background-color,transform] duration-150 active:scale-95 rounded-md hover:bg-os-lighter/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent flex-shrink-0"
                       title={t('ui.contact.copy')}
+                        aria-label={`${t('ui.contact.copy')} - ${t('ui.contact.location')}`}
                     >
                       {copiedField === 'location' ? (
                         <Check className="w-3 h-3 sm:w-4 sm:h-4 text-os-success" />
@@ -236,8 +240,7 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                 {contact.linkedin && (
                   <motion.button
                     onClick={() => openLink(contact.linkedin!)}
-                    whileHover={{ scale: 1.02 }}
-                    className="w-full bg-os-darker/50 rounded-lg p-3 sm:p-4 border border-os-lighter hover:border-os-accent transition-colors text-left"
+                    className="w-full bg-os-darker/50 rounded-lg p-3 sm:p-4 border border-os-lighter [@media(hover:hover)_and_(pointer:fine)]:hover:border-os-accent transition-[border-color,transform] duration-150 active:scale-[0.97] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent"
                   >
                     <div className="flex items-center space-x-2 sm:space-x-3">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -255,8 +258,7 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                 {contact.github && (
                   <motion.button
                     onClick={() => openLink(contact.github!)}
-                    whileHover={{ scale: 1.02 }}
-                    className="w-full bg-os-darker/50 rounded-lg p-3 sm:p-4 border border-os-lighter hover:border-os-accent transition-colors text-left"
+                    className="w-full bg-os-darker/50 rounded-lg p-3 sm:p-4 border border-os-lighter [@media(hover:hover)_and_(pointer:fine)]:hover:border-os-accent transition-[border-color,transform] duration-150 active:scale-[0.97] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent"
                   >
                     <div className="flex items-center space-x-2 sm:space-x-3">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -274,8 +276,7 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                 {contact.website && (
                   <motion.button
                     onClick={() => openLink(contact.website!)}
-                    whileHover={{ scale: 1.02 }}
-                    className="w-full bg-os-darker/50 rounded-lg p-3 sm:p-4 border border-os-lighter hover:border-os-accent transition-colors text-left"
+                    className="w-full bg-os-darker/50 rounded-lg p-3 sm:p-4 border border-os-lighter [@media(hover:hover)_and_(pointer:fine)]:hover:border-os-accent transition-[border-color,transform] duration-150 active:scale-[0.97] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent"
                   >
                     <div className="flex items-center space-x-2 sm:space-x-3">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 bg-os-accent rounded-lg flex items-center justify-center flex-shrink-0">
@@ -393,9 +394,8 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting || submitStatus === 'success'}
-                  whileHover={{ scale: submitStatus === 'success' || isSubmitting ? 1 : 1.02 }}
-                  whileTap={{ scale: submitStatus === 'success' || isSubmitting ? 1 : 0.98 }}
-                  className={`w-full flex items-center justify-center space-x-2 py-2.5 sm:py-3 px-4 rounded-md font-medium transition-all duration-200 text-sm sm:text-base ${
+                  aria-busy={isSubmitting}
+                  className={`w-full flex items-center justify-center space-x-2 py-2.5 sm:py-3 px-4 rounded-md font-medium transition-[background-color,transform] duration-150 active:scale-[0.98] text-sm sm:text-base ${
                     submitStatus === 'success'
                       ? 'bg-os-success hover:bg-os-success text-white cursor-default'
                       : submitStatus === 'error'
@@ -410,6 +410,7 @@ const ContactWindow: React.FC<ContactWindowProps> = ({ onAddNotification }) => {
                       <motion.div
                         animate={{ rotate: 360 }}
                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        aria-hidden="true"
                         className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-white border-t-transparent rounded-full"
                       />
                       <span className="text-sm sm:text-base">{t('ui.contact.sending')}</span>

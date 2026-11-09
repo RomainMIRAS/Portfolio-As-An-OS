@@ -214,9 +214,10 @@ const TerminalWindow: React.FC = () => {
         onClick={() => inputRef.current?.focus()}
       >
         {/* Historique des commandes */}
+        <div role="log" aria-live="polite">
         {history.map((entry, index) => (
           <motion.div
-            key={index}
+            key={`${entry.timestamp.getTime()}-${index}`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
@@ -234,6 +235,7 @@ const TerminalWindow: React.FC = () => {
             )}
           </motion.div>
         ))}
+        </div>
 
         {/* Ligne de commande active */}
         {!isProcessing && (
@@ -246,6 +248,7 @@ const TerminalWindow: React.FC = () => {
               onChange={(e) => setCurrentCommand(e.target.value)}
               onKeyPress={handleKeyPress}
               className="flex-1 bg-transparent border-none outline-none text-os-text"
+              aria-label={t('terminal.prompt', 'Type a command...')}
               placeholder={t('terminal.prompt', 'Type a command...')}
               autoComplete="off"
               spellCheck={false}
@@ -253,6 +256,7 @@ const TerminalWindow: React.FC = () => {
             <motion.span
               animate={{ opacity: [1, 0] }}
               transition={{ duration: 0.5, repeat: Infinity }}
+              aria-hidden="true"
               className="w-2 h-4 bg-os-accent ml-1"
             />
           </div>

@@ -21,19 +21,13 @@ const AboutWindow: React.FC = () => {
 
   // Fonction pour télécharger le CV
   const downloadCV = async () => {
-    if (!portfolioData.personal.cvUrl) {
-      console.warn('Aucune URL de CV configurée');
-      return;
-    }
+    if (!portfolioData.personal.cvUrl) return;
 
     try {
       // Vérifier si le fichier existe
       const response = await fetch(portfolioData.personal.cvUrl, { method: 'HEAD' });
       
-      if (!response.ok) {
-        console.error('Le fichier CV n\'est pas accessible');
-        return;
-      }
+      if (!response.ok) return;
 
       // Créer le lien de téléchargement
       const link = document.createElement('a');
@@ -46,8 +40,8 @@ const AboutWindow: React.FC = () => {
       link.click();
       document.body.removeChild(link);
       
-    } catch (error) {
-      console.error('Erreur lors du téléchargement du CV:', error);
+    } catch {
+      // Échec réseau : le bouton reste utilisable pour une nouvelle tentative
     }
   };
 
@@ -94,7 +88,10 @@ const AboutWindow: React.FC = () => {
                     imageRendering: 'crisp-edges',
                     transform: 'scale(1.01)' 
                   }}
-                  loading="lazy"
+                  width={128}
+                  height={128}
+                  loading="eager"
+                  decoding="async"
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-os-accent to-os-accent-hover flex items-center justify-center text-4xl font-bold text-white">
@@ -136,7 +133,7 @@ const AboutWindow: React.FC = () => {
           <div className="bg-os-darker/30 rounded-lg p-6 border border-os-border">
             <div className="text-os-text-muted leading-relaxed space-y-4">
               {portfolioData.personal.bio.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="text-justify">
+                <p key={index} className="text-left text-pretty">
                   {paragraph.split('\n').map((line, lineIndex, lines) => (
                     <span key={lineIndex}>
                       {highlightTerms(line, portfolioData.personal.highlightedTerms)}
@@ -186,7 +183,7 @@ const AboutWindow: React.FC = () => {
           className="flex space-x-4"
         >
           <button 
-            className={`button-primary flex items-center space-x-2 ${
+            className={`button-primary active:scale-[0.97] transition-[background-color,transform] duration-150 flex items-center space-x-2 ${
               !portfolioData.personal.cvUrl ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             onClick={downloadCV}

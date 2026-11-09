@@ -62,8 +62,10 @@ const ProjectsWindow: React.FC = () => {
           {categories.map(category => (
             <button
               key={category}
+              type="button"
+              aria-pressed={filter === category}
               onClick={() => setFilter(category)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors whitespace-nowrap ${
+              className={`px-3 py-1 rounded-full text-sm transition-[background-color,color,transform] duration-150 active:scale-95 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent ${
                 filter === category
                   ? 'bg-os-accent text-white'
                   : 'bg-os-lighter text-os-text-muted hover:bg-os-border'
@@ -80,12 +82,12 @@ const ProjectsWindow: React.FC = () => {
         <div className="w-1/2 border-r border-os-border overflow-auto">
           <div className="space-y-2 p-4">
             {filteredProjects.map((project) => (
-              <motion.div
+              <button
                 key={project.id}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                type="button"
+                aria-pressed={selectedProject === project.id}
                 onClick={() => setSelectedProject(project.id)}
-                className={`p-4 rounded-lg border cursor-pointer transition-all ${
+                className={`block w-full text-left p-4 rounded-lg border cursor-pointer transition-[transform,background-color,border-color] duration-150 ease-out active:scale-[0.985] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-accent ${
                   selectedProject === project.id
                     ? 'bg-os-accent/20 border-os-accent'
                     : 'bg-os-darker/30 border-os-border hover:border-os-accent/50'
@@ -115,7 +117,7 @@ const ProjectsWindow: React.FC = () => {
                     <span className="text-os-accent">{project.category}</span>
                   </div>
                 </div>
-              </motion.div>
+              </button>
             ))}
             
             {filteredProjects.length === 0 && (
@@ -128,15 +130,14 @@ const ProjectsWindow: React.FC = () => {
 
         {/* Détail du projet sélectionné */}
         <div className="w-1/2 overflow-auto">
-          <AnimatePresence mode="wait">
+          <AnimatePresence initial={false}>
             {selectedProjectData ? (
               <motion.div
                 key={selectedProjectData.id}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-                className="p-6 space-y-6"
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0, transition: { duration: 0.18, ease: [0.23, 1, 0.32, 1] } }}
+                exit={{ opacity: 0, transition: { duration: 0.1 } }}
+                className="p-6 space-y-6 w-full"
               >
                 {/* En-tête du projet */}
                 <div>
@@ -208,13 +209,15 @@ const ProjectsWindow: React.FC = () => {
                   <div className="grid grid-cols-1 gap-3">
                     {selectedProjectData.images.map((image: string, index: number) => (
                       <div
-                        key={index}
+                        key={image}
                         className="rounded-lg border border-os-border overflow-hidden bg-os-darker/30 p-1"
                       >
                         <img 
                           src={image} 
-                          alt={`${selectedProjectData.title} - Image ${index + 1}`}
-                          className="w-full object-contain max-h-[300px] mx-auto"
+                          alt={`${selectedProjectData.title} - ${t('ui.projects.screenshots')} ${index + 1}`}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full aspect-video object-contain rounded-md"
                         />
                       </div>
                     ))}

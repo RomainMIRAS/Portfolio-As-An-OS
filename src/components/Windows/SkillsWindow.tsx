@@ -34,12 +34,20 @@ const SkillBar = React.memo<{ skill: Skill; index: number; getSkillLevel: (level
       
       {/* Barre de progression */}
       <div className="relative">
-        <div className="w-full bg-os-border rounded-full h-2 overflow-hidden">
+        <div
+          className="w-full bg-os-border rounded-full h-2 overflow-hidden"
+          role="progressbar"
+          aria-label={skill.name}
+          aria-valuenow={skill.level}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
           <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: `${skill.level}%` }}
-            transition={{ duration: 1, delay: index * 0.1 }}
-            className={`h-full ${levelInfo.bgColor} rounded-full`}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: skill.level / 100 }}
+            transition={{ duration: 1, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] }}
+            style={{ transformOrigin: 'left' }}
+            className={`w-full h-full ${levelInfo.bgColor} rounded-full`}
           />
         </div>
         
