@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
   body {
     @apply bg-os-dark text-os-text font-system antialiased;
     @apply overflow-hidden;
@@ -30,7 +33,6 @@
 @layer components {
   .window {
     @apply bg-os-light/80 backdrop-blur-os border border-os-border rounded-lg shadow-2xl;
-    @apply animate-slide-up;
   }
 
   .window-header {
@@ -44,7 +46,8 @@
 
   .button-primary {
     @apply bg-os-accent hover:bg-os-accent-hover text-white font-medium px-4 py-2 rounded-md;
-    @apply transition-colors duration-200 border border-transparent;
+    @apply transition-[background-color,transform] duration-150 ease-out-strong border border-transparent;
+    @apply active:scale-[0.97];
     @apply focus:outline-none focus:ring-2 focus:ring-os-accent focus:ring-offset-2 focus:ring-offset-os-dark;
   }
 
@@ -55,7 +58,8 @@
 
   .button-secondary {
     @apply bg-os-light hover:bg-os-lighter text-os-text font-medium px-4 py-2 rounded-md;
-    @apply transition-colors duration-200 border border-os-border;
+    @apply transition-[background-color,transform] duration-150 ease-out-strong border border-os-border;
+    @apply active:scale-[0.97];
     @apply focus:outline-none focus:ring-2 focus:ring-os-accent focus:ring-offset-2 focus:ring-offset-os-dark;
   }
 
@@ -89,10 +93,21 @@
   }
 
   .dock-item {
-    @apply relative bg-os-lighter/50 hover:bg-os-lighter border border-os-border rounded-lg;
+    @apply relative bg-os-lighter/50 border border-os-border rounded-lg;
     @apply w-12 h-12 flex items-center justify-center cursor-pointer;
-    @apply transition-all duration-200 hover:scale-110 hover:shadow-lg;
+    @apply transition-[transform,background-color,border-color,box-shadow] duration-150 ease-out-strong;
+    @apply active:scale-[0.97];
     @apply focus:outline-none focus:ring-2 focus:ring-os-accent;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .dock-item:hover {
+      @apply bg-os-lighter scale-110 shadow-lg;
+    }
+
+    .dock-item:active {
+      @apply scale-[0.97];
+    }
   }
 
   .notification {
@@ -102,6 +117,29 @@
 
   .glow-effect {
     @apply animate-glow;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-boot,
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-bounce-soft {
+    animation-name: fadeIn;
+    animation-duration: 0.01ms;
+  }
+
+  .dock-item,
+  .button-primary,
+  .button-secondary {
+    transition-property: background-color, border-color;
+  }
+
+  .dock-item:hover,
+  .dock-item:active,
+  .button-primary:active,
+  .button-secondary:active {
+    transform: none;
   }
 }
 

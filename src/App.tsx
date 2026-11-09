@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import BootScreen from './components/OS/BootScreen';
 import ShutdownScreen from './components/OS/ShutdownScreen';
 import Wallpaper from './components/OS/Wallpaper';
@@ -31,6 +31,7 @@ const App: React.FC = () => {
   const availableApps = useLocalizedApps();
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen overflow-hidden">
       <AnimatePresence mode="wait">
         {!osState.isBootComplete ? (
@@ -41,7 +42,7 @@ const App: React.FC = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
             className="relative h-screen overflow-hidden"
           >
             {/* Wallpaper */}
@@ -87,6 +88,7 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
     </div>
+    </MotionConfig>
   );
 };
 
