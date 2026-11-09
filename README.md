@@ -115,7 +115,7 @@ colors: {
 
 ### Add Applications
 1. Create component in `src/components/Windows/`
-2. Add to `availableApps` in `src/hooks/useOSState.ts`
+2. Add to the app list in `src/hooks/useLocalizedApps.ts` (plus its `ui.<app>.title` keys in both locale files)
 3. Import in `WindowManager.tsx`
 
 ## 🎮 Interactive Terminal

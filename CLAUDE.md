@@ -23,10 +23,10 @@ Single-page React 19 + TypeScript + Vite app that simulates a desktop OS as a po
 ### OS state (`src/hooks/useOSState.ts`)
 `useOSState` is the single source of truth for all runtime OS state (open windows, z-index stacking via `maxZIndex`, notifications, boot/shutdown, theme, clock). It's instantiated once in `App` and its callbacks are threaded down as props — there is no context/store. Window focus, minimize/maximize, drag position, and resize all mutate this state.
 
-This file also exports a hardcoded `availableApps` array, but **`App` uses the localized version from `useLocalizedApps` instead** (see below). Keep the two app lists in sync when adding/removing apps.
+The app list lives only in `useLocalizedApps` (there is no hardcoded copy in `useOSState`).
 
 ### Windows are string-keyed components (`src/components/OS/WindowManager.tsx`)
-Each `AppConfig` has a `component: string` (e.g. `"AboutWindow"`). `WindowManager` maps that string to the actual React component via a local `windowComponents` lookup object. **Adding a new app requires editing three places:** (1) add the `AppConfig` entry in `useLocalizedApps` (and `useOSState`'s `availableApps`), (2) create the component under `src/components/Windows/`, (3) register it in `WindowManager`'s `windowComponents` map. Props are generally not passed to windows except a conditional injection of `onAddNotification` into `ContactWindow`.
+Each `AppConfig` has a `component: string` (e.g. `"AboutWindow"`). `WindowManager` maps that string to the actual React component via a local `windowComponents` lookup object. **Adding a new app requires editing three places:** (1) add the `AppConfig` entry in `useLocalizedApps` , (2) create the component under `src/components/Windows/`, (3) register it in `WindowManager`'s `windowComponents` map. Props are generally not passed to windows except a conditional injection of `onAddNotification` into `ContactWindow`.
 
 ### Internationalization is the data layer (`src/i18n/`)
 This is the most important thing to understand. All user-facing content — including portfolio data (projects, experience, education, bio) — lives in `src/i18n/locales/{en,fr}.json`, not in components. i18next is configured in `src/i18n/index.ts` (default `en`, browser language detection, localStorage cache).
